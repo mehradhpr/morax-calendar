@@ -9,13 +9,13 @@ import java.util.*;
 /**
  * Extends Task into Appointment type
  */
-public class Appointment extends Task {
+public class Appointment extends DatedTask {
 
     /** Date variables */
     private Date appointmentDate;
     /** list of other people at this appointment */
     private LinkedList<Person> appointmentPeople ;
-    /** NSID of student */
+    /** location of appointment */
     private String appointmentLocation;
 
     /**
@@ -25,19 +25,9 @@ public class Appointment extends Task {
      * @param location place of appointment, or n/a
      */
     public Appointment(String name, Calendar date, String location) {
-        super(name);
-        this.appointmentDate = date.getTime();
+        super(name, date);
         this.appointmentLocation = location;
         appointmentPeople = new LinkedList<>();
-    }
-
-    /**
-     * Return date of appointment
-     *
-     * @return date
-     */
-    public Date getDate() {
-        return this.appointmentDate;
     }
 
     /**
@@ -47,15 +37,6 @@ public class Appointment extends Task {
      */
     public String getLocation() {
         return this.appointmentLocation;
-    }
-
-    /**
-     * Change date of appointment
-     *
-     * @param newDate date to change to
-     */
-    public void setDate(Date newDate){
-        this.appointmentDate = newDate;
     }
 
     /**

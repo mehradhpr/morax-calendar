@@ -38,15 +38,6 @@ public class ManagementSystem {
     }
 
     /**
-     * add appointment type task to list
-     * @param
-     */
-    public void addAppointment()
-    {
-        return;
-    }
-
-    /**
      * Remove task from list
      */
     public void removeTask()
