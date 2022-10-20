@@ -2,6 +2,8 @@
 package Morax.Base;
 
 
+import Morax.Tasks.Task;
+
 import java.util.LinkedList;
 import java.util.ListIterator;
 

@@ -1,6 +1,4 @@
-
 package Morax.Base;
-
 import Morax.Tasks.Task;
 
 import java.util.ArrayList;
@@ -8,8 +6,9 @@ import java.util.ArrayList;
 /**
  * A Basic list of tasks.
  */
-public class BasicTaskList
+public class Checklist extends BasicTaskList
 {
+
     /** The name of the list */
     private String name;
 
@@ -22,8 +21,9 @@ public class BasicTaskList
      * @param initCap initial capacity
      * @precond listName != null, and initCap is positive integer
      */
-    public BasicTaskList(String listName, int initCap)
+    public Checklist(String listName, int initCap)
     {
+        super(listName,initCap);
         this.name = listName;
         this.taskList = new ArrayList<Task>(initCap);
     }

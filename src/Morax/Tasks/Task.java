@@ -1,5 +1,5 @@
 
-package Morax.Base;
+package Morax.Tasks;
 /**
  * Model for a generic task within the system
  */
