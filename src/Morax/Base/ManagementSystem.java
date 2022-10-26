@@ -1,6 +1,8 @@
 
 package Morax.Base;
 
+import Morax.Controller.Controller;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;

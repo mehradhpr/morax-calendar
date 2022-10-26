@@ -7,7 +7,9 @@ public class Category {
     private String name;
     private int priority;
     private double color;
+    //time allocated to the category in hours
     private int timeAlloc;
+    //amount of allocated time used in hours
     private int timeUsed;
 
     private ArrayList<Task> tasks;
@@ -27,7 +29,7 @@ public class Category {
      * @param t a task object
      */
     public void addTask(Task t){
-        if (!(this.timeLeft() >= t.getEstTime())) throw new IllegalArgumentException("cannot allocate enough time to task");
+        if (!(this.timeLeft() >= t.getEstTime())) throw new IllegalArgumentException("Cannot allocate enough time to task");
         this.timeUsed = this.timeUsed + t.getEstTime();
         this.tasks.add(t);
     }
@@ -67,7 +69,7 @@ public class Category {
 
     /**
      * returns the remaining amount of allocated time
-     * @return the remaining amount of allocated time left for tasks
+     * @return the remaining amount of allocated time left for tasks in hours
      */
     public int timeLeft(){ return this.timeAlloc - this.timeUsed; }
 
@@ -85,4 +87,68 @@ public class Category {
     public void setPriority(int p){ this.priority = p; }
     public void setTimeAlloc(int t){ this.timeAlloc = t; }
     public void setColor(double c){ this.color = c; }
+
+    //test cases
+    public void main(){
+        Category c = new Category("Test", 2, 1, 30);
+        int errors = 0;
+        //test 1
+        if (!c.getName().equals("Test")) {
+            errors ++;
+            System.out.println("Error in test case 1");
+        }
+        //test 2
+        if (c.getPriority() != 2){
+            errors ++;
+            System.out.println("Error in test case 2");
+        }
+        //test 3
+        if (c.getTimeAlloc() != 30){
+            errors ++;
+            System.out.println("Error in test case 3");
+        }
+        //test 4
+        if (c.timeLeft() != 30){
+            errors ++;
+            System.out.println("Error in test case 4");
+        }
+        //test 5
+        if (c.getTimeUsed() != 0){
+            errors ++;
+            System.out.println("Error in test case 5");
+        }
+        //test 6
+        Task t = new Task("TestTask", 1);
+        c.addTask(t);
+        if (c.getTimeUsed() != 1){
+            errors ++;
+            System.out.println("Error in test case 6");
+        }
+        //test 7
+        if (c.timeLeft() != 29){
+            errors ++;
+            System.out.println("Error in test case 7");
+        }
+        //test 8
+        if (!c.getTasks().get(0).equals(t)){
+            errors ++;
+            System.out.println("Error in test case 8");
+        }
+        //test 9
+        if (c.getAmountTasks() != 1){
+            errors ++;
+            System.out.println("Error in test case 9");
+        }
+        //test 10
+        Task t2 = new Task("TaskTooLong", 30);
+        try {c.addTask(t2);} catch (IllegalArgumentException e){
+            if (!e.getMessage().equals("Cannot allocate enough time to task")){
+                errors ++;
+                System.out.println("Error in test case 10");
+            }
+        }
+
+        System.out.println(errors + " test cases failed");
+        System.out.println("Testing done");
+    }
 }
