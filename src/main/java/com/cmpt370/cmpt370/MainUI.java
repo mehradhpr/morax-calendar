@@ -1,14 +1,13 @@
 package com.cmpt370.cmpt370;
 
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.layout.StackPane;
 
 public class MainUI extends StackPane {
 
     MainUI() {
-        AppView primaryView = new AppView();
-        AppController primaryController = new AppController();
+        MainView primaryView = new MainView();
+        MainController primaryController = new MainController();
         AppModel primaryModel = new AppModel();
 
         primaryView.setModel(primaryModel);

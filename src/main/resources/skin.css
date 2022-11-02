@@ -1,14 +1,32 @@
 .root {
-    -fx-background-color: linear-gradient(from 41px 34px to 500px 500px, #8ef2ff, #fff3d6);
+    -fx-background-color: White;
 }
 
+
 .label {
-    -fx-font-size: 16pt;
+    -fx-font-size: 12pt;
     -fx-font-family: "Arial Black";
     -fx-font-smoothing-type: always;
 
 }
 
 .list-view {
-    -fx-background-color: #FFF3D6FF;
+    -fx-background-color: #fffbbf;
+    -fx-border-color: #0d2a0d;
 }
+
+.button {
+    -fx-background-color: #fffc00;
+}
+
+.label {
+    -fx-text-fill: #7e5400;
+}
+
+.menu-bar {
+    -fx-background-color: #ffbc1a;
+}
+
+
+
+
