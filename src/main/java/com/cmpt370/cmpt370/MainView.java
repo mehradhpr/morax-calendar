@@ -24,6 +24,8 @@ public class MainView extends StackPane implements ModelListener{
 
     Button scheduleB;
 
+    Button categoriesB;
+
     Button sortB;
 
     Button setting;
@@ -43,7 +45,13 @@ public class MainView extends StackPane implements ModelListener{
         activitiesList = new ListView<>();
         activitiesList.setPrefHeight(10000);
         Label title2 = new Label("All Activities");
-        VBox rightVBox = new VBox(title2, activitiesList);
+        ComboBox<String> sortC = new ComboBox<>();
+        HBox topH = new HBox(title2, sortC);
+        topH.setMinWidth(50);
+        topH.setAlignment(Pos.CENTER_RIGHT);
+        topH.setSpacing(45);
+
+        VBox rightVBox = new VBox(topH, activitiesList);
         rightVBox.setAlignment(Pos.TOP_CENTER);
         rightVBox.setSpacing(5);
         rightVBox.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
@@ -51,9 +59,9 @@ public class MainView extends StackPane implements ModelListener{
         rightVBox.setStyle("-fx-background-color: #ffbe47");
 
         AnchorPane menuBar = new AnchorPane();
-        sortB = new Button("Sort");
+        categoriesB = new Button("Categories");
         newActivityB = new Button("New Activity");
-        HBox menu1 = new HBox(newActivityB, scheduleB, sortB);
+        HBox menu1 = new HBox(newActivityB, scheduleB, categoriesB);
         menu1.setSpacing(2);
 
         setting = new Button("Setting");
@@ -68,7 +76,7 @@ public class MainView extends StackPane implements ModelListener{
         menuBar.setPadding(new Insets(2, 2, 2, 2));
         Label date = new Label("Oct 12, 2022");
         AnchorPane.setTopAnchor(date, 2.0);
-        AnchorPane.setLeftAnchor(date, 270.0);
+        AnchorPane.setLeftAnchor(date, 400.0);
         menuBar.getChildren().addAll(menu1, date);
 
         HBox status = new HBox();
@@ -100,5 +108,6 @@ public class MainView extends StackPane implements ModelListener{
     public void associateHandler(Controller controller) {
         this.newActivityB.setOnAction(((MainController) controller)::handleNewActivityB);
         this.scheduleB.setOnAction(((MainController) controller)::handleScheduleB);
+        this.categoriesB.setOnAction(((MainController) controller)::handleCategoriesB);
     }
 }

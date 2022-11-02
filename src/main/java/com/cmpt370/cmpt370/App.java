@@ -1,7 +1,6 @@
 package com.cmpt370.cmpt370;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -12,7 +11,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws IOException {
         MainUI mainUI = new MainUI();
         Scene mainScene = new Scene(mainUI, 800, 450);
-        mainScene.getStylesheets().add("skin.css");
+        mainScene.getStylesheets().add("primarySkin.css");
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Calendar");
         primaryStage.show();

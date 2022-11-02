@@ -7,6 +7,7 @@
     -fx-font-size: 12pt;
     -fx-font-family: "Arial Black";
     -fx-font-smoothing-type: always;
+    -fx-text-fill: #7e5400;
 
 }
 
@@ -16,16 +17,14 @@
 }
 
 .button {
+    -fx-font-size: 9pt;
+    -fx-font-family: "Arial Black";
     -fx-background-color: #fffc00;
-}
-
-.label {
     -fx-text-fill: #7e5400;
 }
 
-.menu-bar {
-    -fx-background-color: #ffbc1a;
-}
+
+
 
 
 

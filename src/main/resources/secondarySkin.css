@@ -1,0 +1,47 @@
+.root {
+    -fx-background-color: #ffbe47;
+}
+
+
+.label {
+    -fx-font-size: 9pt;
+    -fx-font-family: "Arial Black";
+    -fx-font-smoothing-type: always;
+
+}
+
+.list-view {
+    -fx-background-color: #fffbbf;
+    -fx-border-color: #0d2a0d;
+}
+
+.button {
+    -fx-background-color: #fffc00;
+}
+
+.button .text {
+    -fx-font-size: 9pt;
+    -fx-font-family: "Arial Black";
+    -fx-text-fill: #7e5400;
+}
+
+.label {
+    -fx-text-fill: #7e5400;
+}
+
+.text-field {
+    -fx-background-color: #fffbbf;
+}
+
+.text-area {
+    -fx-border-color: #fffbbf;
+}
+
+.check-box .box {
+    -fx-background-color: #fffc00;
+}
+
+
+.combo-box {
+    -fx-background-color: linear-gradient(#fffc00, #e5cd30);
+}
