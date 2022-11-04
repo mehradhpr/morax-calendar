@@ -1,5 +1,6 @@
 package app.morax.View;
 
+import app.morax.Model.Base.Day;
 import app.morax.Model.Base.Task;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;

@@ -22,6 +22,8 @@ public class MainModel {
     /** list of subscribers to notify when the model has changed **/
     private ArrayList<ModelListener> subscribers;
 
+    private ArrayList<Day> days;
+
     /**
      * Initialize an instance of ManagementSystem
      */
@@ -32,16 +34,15 @@ public class MainModel {
 
         this.people = new TreeMap<>();
         this.subscribers = new ArrayList<>();
+
+        this.days = new ArrayList<>();
     }
 
     /**
      * add task to list
      * @param t task to add
      */
-    public void addTask(Task t)
-    {
-        this.taskList.get(0).addTask(t);
-    }
+
 
     public void addTask(Task t, Category c) throws IllegalArgumentException{
         if (!this.categoryExists(c)) throw new IllegalArgumentException("Category: " + c.getName() + " does not exist");
@@ -50,7 +51,13 @@ public class MainModel {
             if (category.getName().equals(c.getName())) category.addTask(t);
         }
 
-        updateSubscribers();
+        for (Day day : this.getDays()) {
+            if (t.getDay().equals(day)) day.addTask(t);
+            updateSubscribers();
+            return;
+        }
+
+
     }
 
     /**
@@ -215,5 +222,13 @@ public class MainModel {
         catch(InputMismatchException exception){
             System.out.println("InputMismatch Entered");
         }
+    }
+
+    public void setDays(ArrayList<Day> days) {
+        this.days = days;
+    }
+
+    public ArrayList<Day> getDays() {
+        return days;
     }
 }

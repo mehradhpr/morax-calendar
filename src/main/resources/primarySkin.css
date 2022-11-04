@@ -23,6 +23,10 @@
     -fx-text-fill: #7e5400;
 }
 
+.combo-box {
+    -fx-background-color: linear-gradient(#fffc00, #e5cd30);
+}
+
 
 
 

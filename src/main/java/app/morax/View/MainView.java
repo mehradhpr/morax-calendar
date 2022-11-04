@@ -3,6 +3,7 @@ package app.morax.View;
 import app.morax.Controller.MainController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
+import app.morax.Model.Base.Day;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import javafx.collections.FXCollections;
@@ -123,7 +124,11 @@ public class MainView extends StackPane implements ModelListener {
 
     @Override
     public void update() {
+        for (Day day : this.model.getDays()) {
+            DayHBox newDayHBox = new DayHBox();
 
+            this.scheduleObs.add(newDayHBox);
+        }
     }
     public void setModel(MainModel model) {
         this.model = model;

@@ -10,6 +10,11 @@ public class Task {
     //estimated amount of time that a task will take
     private int estTime;
 
+    //day in the format of "month/day"
+    private Day day;
+
+
+
     /**
      * Initialize a task
      *
@@ -63,4 +68,12 @@ public class Task {
 
     public void setEstTime(int estimatedTime){ this.estTime = estimatedTime; }
     public int getEstTime(){ return this.estTime; }
+
+    public Day getDay() {
+        return day;
+    }
+
+    public void setDay(Day day) {
+        this.day = day;
+    }
 }

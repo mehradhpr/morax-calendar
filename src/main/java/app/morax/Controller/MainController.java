@@ -39,6 +39,7 @@ public class MainController implements Controller {
     public void handleNewActivityB(ActionEvent e) {
         NewActivityView thisView = new NewActivityView();
         NewActivityViewController thisController = new NewActivityViewController();
+        thisController.setModel(this.model);
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
 
