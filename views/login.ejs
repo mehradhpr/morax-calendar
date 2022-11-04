@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8">
+        <title>Login Form</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="sytlesheet" href="css/toast.css"
+    </head>
+    <body>
+        <!-- Entire white block -->
+        <div class="container">
+            <!-- Login form -->
+            <%if (status == "loggedIn"){%>
+                <form class="form" id="logout" method="get" action="/logout">
+                    <button class = "form__button" type="submit">Logout</button>
+                    <p class="form__text" method="get" action="/signup">
+                        <a class="form__link" href="index">Return Home</a>
+                    </p>
+                </form>
+            <%}
+
+            else{%>
+            <form class="form" id="login" method="post" action="/login">
+                <h1 class="form__title">Login</h1>
+                <div class="form__message form__message--error"></div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" autofocus placeholder="Username or email" name="email">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" class="form__input" autofocus placeholder="Password" name="password">
+                    <div class="form__input-error-message"></div>
+                </div>
+                <button class="form__button" type="submit">Login</button>
+                <p class="form__text">
+                    <a href="#" class="form__link">Forgot your password?</a>
+                </p>
+                <p class="form__text" method="get" action="/signup">
+                    <a class="form__link" href="/signup">Don't have an account? Create account</a>
+                </p>
+                <p class="form__text" method="get" action="/signup">
+                    <a class="form__link" href="index">Return Home</a>
+                </p>
+                <%}%>
+        </div>
+        <script src="js/toast.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
