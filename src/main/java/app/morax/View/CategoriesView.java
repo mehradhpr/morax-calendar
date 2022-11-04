@@ -1,5 +1,6 @@
 package app.morax.View;
 
+import app.morax.Controller.CategoryController;
 import app.morax.Controller.MainController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
@@ -78,6 +79,11 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     @Override
     public void associateHandler(Controller controller) {
-        addCategoryB.setOnAction(((MainController) controller)::handleAddCategory);
+        addCategoryB.setOnAction(((CategoryController) controller)::handleAddCategory);
+        removeCategoryB.setOnAction(((CategoryController) controller)::handleRemoveCategory);
+    }
+
+    public Category getSelection(){
+        return this.categoriesL.getSelectionModel().getSelectedItem();
     }
 }

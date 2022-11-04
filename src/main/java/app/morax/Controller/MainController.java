@@ -52,9 +52,13 @@ public class MainController implements Controller {
 
     public void handleCategoriesB(ActionEvent e) {
         CategoriesView thisView = new CategoriesView();
+        CategoryController thisController = new CategoryController();
+
+        thisController.setModel(model);
+        thisController.setView(thisView);
 
         thisView.setModel(model);
-        thisView.associateHandler(this);
+        thisView.associateHandler(thisController);
 
         model.addSubscriber(thisView);
         thisView.update();
@@ -63,23 +67,5 @@ public class MainController implements Controller {
         categoriesStage.setScene(new Scene(thisView, 350, 300));
         categoriesStage.getScene().getStylesheets().add("secondarySkin.css");
         categoriesStage.show();
-    }
-
-    public void handleAddCategory(ActionEvent e) {
-        AddCategoryView thisView = new AddCategoryView();
-        NewCategoryController thisController = new NewCategoryController();
-        thisView.associateHandler(thisController);
-        thisController.setView(thisView);
-
-        thisController.setModel(model);
-
-        Stage addCategoriesStage = new Stage();
-        addCategoriesStage.setScene(new Scene(thisView, 350, 300));
-        addCategoriesStage.getScene().getStylesheets().add("secondarySkin.css");
-        addCategoriesStage.show();
-    }
-
-    public void handleRemoveCategory(ActionEvent e){
-
     }
 }
