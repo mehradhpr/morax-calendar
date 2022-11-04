@@ -32,6 +32,5 @@ public class NewActivityViewController implements Controller {
     public void handleAddButton(ActionEvent e) {
         Task newTask = new Task(this.view.getTitleText().getText());
         this.model.addTask(newTask);
-        model.updateSubscribers();
     }
 }
