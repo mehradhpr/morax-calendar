@@ -3,7 +3,10 @@ package app.morax.View;
 import app.morax.Controller.MainController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
+import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,6 +19,8 @@ import javafx.scene.layout.VBox;
 
 public class CategoriesView extends StackPane implements ModelListener {
 
+    MainModel model;
+
     private TextField titleText;
 
     private TextField dateText;
@@ -26,10 +31,12 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     private Button cancelB;
 
+    ListView<Category> categoriesL;
+
     public CategoriesView() {
         Label title1 = new Label("All Categories");
 
-        ListView<String> categoriesL = new ListView<>();
+        categoriesL = new ListView<>();
 
 
 
@@ -56,12 +63,17 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     @Override
     public void update() {
+        ObservableList<Category> categories = FXCollections.observableArrayList();
+        for (Category c:model.getCategories()){
+            categories.add(c);
+        }
 
+        this.categoriesL.setItems(categories);
     }
 
     @Override
     public void setModel(MainModel model) {
-
+        this.model = model;
     }
 
     @Override

@@ -136,7 +136,12 @@ public class MainModel {
     }
 
     public ArrayList<Category> getCategories(){
-        return this.taskList;
+        ArrayList<Category> c = new ArrayList<>();
+        for (int i = 1; i < taskList.size(); i++){
+            c.add(this.taskList.get(i));
+        }
+
+        return c;
     }
 
     public void addCategory(Category c){
