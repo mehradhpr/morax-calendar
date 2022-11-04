@@ -39,6 +39,5 @@ public class CategoryController implements Controller {
 
     public void handleRemoveCategory(ActionEvent e){
         model.removeCategory(view.getSelection());
-        model.updateSubscribers();
     }
 }

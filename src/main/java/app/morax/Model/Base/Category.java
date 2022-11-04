@@ -21,7 +21,7 @@ public class Category {
         this.timeAlloc = timeAlloc;
         this.timeUsed = 0;
 
-        this.taskList = new ArrayList<Task>();
+        this.taskList = new ArrayList<>();
     }
 
     /**
@@ -93,51 +93,6 @@ public class Category {
                 this.timeAlloc + "\n" +
                 this.priority + "\n" +
                 this.color;
-    }
-
-    public void sortTaskList(int attNum){
-        int n = taskList.size();
-        switch (attNum) {
-            case 1:
-                System.out.println("NAME\n");
-                for(int i = 0; i < n; i++) {
-                    for(int j = i + 1; j < n; j++) {
-                        if (((taskList.get(i)).getName()).compareTo((taskList.get(i)).getName()) > 0){
-                            Task temp = (taskList.get(i));
-                            taskList.set(i, (taskList.get(j)));
-                            taskList.set(j, temp);
-                        }
-                    }
-                }
-                break;
-            case 2:
-                System.out.println("LOCATION\n");
-                for(int i = 0; i < n; i++) {
-                    for(int j = i + 1; j < n; j++) {
-                        if (((taskList.get(i)).getLocation()).compareTo((taskList.get(i)).getLocation()) > 0){
-                            Task temp = (taskList.get(i));
-                            taskList.set(i, (taskList.get(j)));
-                            taskList.set(j, temp);
-                        }
-                    }
-                }
-                break;
-            case 3:
-                System.out.println("DATE\n");
-                for(int i = 0; i < n; i++) {
-                    for(int j = i + 1; j < n; j++) {
-                        if (((taskList.get(i)).getDate()).compareTo((taskList.get(i)).getDate()) < 0){
-                            Task temp = (taskList.get(i));
-                            taskList.set(i, (taskList.get(j)));
-                            taskList.set(j, temp);
-                        }
-                    }
-                }
-                break;
-            default:
-                System.out.println("Invalid Number Entered\n");
-                break;
-        }
     }
 
     //test cases

@@ -170,58 +170,97 @@ public class MainModel {
      * UI (as of now lol)
      */
     public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        try {
-            System.out.print("List Name: ");
-            String listName = in.next();
-            in.nextLine();
-            System.out.print("Initial Capacity: ");
-            int initC = in.nextInt();
-            in.nextLine();
-            MainModel Morax = new MainModel();
+        MainModel model = new MainModel();
+        int errors = 0;
+        //test case 1
+        if (model.taskList.get(0) == null){
+            System.out.println("Error in test case 1");
+            errors ++;
+        }
+        //test case 2
+        Category c1 = new Category("Blue", 1, 2, 3);
+        model.addCategory(c1);
+        if (!model.taskList.get(1).equals(c1)){
+            System.out.println("Error in test case 2");
+            errors ++;
+        }
+        //test case 3
+        if (!model.getCategories().contains(c1)){
+            System.out.println("Error in test case 3");
+            errors ++;
+        }
+        //test case 4
+        Task t1 = new Task("hello");
+        model.addTask(t1);
+        if (model.getTasks().size() != 1){
+            System.out.println("Error in test case 4");
+            errors ++;
+        }
+        //test case 5
+        if (!model.getTasks().get(0).equals(t1)){
+            System.out.println("Error in test case 5");
+            errors ++;
+        }
+        //test case 6
+        if (model.getCategories().get(0).getTasks().size() != 0){
+            System.out.println("Error in test case 6");
+            errors ++;
+        }
+        //test case 7
+        model.removeCategory(c1);
+        if (model.getCategories().contains(c1)){
+            System.out.println("Error in test case 7");
+            errors ++;
+        }
 
-            int tFunction = 0;
-            while (tFunction != 1) {
-                try {
-                    System.out.print("OPTIONS:\n" +
-                            "1. Close System\n" +
-                            "2. Add Task\n" +
-                            "3. Remove Task\n" +
-                            "4. Add Person\n" +
-                            "5. Remove Person\n" +
-                            "6. Add Person to Task\n" +
-                            "7. Remove Person from Task\n" +
-                            "8. Print System State\n" +
-                            "Choose an option (type 1-8): ");
-                    tFunction = in.nextInt();
-                    in.nextLine();
-                    switch (tFunction) {
-                        case 1:
-                            System.out.println("Closing System");
-                            break;
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
-                        case 6:
-                        case 7:
-                        case 8:
-                            System.out.println("NOT IMPLEMENTED YET");
-                            break;
-                        default:
-                            System.out.println("Invalid Number Entered");
-                            break;
+        System.out.println(errors + " test cases failed\nTesting Complete.");
+    }
+
+    public ArrayList<Task> sortTaskList(int attNum){
+        ArrayList<Task> tasks = new ArrayList<>(this.getTasks());
+        int n = this.getTasks().size();
+        switch (attNum) {
+            case 1:
+                System.out.println("NAME\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((tasks.get(i)).getName()).compareTo((tasks.get(i)).getName()) > 0){
+                            Task temp = (tasks.get(i));
+                            tasks.set(i, (tasks.get(j)));
+                            tasks.set(j, temp);
+                        }
                     }
-                } catch (InputMismatchException exception) {
-                    System.out.println("Invalid input Entered");
                 }
-            }
+                break;
+            case 2:
+                System.out.println("LOCATION\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((tasks.get(i)).getLocation()).compareTo((tasks.get(i)).getLocation()) > 0){
+                            Task temp = (tasks.get(i));
+                            tasks.set(i, (tasks.get(j)));
+                            tasks.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                System.out.println("DATE\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((tasks.get(i)).getDate()).compareTo((tasks.get(i)).getDate()) < 0){
+                            Task temp = (tasks.get(i));
+                            tasks.set(i, (tasks.get(j)));
+                            tasks.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Invalid Number Entered\n");
+                break;
         }
-        catch(IllegalArgumentException exception){
-            System.out.println("IllegalArgument Entered");
-        }
-        catch(InputMismatchException exception){
-            System.out.println("InputMismatch Entered");
-        }
+
+        return tasks;
     }
 }
