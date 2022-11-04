@@ -41,6 +41,7 @@ public class MainModel {
     public void addTask(Task t)
     {
         this.taskList.get(0).addTask(t);
+        updateSubscribers();
     }
 
     public void addTask(Task t, Category c) throws IllegalArgumentException{
