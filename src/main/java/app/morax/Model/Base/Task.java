@@ -16,7 +16,7 @@ public class Task {
     private LocalDateTime date;
 
     private int time;
-    private ArrayList<Category> catagories;
+    private ArrayList<Category> categories;
 
     /**
      * Initialize a task
@@ -27,25 +27,25 @@ public class Task {
         this.name = taskName;
         this.location = null;
         this.date = null;
-        this.catagories = new ArrayList<Category>();
+        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, String taskLocation) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = null;
-        this.catagories = new ArrayList<Category>();
+        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = null;
         this.date = taskDate;
-        this.catagories = new ArrayList<Category>();
+        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, String taskLocation, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = taskDate;
-        this.catagories = new ArrayList<Category>();
+        this.categories = new ArrayList<Category>();
     }
 
     public Task(String taskName, int time){
@@ -96,5 +96,12 @@ public class Task {
 
     public int getTime(){
         return this.time;
+    }
+
+    public void addCategory(Category cat){
+        this.categories.add(cat);
+    }
+    public void removeCategory(Category cat){
+        this.categories.remove(cat);
     }
 }
