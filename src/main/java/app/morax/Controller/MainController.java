@@ -28,8 +28,6 @@ public class MainController implements Controller {
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
 
-
-
         Stage scheduleStage = new Stage();
         scheduleStage.setScene(new Scene(thisView, 200, 110));
         scheduleStage.getScene().getStylesheets().add("secondarySkin.css");
@@ -59,6 +57,7 @@ public class MainController implements Controller {
         thisView.associateHandler(this);
 
         model.addSubscriber(thisView);
+        thisView.update();
 
         Stage categoriesStage = new Stage();
         categoriesStage.setScene(new Scene(thisView, 350, 300));
@@ -68,6 +67,11 @@ public class MainController implements Controller {
 
     public void handleAddCategory(ActionEvent e) {
         AddCategoryView thisView = new AddCategoryView();
+        NewCategoryController thisController = new NewCategoryController();
+        thisView.associateHandler(thisController);
+        thisController.setView(thisView);
+
+        thisController.setModel(model);
 
         Stage addCategoriesStage = new Stage();
         addCategoriesStage.setScene(new Scene(thisView, 350, 300));
@@ -75,5 +79,7 @@ public class MainController implements Controller {
         addCategoriesStage.show();
     }
 
+    public void handleRemoveCategory(ActionEvent e){
 
+    }
 }

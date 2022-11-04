@@ -89,7 +89,10 @@ public class Category {
     public void setColor(double c){ this.color = c; }
 
     public String toString(){
-        return this.name;
+        return this.name + "\n" +
+                this.timeAlloc + "\n" +
+                this.priority + "\n" +
+                this.color;
     }
 
     public void sortTaskList(int attNum){

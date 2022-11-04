@@ -126,9 +126,7 @@ public class MainView extends StackPane implements ModelListener {
     @Override
     public void update() {
         ObservableList<Task> temp = FXCollections.observableArrayList();
-        for (Task t:model.getTasks()){
-            temp.add(t);
-        }
+        temp.addAll(model.getTasks());
 
         this.activitiesList.setItems(temp);
     }
