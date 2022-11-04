@@ -148,11 +148,13 @@ public class MainModel {
         if (this.categoryExists(c)) throw new IllegalArgumentException("Category already exists");
 
         this.taskList.add(c);
+        updateSubscribers();
     }
 
     public void removeCategory(Category c)
     {
         removeCategory(c, true);
+        updateSubscribers();
     }
 
     private void removeCategory(Category c, boolean safe)

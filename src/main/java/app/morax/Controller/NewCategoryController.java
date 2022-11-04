@@ -24,6 +24,5 @@ public class NewCategoryController implements Controller {
     public void handleAddCategory(ActionEvent e){
         Category c = new Category(view.getTitle(), 0, 12, Integer.parseInt(view.getTime()));
         model.addCategory(c);
-        model.updateSubscribers();
     }
 }

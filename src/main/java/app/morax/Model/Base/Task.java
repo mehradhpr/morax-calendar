@@ -1,6 +1,8 @@
 
 package app.morax.Model.Base;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -11,34 +13,39 @@ public class Task {
     /** Task Name */
     private String name;
     private String location;
-    private Date date;
+    private LocalDateTime date;
 
     private int time;
+    private ArrayList<Category> catagories;
 
     /**
      * Initialize a task
      *
-     * @param taskName the task's name
+     * @param taskName the person's name
      */
     public Task(String taskName) {
         this.name = taskName;
         this.location = null;
         this.date = null;
+        this.catagories = new ArrayList<Category>();
     }
     public Task(String taskName, String taskLocation) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = null;
+        this.catagories = new ArrayList<Category>();
     }
-    public Task(String taskName, Date taskDate) {
+    public Task(String taskName, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = null;
         this.date = taskDate;
+        this.catagories = new ArrayList<Category>();
     }
-    public Task(String taskName, String taskLocation, Date taskDate) {
+    public Task(String taskName, String taskLocation, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = taskDate;
+        this.catagories = new ArrayList<Category>();
     }
 
     public Task(String taskName, int time){
@@ -57,7 +64,7 @@ public class Task {
     public String getLocation() {
         return this.location;
     }
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return this.date;
     }
 
@@ -69,7 +76,7 @@ public class Task {
     public void setName(String newName) {
         this.name = newName;
     }
-    public void setDate(Date newDate) {
+    public void setDate(LocalDateTime newDate) {
         this.date = newDate;
     }
     public void setLocation(String newLocation) {
