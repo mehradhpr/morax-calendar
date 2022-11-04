@@ -13,7 +13,9 @@ public class MainView extends StackPane implements ModelListener{
 
     AppModel model;
 
-    ListView<String> scheduleList;
+    ListView<HBox> scheduleList;
+
+    ObservableList<HBox> scheduleObs;
 
     ListView<String> activitiesList;
 
@@ -39,6 +41,15 @@ public class MainView extends StackPane implements ModelListener{
         centreVBox.setAlignment(Pos.TOP_CENTER);
         centreVBox.setSpacing(5);
         centreVBox.setPadding(new Insets(2, 2, 2, 2));
+
+
+
+        scheduleObs = FXCollections.observableArrayList();
+        HBox thisH = new HBox();
+
+        scheduleObs.add(thisH);
+        scheduleList.setItems(this.scheduleObs);
+
 
 
 
