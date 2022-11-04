@@ -17,6 +17,8 @@ public class MainUI extends StackPane {
         primaryView.associateHandler(primaryController);
         primaryController.setModel(primaryModel);
 
+        primaryModel.addSubscriber(primaryView);
+
         this.getChildren().add(primaryView);
         this.setAlignment(Pos.CENTER);
     }

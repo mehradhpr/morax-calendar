@@ -42,7 +42,8 @@ public class MainController implements Controller {
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
 
-
+        thisController.setModel(model);
+        thisView.setModel(model);
 
         Stage newActivityStage = new Stage();
         newActivityStage.setScene(new Scene(thisView, 225, 220));
@@ -53,6 +54,11 @@ public class MainController implements Controller {
 
     public void handleCategoriesB(ActionEvent e) {
         CategoriesView thisView = new CategoriesView();
+
+        thisView.setModel(model);
+        thisView.associateHandler(this);
+
+        model.addSubscriber(thisView);
 
         Stage categoriesStage = new Stage();
         categoriesStage.setScene(new Scene(thisView, 350, 300));

@@ -32,6 +32,7 @@ public class AddCategoryView extends StackPane implements ModelListener {
         HBox notesH = new HBox(label6, t);
 
         VBox mainVBox = new VBox(label1, VBox1, VBox2, label5, notesH);
+        this.getChildren().add(mainVBox);
     }
     @Override
     public void update() {

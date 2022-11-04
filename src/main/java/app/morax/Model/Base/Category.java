@@ -12,7 +12,7 @@ public class Category {
     //amount of allocated time used in hours
     private int timeUsed;
 
-    private ArrayList<Task> tasks;
+    private ArrayList<Task> taskList;
 
     public Category(String name, int priority, double color, int timeAlloc){
         this.name = name;
@@ -21,7 +21,7 @@ public class Category {
         this.timeAlloc = timeAlloc;
         this.timeUsed = 0;
 
-        this.tasks = new ArrayList<>();
+        this.taskList = new ArrayList<Task>();
     }
 
     /**
@@ -29,9 +29,9 @@ public class Category {
      * @param t a task object
      */
     public void addTask(Task t){
-        if (!(this.timeLeft() >= t.getEstTime())) throw new IllegalArgumentException("Cannot allocate enough time to task");
-        this.timeUsed = this.timeUsed + t.getEstTime();
-        this.tasks.add(t);
+        if (!(this.timeLeft() >= t.getTime())) throw new IllegalArgumentException("Cannot allocate enough time to task");
+        this.timeUsed = this.timeUsed + t.getTime();
+        this.taskList.add(t);
     }
 
     /**
@@ -40,8 +40,8 @@ public class Category {
      */
     public void removeTask(Task t){
         if (!this.hasTask(t)) return;
-        this.timeUsed = this.timeUsed - t.getEstTime();
-        this.tasks.remove(t);
+        this.timeUsed = this.timeUsed - t.getTime();
+        this.taskList.remove(t);
     }
 
     /**
@@ -49,10 +49,10 @@ public class Category {
      * @param i an integer
      */
     public void removeTask(int i){
-        if (i > this.tasks.size()) throw new IllegalArgumentException("index out of range");
+        if (i > this.taskList.size()) throw new IllegalArgumentException("index out of range");
 
-        this.timeUsed = this.timeUsed - this.tasks.get(i).getEstTime();
-        this.tasks.remove(i);
+        this.timeUsed = this.timeUsed - this.taskList.get(i).getTime();
+        this.taskList.remove(i);
     }
 
     /**
@@ -61,7 +61,7 @@ public class Category {
      * @return true if the category contains the task object false otherwise
      */
     public boolean hasTask(Task t){
-        for (Task task : this.tasks){
+        for (Task task : this.taskList){
             if (task.equals(t)) return true;
         }
         return false;
@@ -78,9 +78,9 @@ public class Category {
     public int getTimeAlloc(){ return this.timeAlloc; }
     public double getColor(){ return this.color; }
     public int getTimeUsed(){ return this.timeUsed; }
-    public int getAmountTasks(){ return this.tasks.size(); }
+    public int getAmountTasks(){ return this.taskList.size(); }
     public ArrayList<Task> getTasks(){
-        return this.tasks;
+        return this.taskList;
     }
 
     public void setName(String n){ this.name = n; }
@@ -88,8 +88,57 @@ public class Category {
     public void setTimeAlloc(int t){ this.timeAlloc = t; }
     public void setColor(double c){ this.color = c; }
 
+    public String toString(){
+        return this.name;
+    }
+
+    public void sortTaskList(int attNum){
+        int n = taskList.size();
+        switch (attNum) {
+            case 1:
+                System.out.println("NAME\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getName()).compareTo((taskList.get(i)).getName()) > 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 2:
+                System.out.println("LOCATION\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getLocation()).compareTo((taskList.get(i)).getLocation()) > 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                System.out.println("DATE\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getDate()).compareTo((taskList.get(i)).getDate()) < 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Invalid Number Entered\n");
+                break;
+        }
+    }
+
     //test cases
-    public void main(){
+    public static void main(String[] args){
         Category c = new Category("Test", 2, 1, 30);
         int errors = 0;
         //test 1

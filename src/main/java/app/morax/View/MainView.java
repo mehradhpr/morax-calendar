@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 
+import java.util.ArrayList;
+
 
 public class MainView extends StackPane implements ModelListener {
 
@@ -22,7 +24,7 @@ public class MainView extends StackPane implements ModelListener {
 
     ObservableList<HBox> scheduleObs;
 
-    ListView<String> activitiesList;
+    ListView<Task> activitiesList;
 
     Button newActivityB;
 
@@ -123,7 +125,12 @@ public class MainView extends StackPane implements ModelListener {
 
     @Override
     public void update() {
+        ObservableList<Task> temp = FXCollections.observableArrayList();
+        for (Task t:model.getTasks()){
+            temp.add(t);
+        }
 
+        this.activitiesList.setItems(temp);
     }
     public void setModel(MainModel model) {
         this.model = model;
