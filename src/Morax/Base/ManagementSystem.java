@@ -2,6 +2,7 @@
 package Morax.Base;
 
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -91,6 +92,19 @@ public class ManagementSystem {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         try {
+            int[] newt = {1,2,3};
+            for (int i = 0; i < newt.length; i++){
+                System.out.print(newt[i] + " ");
+            }
+            System.out.print("\n");
+            newt[3] = 4;
+            newt = Arrays.copyOf(newt, newt.length +1);
+            newt[3] = 4;
+            for (int i = 0; i < newt.length; i++){
+                System.out.print(newt[i] + " ");
+            }
+            System.out.print("\n");
+
             System.out.print("List Name: ");
             String listName = in.next();
             String junk = in.nextLine();

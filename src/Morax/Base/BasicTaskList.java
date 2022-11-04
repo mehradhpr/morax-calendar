@@ -59,10 +59,10 @@ public class BasicTaskList
      * remove a task from the list
      * @param taskName name of task to remove
      */
-    public void removeTask(String taskName)
+    public void removeTask(String taskName, Task[] taskList)
     {
-        for(int i = 0; i <= this.taskList.size(); i++){
-            if(this.taskList.get(i).getName() == taskName){
+        for(int i = 0; i < taskList.length; i++){
+            if(((taskList[i]).getName()).equals(taskName)){
                 this.taskList.remove(i);
                 System.out.println("Task removed.");
                 return;
@@ -91,6 +91,51 @@ public class BasicTaskList
     public String getTaskList()
     {
         return this.taskList.toString();
+    }
+
+    public void sortTaskList(int attNum){
+        int n = taskList.size();
+        switch (attNum) {
+            case 1:
+                System.out.println("NAME\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getName()).compareTo((taskList.get(i)).getName()) > 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 2:
+                System.out.println("LOCATION\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getLocation()).compareTo((taskList.get(i)).getLocation()) > 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                System.out.println("DATE\n");
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getDate()).compareTo((taskList.get(i)).getDate()) < 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Invalid Number Entered\n");
+                break;
+        }
     }
 
 
