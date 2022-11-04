@@ -1,10 +1,14 @@
 package com.cmpt370.cmpt370;
 
+import com.cmpt370.cmpt370.Base.ManagementSystem;
+
 import java.util.ArrayList;
 
-public class AppModel {
+public class AppModel extends ManagementSystem {
     private ArrayList<ModelListener> subscribers;
-    AppModel() {}
+    AppModel() {
+        super();
+    }
 
 
 

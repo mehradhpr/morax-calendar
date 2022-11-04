@@ -1,5 +1,6 @@
 package com.cmpt370.cmpt370;
 
+import com.cmpt370.cmpt370.Base.Task;
 import javafx.event.ActionEvent;
 
 public class NewActivityViewController implements Controller {
@@ -25,6 +26,6 @@ public class NewActivityViewController implements Controller {
     }
 
     public void handleAddButton(ActionEvent e) {
-        // Add Here
+        Task newTask = new Task();
     }
 }

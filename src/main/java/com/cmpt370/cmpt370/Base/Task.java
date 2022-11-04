@@ -30,6 +30,10 @@ public class Task {
         this.estTime = estimatedTime;
     }
 
+    public Task() {
+
+    }
+
     /**
      * Return task's name variable
      *
