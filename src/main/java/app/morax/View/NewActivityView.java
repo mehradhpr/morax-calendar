@@ -56,7 +56,9 @@ public class NewActivityView extends StackPane implements ModelListener {
         setTimeH.setSpacing(5);
 
         Label title5 = new Label("Category: ");
-        ComboBox<String> categoryC = new ComboBox<>();
+        ComboBox<Category> categoryC = new ComboBox<>();
+        categoryC.setItems(this.categoriesObs);
+        categoryC.setMaxWidth(150);
         HBox categoryH = new HBox(title5, categoryC);
 
         Label title6 = new Label("Notes: ");
@@ -70,7 +72,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
         mainVBox.setPadding(new Insets(10, 10, 10, 10));
-        mainVBox.setMaxWidth(250);
+        mainVBox.setMaxWidth(300);
         this.getChildren().add(mainVBox);
     }
 
