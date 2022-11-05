@@ -250,6 +250,7 @@ public class MainModel {
     }
 
     //Jordan's code that I uploaded
+    //TODO
     public ArrayList<Task> sortTaskList(int attNum){
         ArrayList<Task> tasks = this.getTasks();
         int n = tasks.size();

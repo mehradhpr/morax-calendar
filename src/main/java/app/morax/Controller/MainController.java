@@ -47,6 +47,8 @@ public class MainController implements Controller {
         thisController.setModel(model);
         thisView.setModel(model);
 
+        model.addSubscriber(thisView);
+
         //new window
         Stage newActivityStage = new Stage();
         newActivityStage.setScene(new Scene(thisView, 250, 270));
