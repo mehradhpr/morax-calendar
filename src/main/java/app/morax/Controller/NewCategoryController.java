@@ -8,8 +8,9 @@ import app.morax.View.AddCategoryView;
 import javafx.event.ActionEvent;
 
 public class NewCategoryController implements Controller {
-    MainModel model;
-    AddCategoryView view;
+
+    private MainModel model;
+    private AddCategoryView view;
 
     @Override
     public void setModel(MainModel model) {
@@ -21,6 +22,7 @@ public class NewCategoryController implements Controller {
         this.view = (AddCategoryView) view;
     }
 
+    //add a new Category
     public void handleAddCategory(ActionEvent e){
         Category c = new Category(view.getTitle(), 0, 12, Integer.parseInt(view.getTime()));
         model.addCategory(c);

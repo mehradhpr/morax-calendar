@@ -36,12 +36,15 @@ public class MainController implements Controller {
     public void handleNewActivityB(ActionEvent e) {
         NewActivityView thisView = new NewActivityView();
         NewActivityViewController thisController = new NewActivityViewController();
+
+        //linking components
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
 
         thisController.setModel(model);
         thisView.setModel(model);
 
+        //new window
         Stage newActivityStage = new Stage();
         newActivityStage.setScene(new Scene(thisView, 225, 220));
         newActivityStage.getScene().getStylesheets().add("secondarySkin.css");
@@ -53,6 +56,7 @@ public class MainController implements Controller {
         CategoriesView thisView = new CategoriesView();
         CategoryController thisController = new CategoryController();
 
+        //linking everything together
         thisController.setModel(model);
         thisController.setView(thisView);
 
@@ -62,6 +66,7 @@ public class MainController implements Controller {
         model.addSubscriber(thisView);
         thisView.update();
 
+        //opening the new window
         Stage categoriesStage = new Stage();
         categoriesStage.setScene(new Scene(thisView, 350, 300));
         categoriesStage.getScene().getStylesheets().add("secondarySkin.css");

@@ -3,6 +3,7 @@ package app.morax.Model.Base;
 
 import app.morax.Interface.ModelListener;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
@@ -248,15 +249,15 @@ public class MainModel {
         System.out.println(errors + " test cases failed\nTesting Complete.");
     }
 
+    //Jordan's code that I uploaded
     public ArrayList<Task> sortTaskList(int attNum){
-        ArrayList<Task> tasks = new ArrayList<>(this.getTasks());
-        int n = this.getTasks().size();
+        ArrayList<Task> tasks = this.getTasks();
+        int n = tasks.size();
         switch (attNum) {
             case 1:
-                System.out.println("NAME\n");
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
-                        if (((tasks.get(i)).getName()).compareTo((tasks.get(i)).getName()) > 0){
+                        if (((tasks.get(i)).getName()).compareTo((tasks.get(j)).getName()) > 0){
                             Task temp = (tasks.get(i));
                             tasks.set(i, (tasks.get(j)));
                             tasks.set(j, temp);
@@ -265,10 +266,31 @@ public class MainModel {
                 }
                 break;
             case 2:
-                System.out.println("LOCATION\n");
+                String zString = "zzzzzzzzzzzzzzzzzzzzzzzz";
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
-                        if (((tasks.get(i)).getLocation()).compareTo((tasks.get(i)).getLocation()) > 0){
+                        if((((tasks.get(i)).getLocation()) != null) && (((tasks.get(j)).getLocation()) != null)) {
+                            if (((tasks.get(i)).getLocation()).compareTo((tasks.get(j)).getLocation()) > 0) {
+                                Task temp = (tasks.get(i));
+                                tasks.set(i, (tasks.get(j)));
+                                tasks.set(j, temp);
+                            }
+                        }
+                        else if((((tasks.get(i)).getLocation()) == null) && (((tasks.get(j)).getLocation()) != null)) {
+                            if (zString.compareTo((tasks.get(j)).getLocation()) > 0) {
+                                Task temp = (tasks.get(i));
+                                tasks.set(i, (tasks.get(j)));
+                                tasks.set(j, temp);
+                            }
+                        }
+                        else if((((tasks.get(i)).getLocation()) != null) && (((tasks.get(j)).getLocation()) == null)) {
+                            if (((tasks.get(i)).getLocation()).compareTo(zString) > 0){
+                                Task temp = (tasks.get(i));
+                                tasks.set(i, (tasks.get(j)));
+                                tasks.set(j, temp);
+                            }
+                        }
+                        else{
                             Task temp = (tasks.get(i));
                             tasks.set(i, (tasks.get(j)));
                             tasks.set(j, temp);
@@ -277,10 +299,32 @@ public class MainModel {
                 }
                 break;
             case 3:
-                System.out.println("DATE\n");
+                LocalDateTime lateDate = LocalDateTime.of(9999, 12, 30, 23, 59);
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
-                        if (((tasks.get(i)).getDate()).compareTo((tasks.get(i)).getDate()) < 0){
+                        if((((tasks.get(i)).getDate()) != null) && (((tasks.get(j)).getDate()) != null)) {
+                            tasks.get(i).getDate().getYear();
+                            if (((tasks.get(i)).getDate()).isAfter(tasks.get(j).getDate())) {
+                                Task temp = (tasks.get(i));
+                                tasks.set(i, (tasks.get(j)));
+                                tasks.set(j, temp);
+                            }
+                        }
+                        else if((((tasks.get(i)).getDate()) == null) && (((tasks.get(j)).getDate()) != null)) {
+                            if (lateDate.isAfter(tasks.get(j).getDate())){
+                                Task temp = (tasks.get(i));
+                                tasks.set(i, (tasks.get(j)));
+                                tasks.set(j, temp);
+                            }
+                        }
+                        else if((((tasks.get(i)).getDate()) != null) && (((tasks.get(j)).getDate()) == null)) {
+                            if (((tasks.get(i)).getDate()).isAfter(lateDate)) {
+                                Task temp = (tasks.get(i));
+                                tasks.set(i, (tasks.get(j)));
+                                tasks.set(j, temp);
+                            }
+                        }
+                        else{
                             Task temp = (tasks.get(i));
                             tasks.set(i, (tasks.get(j)));
                             tasks.set(j, temp);
@@ -292,7 +336,6 @@ public class MainModel {
                 System.out.println("Invalid Number Entered\n");
                 break;
         }
-
         return tasks;
     }
 }

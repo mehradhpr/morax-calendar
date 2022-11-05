@@ -16,23 +16,23 @@ import javafx.scene.paint.Paint;
 
 public class MainView extends StackPane implements ModelListener {
 
-    MainModel model;
+    private MainModel model;
 
-    ListView<HBox> scheduleList;
+    private ListView<HBox> scheduleList;
 
-    ObservableList<HBox> scheduleObs;
+    private ObservableList<HBox> scheduleObs;
 
-    ListView<Task> activitiesList;
+    private ListView<Task> activitiesList;
 
-    Button newActivityB;
+    private Button newActivityB;
 
-    Button scheduleB;
+    private Button scheduleB;
 
-    Button categoriesB;
+    private Button categoriesB;
 
-    Button sortB;
+    private Button sortB;
 
-    Button setting;
+    private Button setting;
 
     public MainView() {
 

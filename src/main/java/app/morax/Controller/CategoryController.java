@@ -10,8 +10,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class CategoryController implements Controller {
-    MainModel model;
-    CategoriesView view;
+    private MainModel model;
+    private CategoriesView view;
 
     @Override
     public void setModel(MainModel model) {
@@ -23,20 +23,26 @@ public class CategoryController implements Controller {
         this.view = (CategoriesView) view;
     }
 
+    //bring up the add Category page to enter information about the category
     public void handleAddCategory(ActionEvent e) {
         AddCategoryView thisView = new AddCategoryView();
         NewCategoryController thisController = new NewCategoryController();
+
+        //link the new view and its controller
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
 
+        //link the model and controller
         thisController.setModel(model);
 
+        //open a new window
         Stage addCategoriesStage = new Stage();
         addCategoriesStage.setScene(new Scene(thisView, 350, 300));
         addCategoriesStage.getScene().getStylesheets().add("secondarySkin.css");
         addCategoriesStage.show();
     }
 
+    //Remove the selected category
     public void handleRemoveCategory(ActionEvent e){
         model.removeCategory(view.getSelection());
     }
