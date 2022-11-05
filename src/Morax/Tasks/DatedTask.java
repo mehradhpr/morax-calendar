@@ -1,6 +1,7 @@
 
 package Morax.Tasks;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -9,16 +10,16 @@ import java.util.*;
 public class DatedTask extends Task {
 
     /** Date variables */
-    private Date taskDate;
+    private LocalDateTime taskDate;
 
     /**
      * Initialize an appointment task
      * @param name  name of appointment
      * @param date  date of appointment (form: YYYY, MM, DD, HR, MN)
      */
-    public DatedTask(String name, Calendar date) {
+    public DatedTask(String name, LocalDateTime date) {
         super(name);
-        this.taskDate = date.getTime();
+        this.taskDate = date;
     }
 
     /**
@@ -26,7 +27,7 @@ public class DatedTask extends Task {
      *
      * @return date
      */
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return this.taskDate;
     }
 
@@ -35,7 +36,7 @@ public class DatedTask extends Task {
      *
      * @param newDate date to change to
      */
-    public void setDate(Date newDate){
+    public void setDate(LocalDateTime newDate){
         this.taskDate = newDate;
     }
 }

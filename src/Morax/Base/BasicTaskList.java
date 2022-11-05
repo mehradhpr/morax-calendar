@@ -3,6 +3,7 @@ package Morax.Base;
 
 import Morax.Tasks.Task;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +15,7 @@ public class BasicTaskList
     private String name;
 
     /** An array list for the tasks being tracked */
-    private ArrayList<Task> taskList;
+    public ArrayList<Task> taskList;
 
     /**
      * Init BasicTaskList
@@ -97,10 +98,9 @@ public class BasicTaskList
         int n = taskList.size();
         switch (attNum) {
             case 1:
-                System.out.println("NAME\n");
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
-                        if (((taskList.get(i)).getName()).compareTo((taskList.get(i)).getName()) > 0){
+                        if (((taskList.get(i)).getName()).compareTo((taskList.get(j)).getName()) > 0){
                             Task temp = (taskList.get(i));
                             taskList.set(i, (taskList.get(j)));
                             taskList.set(j, temp);
@@ -109,10 +109,31 @@ public class BasicTaskList
                 }
                 break;
             case 2:
-                System.out.println("LOCATION\n");
+                String zString = "zzzzzzzzzzzzzzzzzzzzzzzz";
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
-                        if (((taskList.get(i)).getLocation()).compareTo((taskList.get(i)).getLocation()) > 0){
+                        if((((taskList.get(i)).getLocation()) != null) && (((taskList.get(j)).getLocation()) != null)) {
+                            if (((taskList.get(i)).getLocation()).compareTo((taskList.get(j)).getLocation()) > 0) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getLocation()) == null) && (((taskList.get(j)).getLocation()) != null)) {
+                            if (zString.compareTo((taskList.get(j)).getLocation()) > 0) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getLocation()) != null) && (((taskList.get(j)).getLocation()) == null)) {
+                            if (((taskList.get(i)).getLocation()).compareTo(zString) > 0){
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else{
                             Task temp = (taskList.get(i));
                             taskList.set(i, (taskList.get(j)));
                             taskList.set(j, temp);
@@ -121,10 +142,32 @@ public class BasicTaskList
                 }
                 break;
             case 3:
-                System.out.println("DATE\n");
+                LocalDateTime lateDate = LocalDateTime.of(9999, 12, 30, 23, 59);
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
-                        if (((taskList.get(i)).getDate()).compareTo((taskList.get(i)).getDate()) < 0){
+                        if((((taskList.get(i)).getDate()) != null) && (((taskList.get(j)).getDate()) != null)) {
+                            taskList.get(i).getDate().getYear();
+                            if (((taskList.get(i)).getDate()).isAfter(taskList.get(j).getDate())) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getDate()) == null) && (((taskList.get(j)).getDate()) != null)) {
+                            if (lateDate.isAfter(taskList.get(j).getDate())){
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getDate()) != null) && (((taskList.get(j)).getDate()) == null)) {
+                            if (((taskList.get(i)).getDate()).isAfter(lateDate)) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else{
                             Task temp = (taskList.get(i));
                             taskList.set(i, (taskList.get(j)));
                             taskList.set(j, temp);

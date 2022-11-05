@@ -3,6 +3,7 @@ package Morax.Tasks;
 
 import Morax.Base.Person;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -19,7 +20,7 @@ public class LocationTask extends DatedTask {
      * @param date  date of appointment (form: YYYY, MM, DD, HR, MN)
      * @param location place of appointment, or n/a
      */
-    public LocationTask(String name, Calendar date, String location) {
+    public LocationTask(String name, LocalDateTime date, String location) {
         super(name, date);
         this.appointmentLocation = location;
     }
