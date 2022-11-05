@@ -32,7 +32,7 @@ public class CategoryController implements Controller {
         thisController.setModel(model);
 
         Stage addCategoriesStage = new Stage();
-        addCategoriesStage.setScene(new Scene(thisView, 350, 300));
+        addCategoriesStage.setScene(new Scene(thisView, 270, 170));
         addCategoriesStage.getScene().getStylesheets().add("secondarySkin.css");
         addCategoriesStage.show();
     }

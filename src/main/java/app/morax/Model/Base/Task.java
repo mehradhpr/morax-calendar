@@ -94,6 +94,7 @@ public class Task {
                 "\nDate: " + this.date + "\n");
     }
 
+
     public int getTime(){
         return this.time;
     }

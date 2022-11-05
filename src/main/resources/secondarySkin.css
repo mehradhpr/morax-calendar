@@ -23,7 +23,7 @@
     -fx-font-size: 9pt;
     -fx-font-family: "Arial Black";
     -fx-text-fill: #7e5400;
-}e3
+}
 
 .label {
     -fx-text-fill: #7e5400;
@@ -44,4 +44,8 @@
 
 .combo-box {
     -fx-background-color: linear-gradient(#fffc00, #e5cd30);
+}
+
+.list-cell {
+    -fx-background-color: #fffbbf;
 }

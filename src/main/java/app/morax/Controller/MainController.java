@@ -36,15 +36,18 @@ public class MainController implements Controller {
 
     public void handleNewActivityB(ActionEvent e) {
         NewActivityView thisView = new NewActivityView();
+        thisView.setModel(model);
         NewActivityViewController thisController = new NewActivityViewController();
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
+        thisView.update();
+
 
         thisController.setModel(model);
         thisView.setModel(model);
 
         Stage newActivityStage = new Stage();
-        newActivityStage.setScene(new Scene(thisView, 225, 220));
+        newActivityStage.setScene(new Scene(thisView, 250, 270));
         newActivityStage.getScene().getStylesheets().add("secondarySkin.css");
         newActivityStage.show();
 

@@ -3,7 +3,10 @@ package app.morax.View;
 import app.morax.Controller.NewActivityViewController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
+import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -17,9 +20,15 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     private TextField dateText;
 
+    private TextField locationText;
+
+    ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
+
     private TextField timeText;
 
     private Button button;
+
+    private MainModel model;
 
     public NewActivityView() {
         Label title1 = new Label("New Activity");
@@ -32,6 +41,10 @@ public class NewActivityView extends StackPane implements ModelListener {
         Label title3 = new Label("Date: ");
         dateText = new TextField("dd/mm/yyyy");
         HBox dateHBox = new HBox(title3, dateText);
+
+        Label locationTitle = new Label("Location: ");
+        locationText = new TextField();
+        HBox locationHBox = new HBox(locationTitle, locationText);
 
         Label title4 = new Label("Set Time: ");
         CheckBox setTimeCk = new CheckBox();
@@ -53,11 +66,11 @@ public class NewActivityView extends StackPane implements ModelListener {
 
         button = new Button("Add");
 
-        VBox mainVBox = new VBox(title1, titleHBox, dateHBox, setTimeH, categoryH, notesH, button);
+        VBox mainVBox = new VBox(title1, titleHBox, dateHBox, locationHBox, setTimeH, categoryH, notesH, button);
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
         mainVBox.setPadding(new Insets(10, 10, 10, 10));
-        mainVBox.setMaxWidth(225);
+        mainVBox.setMaxWidth(250);
         this.getChildren().add(mainVBox);
     }
 
@@ -69,14 +82,22 @@ public class NewActivityView extends StackPane implements ModelListener {
         return dateText;
     }
 
+    public TextField getTimeText() {
+        return timeText;
+    }
+
+    public TextField getLocationText() {
+        return locationText;
+    }
+
     @Override
     public void update() {
-
+        categoriesObs.setAll(this.model.getCategories());
     }
 
     @Override
     public void setModel(MainModel model) {
-
+        this.model = model;
     }
 
     @Override

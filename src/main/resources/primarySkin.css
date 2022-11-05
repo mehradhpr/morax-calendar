@@ -2,6 +2,11 @@
     -fx-background-color: White;
 }
 
+.combo-box {
+    -fx-background-color: linear-gradient(#fffc00, #e5cd30);
+    -fx-highlight-text-fill: Black;
+}
+
 
 .label {
     -fx-font-size: 12pt;
@@ -14,6 +19,10 @@
 .list-view {
     -fx-background-color: #fffbbf;
     -fx-border-color: #0d2a0d;
+}
+
+.list-cell {
+    -fx-background-color: #fffbbf;
 }
 
 .button {

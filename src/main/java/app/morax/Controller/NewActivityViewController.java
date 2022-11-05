@@ -7,6 +7,8 @@ import app.morax.Model.Base.Task;
 import app.morax.View.NewActivityView;
 import javafx.event.ActionEvent;
 
+import java.time.LocalDateTime;
+
 public class NewActivityViewController implements Controller {
 
     private MainModel model;
@@ -26,11 +28,15 @@ public class NewActivityViewController implements Controller {
     }
 
     public void handleDateText(ActionEvent e) {
-        System.out.println(this.view.getDateText().textProperty().get());
+        System.out.println(this.view.getDateText().getText());
     }
 
     public void handleAddButton(ActionEvent e) {
-        Task newTask = new Task(this.view.getTitleText().getText());
+
+        LocalDateTime thisT = LocalDateTime.of(Integer.parseInt(this.view.getDateText().getText(6, 10)), Integer.parseInt(this.view.getDateText().getText(3, 5)) ,
+                Integer.parseInt(this.view.getDateText().getText(0, 2)),
+                Integer.parseInt(this.view.getTimeText().getText(0, 2)), Integer.parseInt(this.view.getTimeText().getText(3, 5)));
+        Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText(), thisT);
         this.model.addTask(newTask);
     }
 }

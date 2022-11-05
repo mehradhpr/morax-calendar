@@ -3,6 +3,7 @@ package app.morax.View;
 import app.morax.Controller.MainController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
+import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import javafx.collections.FXCollections;
@@ -26,17 +27,25 @@ public class MainView extends StackPane implements ModelListener {
 
     ListView<Task> activitiesList;
 
+    ObservableList<Task> activitiesObs;
+
     Button newActivityB;
 
     Button scheduleB;
 
     Button categoriesB;
 
+    ObservableList<String> sortOptions = FXCollections.observableArrayList("Date", "Location", "Name");
+
+
     Button sortB;
 
     Button setting;
 
     public MainView() {
+
+
+        activitiesObs = FXCollections.observableArrayList();
 
         scheduleB = new Button("Schedule an Activity");
 
@@ -63,6 +72,7 @@ public class MainView extends StackPane implements ModelListener {
         activitiesList.setPrefHeight(10000);
         Label title2 = new Label("All Activities");
         ComboBox<String> sortC = new ComboBox<>();
+        sortC.setItems(sortOptions);
         HBox topH = new HBox(title2, sortC);
         topH.setMinWidth(50);
         topH.setAlignment(Pos.CENTER_RIGHT);
@@ -125,10 +135,10 @@ public class MainView extends StackPane implements ModelListener {
 
     @Override
     public void update() {
-        ObservableList<Task> temp = FXCollections.observableArrayList();
-        temp.addAll(model.getTasks());
+        activitiesObs.clear();
+        activitiesObs.addAll(model.getTasks());
 
-        this.activitiesList.setItems(temp);
+        this.activitiesList.setItems(activitiesObs);
     }
     public void setModel(MainModel model) {
         this.model = model;
