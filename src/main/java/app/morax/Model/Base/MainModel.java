@@ -126,7 +126,10 @@ public class MainModel {
         }
     }
 
-
+    /**
+     * returns a list of all tasks
+     * @return a list of tasks
+     */
     public ArrayList<Task> getTasks(){
         ArrayList<Task> out = new ArrayList<>();
         for (Category c : taskList){
@@ -135,6 +138,10 @@ public class MainModel {
         return out;
     }
 
+    /**
+     * returns a list of the categories that the system contains
+     * @return a list of categories
+     */
     public ArrayList<Category> getCategories(){
         ArrayList<Category> c = new ArrayList<>();
         for (int i = 1; i < taskList.size(); i++){
@@ -144,6 +151,7 @@ public class MainModel {
         return c;
     }
 
+
     public void addCategory(Category c){
         if (this.categoryExists(c)) throw new IllegalArgumentException("Category already exists");
 
@@ -151,6 +159,10 @@ public class MainModel {
         updateSubscribers();
     }
 
+    /**
+     * Removes a category from the system
+     * @param c the category to be removed
+     */
     public void removeCategory(Category c)
     {
         removeCategory(c, true);
@@ -212,7 +224,24 @@ public class MainModel {
             System.out.println("Error in test case 7");
             errors ++;
         }
-
+        //test case 8
+        if (model.categoryExists(c1)){
+            System.out.println("Error in test case 8");
+            errors ++;
+        }
+        //test case 9
+        model.addCategory(c1);
+        if (!model.categoryExists(c1)){
+            System.out.println("Error in test case 9");
+            errors ++;
+        }
+        //test case 10
+        Task t2 = new Task("test2");
+        model.addTask(t2, c1);
+        if (!c1.getTasks().contains(t2)){
+            System.out.println("Error in test case 10");
+            errors ++;
+        }
         System.out.println(errors + " test cases failed\nTesting Complete.");
     }
 
