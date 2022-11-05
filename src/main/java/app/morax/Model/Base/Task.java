@@ -3,7 +3,6 @@ package app.morax.Model.Base;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Model for a generic task within the system
@@ -15,6 +14,7 @@ public class Task {
     private String location;
     private LocalDateTime date;
 
+    //measured in hours
     private int time;
     private ArrayList<Category> categories;
 
@@ -47,7 +47,6 @@ public class Task {
         this.date = taskDate;
         this.categories = new ArrayList<Category>();
     }
-
     public Task(String taskName, int time){
         this.name = taskName;
         this.time = time;

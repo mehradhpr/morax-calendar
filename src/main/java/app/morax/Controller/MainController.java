@@ -3,7 +3,6 @@ package app.morax.Controller;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
-import app.morax.View.AddCategoryView;
 import app.morax.View.CategoriesView;
 import app.morax.View.NewActivityView;
 import app.morax.View.ScheduleView;
@@ -38,6 +37,8 @@ public class MainController implements Controller {
         NewActivityView thisView = new NewActivityView();
         thisView.setModel(model);
         NewActivityViewController thisController = new NewActivityViewController();
+
+        //linking components
         thisView.associateHandler(thisController);
         thisController.setView(thisView);
         thisView.update();
@@ -46,6 +47,7 @@ public class MainController implements Controller {
         thisController.setModel(model);
         thisView.setModel(model);
 
+        //new window
         Stage newActivityStage = new Stage();
         newActivityStage.setScene(new Scene(thisView, 250, 270));
         newActivityStage.getScene().getStylesheets().add("secondarySkin.css");
@@ -57,6 +59,7 @@ public class MainController implements Controller {
         CategoriesView thisView = new CategoriesView();
         CategoryController thisController = new CategoryController();
 
+        //linking everything together
         thisController.setModel(model);
         thisController.setView(thisView);
 
@@ -66,6 +69,7 @@ public class MainController implements Controller {
         model.addSubscriber(thisView);
         thisView.update();
 
+        //opening the new window
         Stage categoriesStage = new Stage();
         categoriesStage.setScene(new Scene(thisView, 350, 300));
         categoriesStage.getScene().getStylesheets().add("secondarySkin.css");

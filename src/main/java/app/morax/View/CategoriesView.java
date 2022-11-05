@@ -1,7 +1,6 @@
 package app.morax.View;
 
 import app.morax.Controller.CategoryController;
-import app.morax.Controller.MainController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.Category;
@@ -20,7 +19,7 @@ import javafx.scene.layout.VBox;
 
 public class CategoriesView extends StackPane implements ModelListener {
 
-    MainModel model;
+    private MainModel model;
 
     private TextField titleText;
 
@@ -38,9 +37,6 @@ public class CategoriesView extends StackPane implements ModelListener {
         Label title1 = new Label("All Categories");
 
         categoriesL = new ListView<>();
-
-
-
 
         VBox leftVBox = new VBox(title1, categoriesL);
         leftVBox.setAlignment(Pos.CENTER);
