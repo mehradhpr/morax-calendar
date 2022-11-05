@@ -3,7 +3,6 @@ package app.morax.View;
 import app.morax.Controller.MainController;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
-import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import javafx.collections.FXCollections;
@@ -13,8 +12,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
-
-import java.util.ArrayList;
 
 
 public class MainView extends StackPane implements ModelListener {
@@ -35,7 +32,9 @@ public class MainView extends StackPane implements ModelListener {
 
     Button categoriesB;
 
-    ObservableList<String> sortOptions = FXCollections.observableArrayList("Date", "Location", "Name");
+    ObservableList<String> sortOptions = FXCollections.observableArrayList("Name", "Location", "Date");
+
+    ComboBox<String> sortC;
 
 
     Button sortB;
@@ -71,8 +70,9 @@ public class MainView extends StackPane implements ModelListener {
         activitiesList = new ListView<>();
         activitiesList.setPrefHeight(10000);
         Label title2 = new Label("All Activities");
-        ComboBox<String> sortC = new ComboBox<>();
+        sortC = new ComboBox<>();
         sortC.setItems(sortOptions);
+
         HBox topH = new HBox(title2, sortC);
         topH.setMinWidth(50);
         topH.setAlignment(Pos.CENTER_RIGHT);
@@ -136,9 +136,11 @@ public class MainView extends StackPane implements ModelListener {
     @Override
     public void update() {
         activitiesObs.clear();
-        activitiesObs.addAll(model.getTasks());
+        //ask for a sorted list from the model
+        activitiesObs.addAll(model.sortTaskList(sortC.getSelectionModel().getSelectedIndex()));
 
         this.activitiesList.setItems(activitiesObs);
+        System.out.println(sortC.getSelectionModel().getSelectedIndex() + sortC.getSelectionModel().getSelectedItem());
     }
     public void setModel(MainModel model) {
         this.model = model;
@@ -150,5 +152,6 @@ public class MainView extends StackPane implements ModelListener {
         this.newActivityB.setOnAction(((MainController) controller)::handleNewActivityB);
         this.scheduleB.setOnAction(((MainController) controller)::handleScheduleB);
         this.categoriesB.setOnAction(((MainController) controller)::handleCategoriesB);
+        this.sortC.setOnAction(((MainController) controller)::handleSort);
     }
 }

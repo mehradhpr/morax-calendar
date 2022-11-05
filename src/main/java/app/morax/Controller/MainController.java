@@ -77,4 +77,9 @@ public class MainController implements Controller {
         categoriesStage.getScene().getStylesheets().add("secondarySkin.css");
         categoriesStage.show();
     }
+
+    //Handles the sort parameters changing for the activities view
+    public void handleSort(ActionEvent e){
+        model.updateSubscribers();
+    }
 }

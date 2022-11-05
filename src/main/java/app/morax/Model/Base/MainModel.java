@@ -257,12 +257,11 @@ public class MainModel {
     }
 
     //Jordan's code that I uploaded
-    //TODO
     public ArrayList<Task> sortTaskList(int attNum){
         ArrayList<Task> tasks = this.getTasks();
         int n = tasks.size();
         switch (attNum) {
-            case 1:
+            case 0:
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
                         if (((tasks.get(i)).getName()).compareTo((tasks.get(j)).getName()) > 0){
@@ -273,7 +272,7 @@ public class MainModel {
                     }
                 }
                 break;
-            case 2:
+            case 1:
                 String zString = "zzzzzzzzzzzzzzzzzzzzzzzz";
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
@@ -306,7 +305,7 @@ public class MainModel {
                     }
                 }
                 break;
-            case 3:
+            case 2:
                 LocalDateTime lateDate = LocalDateTime.of(9999, 12, 30, 23, 59);
                 for(int i = 0; i < n; i++) {
                     for(int j = i + 1; j < n; j++) {
