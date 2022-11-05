@@ -97,12 +97,12 @@ public class Category {
     public static void main(String[] args){
         Category c = new Category("Test", 2, 1, 30);
         int errors = 0;
-        //test 1
+        //test 1 name of the category
         if (!c.getName().equals("Test")) {
             errors ++;
             System.out.println("Error in test case 1");
         }
-        //test 2
+        //test 2 priority of the category
         if (c.getPriority() != 2){
             errors ++;
             System.out.println("Error in test case 2");

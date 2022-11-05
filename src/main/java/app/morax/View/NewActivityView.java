@@ -22,7 +22,9 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     private TextField locationText;
 
-    ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
+    private ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
+
+    private ComboBox<Category> categoryC;
 
     private TextField timeText;
 
@@ -56,9 +58,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         setTimeH.setSpacing(5);
 
         Label title5 = new Label("Category: ");
-        ComboBox<Category> categoryC = new ComboBox<>();
-        categoryC.setItems(this.categoriesObs);
-        categoryC.setMaxWidth(150);
+        categoryC = new ComboBox<>(categoriesObs);
         HBox categoryH = new HBox(title5, categoryC);
 
         Label title6 = new Label("Notes: ");
@@ -108,6 +108,4 @@ public class NewActivityView extends StackPane implements ModelListener {
         dateText.setOnAction(((NewActivityViewController) controller)::handleDateText);
         button.setOnAction(((NewActivityViewController) controller)::handleAddButton);
     }
-
-
 }

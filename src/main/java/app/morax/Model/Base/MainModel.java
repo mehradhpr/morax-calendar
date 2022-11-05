@@ -246,10 +246,18 @@ public class MainModel {
             System.out.println("Error in test case 10");
             errors ++;
         }
+        //test case 11
+        try{
+            model.addCategory(c1);
+            errors++;
+            System.out.println("Error in test case 11");
+        }catch (IllegalArgumentException e){}
+
         System.out.println(errors + " test cases failed\nTesting Complete.");
     }
 
     //Jordan's code that I uploaded
+    //TODO
     public ArrayList<Task> sortTaskList(int attNum){
         ArrayList<Task> tasks = this.getTasks();
         int n = tasks.size();
