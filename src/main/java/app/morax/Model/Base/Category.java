@@ -1,5 +1,6 @@
 package app.morax.Model.Base;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Category {
@@ -157,5 +158,93 @@ public class Category {
 
         System.out.println(errors + " test cases failed");
         System.out.println("Testing done");
+    }
+
+    //Jordan's code
+    public void sortTaskList(int attNum){
+        int n = taskList.size();
+        switch (attNum) {
+            case 1:
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if (((taskList.get(i)).getName()).compareTo((taskList.get(j)).getName()) > 0){
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 2:
+                String zString = "zzzzzzzzzzzzzzzzzzzzzzzz";
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if((((taskList.get(i)).getLocation()) != null) && (((taskList.get(j)).getLocation()) != null)) {
+                            if (((taskList.get(i)).getLocation()).compareTo((taskList.get(j)).getLocation()) > 0) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getLocation()) == null) && (((taskList.get(j)).getLocation()) != null)) {
+                            if (zString.compareTo((taskList.get(j)).getLocation()) > 0) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getLocation()) != null) && (((taskList.get(j)).getLocation()) == null)) {
+                            if (((taskList.get(i)).getLocation()).compareTo(zString) > 0){
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else{
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            case 3:
+                LocalDateTime lateDate = LocalDateTime.of(9999, 12, 30, 23, 59);
+                for(int i = 0; i < n; i++) {
+                    for(int j = i + 1; j < n; j++) {
+                        if((((taskList.get(i)).getDate()) != null) && (((taskList.get(j)).getDate()) != null)) {
+                            taskList.get(i).getDate().getYear();
+                            if (((taskList.get(i)).getDate()).isAfter(taskList.get(j).getDate())) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getDate()) == null) && (((taskList.get(j)).getDate()) != null)) {
+                            if (lateDate.isAfter(taskList.get(j).getDate())){
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else if((((taskList.get(i)).getDate()) != null) && (((taskList.get(j)).getDate()) == null)) {
+                            if (((taskList.get(i)).getDate()).isAfter(lateDate)) {
+                                Task temp = (taskList.get(i));
+                                taskList.set(i, (taskList.get(j)));
+                                taskList.set(j, temp);
+                            }
+                        }
+                        else{
+                            Task temp = (taskList.get(i));
+                            taskList.set(i, (taskList.get(j)));
+                            taskList.set(j, temp);
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Invalid Number Entered\n");
+                break;
+        }
     }
 }
