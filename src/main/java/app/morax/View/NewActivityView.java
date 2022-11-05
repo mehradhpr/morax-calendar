@@ -30,6 +30,8 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     private MainModel model;
 
+    private ComboBox<Category> categoryC;
+
     public NewActivityView() {
         Label title1 = new Label("New Activity");
 
@@ -56,7 +58,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         setTimeH.setSpacing(5);
 
         Label title5 = new Label("Category: ");
-        ComboBox<Category> categoryC = new ComboBox<>();
+        categoryC = new ComboBox<>();
         categoryC.setItems(this.categoriesObs);
         categoryC.setMaxWidth(150);
         HBox categoryH = new HBox(title5, categoryC);
@@ -82,6 +84,10 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     public TextField getDateText() {
         return dateText;
+    }
+
+    public ComboBox<Category> getCategoryC() {
+        return categoryC;
     }
 
     public TextField getTimeText() {

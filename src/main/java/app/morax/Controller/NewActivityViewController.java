@@ -37,6 +37,7 @@ public class NewActivityViewController implements Controller {
                 Integer.parseInt(this.view.getDateText().getText(0, 2)),
                 Integer.parseInt(this.view.getTimeText().getText(0, 2)), Integer.parseInt(this.view.getTimeText().getText(3, 5)));
         Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText(), thisT);
+        newTask.addCategory(this.view.getCategoryC().getValue());
         this.model.addTask(newTask);
     }
 }

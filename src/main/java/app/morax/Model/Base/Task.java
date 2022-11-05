@@ -90,7 +90,8 @@ public class Task {
     public String toString() {
         return ("\nTask: " + this.name +
                 "\nLocation: " + this.location +
-                "\nDate: " + this.date + "\n");
+                "\nDate: " + this.date +
+                "\nCategory: " + this.categories + "\n");
     }
 
 
