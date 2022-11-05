@@ -6,7 +6,6 @@ import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
 import app.morax.View.AddCategoryView;
 import javafx.event.ActionEvent;
-import javafx.scene.paint.Color;
 
 public class NewCategoryController implements Controller {
     MainModel model;

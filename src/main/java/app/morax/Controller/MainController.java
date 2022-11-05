@@ -3,7 +3,6 @@ package app.morax.Controller;
 import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
-import app.morax.View.AddCategoryView;
 import app.morax.View.CategoriesView;
 import app.morax.View.NewActivityView;
 import app.morax.View.ScheduleView;

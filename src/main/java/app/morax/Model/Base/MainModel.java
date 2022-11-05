@@ -4,8 +4,6 @@ package app.morax.Model.Base;
 import app.morax.Interface.ModelListener;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 import java.util.TreeMap;
 
 /**
@@ -73,6 +71,7 @@ public class MainModel {
     }
 
     /**
+     * TODO
      * add person to system
      */
     public void addPerson(Person p)
@@ -81,6 +80,7 @@ public class MainModel {
     }
 
     /**
+     * TODO
      * Remove person from system
      */
     public void removePerson(Person p)
@@ -89,6 +89,7 @@ public class MainModel {
     }
 
     /**
+     * TODO
      * add a person to a task
      */
     public void addTaskPerson(Person p, Task t)
@@ -97,6 +98,7 @@ public class MainModel {
     }
 
     /**
+     * TODO
      * Remove person from task
      */
     public void removeTaskPerson(Person p, Task t)
@@ -105,6 +107,7 @@ public class MainModel {
     }
 
     /**
+     * TODO
      * Print the current state of the system
      */
     public void systemState()

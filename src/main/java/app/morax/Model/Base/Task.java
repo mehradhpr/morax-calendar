@@ -14,7 +14,7 @@ public class Task {
     private String name;
     private String location;
     private LocalDateTime date;
-
+    
     private int time;
     private ArrayList<Category> categories;
 

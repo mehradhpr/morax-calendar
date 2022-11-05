@@ -13,8 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 
-import java.util.ArrayList;
-
 
 public class MainView extends StackPane implements ModelListener {
 
