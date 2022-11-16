@@ -74,7 +74,8 @@ public class Category {
      */
     public int timeLeft(){ return this.timeAlloc - this.timeUsed; }
 
-    public String getName(){ return this.name; }
+    public String getName(){
+        return this.name; }
     public int getPriority(){ return this.priority; }
     public int getTimeAlloc(){ return this.timeAlloc; }
     public double getColor(){ return this.color; }

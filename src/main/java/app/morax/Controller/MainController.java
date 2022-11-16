@@ -80,6 +80,8 @@ public class MainController implements Controller {
 
     //Handles the sort parameters changing for the activities view
     public void handleSort(ActionEvent e){
-        model.updateSubscribers();
+        if (model.getTasks().size() != 0) {
+            model.updateSubscribers();
+        }
     }
 }

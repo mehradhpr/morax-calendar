@@ -102,6 +102,11 @@ public class Task {
     public void addCategory(Category cat){
         this.categories.add(cat);
     }
+
+    public ArrayList<Category> getCategories() {
+        return categories;
+    }
+
     public void removeCategory(Category cat){
         this.categories.remove(cat);
     }

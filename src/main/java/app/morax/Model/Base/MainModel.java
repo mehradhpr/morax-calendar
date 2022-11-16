@@ -31,6 +31,8 @@ public class MainModel {
 
         this.people = new TreeMap<>();
         this.subscribers = new ArrayList<>();
+        this.addCategory(new Category("Work", 1, 1, 20));
+
     }
 
     /**

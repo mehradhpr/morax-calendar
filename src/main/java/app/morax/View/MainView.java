@@ -13,14 +13,19 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Paint;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Objects;
+
 
 public class MainView extends StackPane implements ModelListener {
 
     MainModel model;
 
-    ListView<HBox> scheduleList;
+    ListView<VBox> scheduleList;
 
-    ObservableList<HBox> scheduleObs;
+    ObservableList<VBox> scheduleObs = FXCollections.observableArrayList();
 
     ListView<Task> activitiesList;
 
@@ -41,6 +46,9 @@ public class MainView extends StackPane implements ModelListener {
 
     Button setting;
 
+    Controller controller;
+    ScheduleDisplayView SDV = new ScheduleDisplayView();
+
     public MainView() {
 
 
@@ -48,35 +56,21 @@ public class MainView extends StackPane implements ModelListener {
 
         scheduleB = new Button("Schedule an Activity");
 
-        scheduleList = new ListView<>();
-        scheduleList.setPrefHeight(10000);
-        VBox centreVBox = new VBox(scheduleList, scheduleB);
-        centreVBox.setAlignment(Pos.TOP_CENTER);
-        centreVBox.setSpacing(5);
-        centreVBox.setPadding(new Insets(2, 2, 2, 2));
-
-
-
-
-        scheduleObs = FXCollections.observableArrayList();
-        HBox thisH = new HBox();
-
-        scheduleObs.add(thisH);
-        scheduleList.setItems(this.scheduleObs);
-
-
-
+        // The main schedule list part
+        SDV.associateHandler(controller);
 
         activitiesList = new ListView<>();
         activitiesList.setPrefHeight(10000);
         Label title2 = new Label("All Activities");
         sortC = new ComboBox<>();
         sortC.setItems(sortOptions);
+        sortC.setValue("Name");
 
         HBox topH = new HBox(title2, sortC);
         topH.setMinWidth(50);
-        topH.setAlignment(Pos.CENTER_RIGHT);
+        topH.setAlignment(Pos.CENTER_LEFT);
         topH.setSpacing(45);
+        topH.setPadding(new Insets(2, 2, 0, 2));
 
         VBox rightVBox = new VBox(topH, activitiesList);
         rightVBox.setAlignment(Pos.TOP_CENTER);
@@ -101,7 +95,14 @@ public class MainView extends StackPane implements ModelListener {
         AnchorPane.setTopAnchor(menu1, 2.0);
         menuBar.setMinHeight(33);
         menuBar.setPadding(new Insets(2, 2, 2, 2));
-        Label date = new Label("Oct 12, 2022");
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String currentTime = dtf.format(now);
+        Label date = new Label(getMonth(Integer.parseInt(currentTime.substring(5, 7))).substring(0, 3) +
+                                " "  + currentTime.substring(8, 10) + ", " +
+                                currentTime.substring(0, 4) + "  " +
+                                currentTime.substring(11, 16));
         AnchorPane.setTopAnchor(date, 2.0);
         AnchorPane.setLeftAnchor(date, 400.0);
         menuBar.getChildren().addAll(menu1, date);
@@ -114,19 +115,13 @@ public class MainView extends StackPane implements ModelListener {
 
 
         BorderPane mainPane = new BorderPane();
-        mainPane.setCenter(centreVBox);
+        mainPane.setCenter(SDV);
         mainPane.setRight(rightVBox);
         mainPane.setTop(menuBar);
         mainPane.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
         //mainPane.setPadding(new Insets(5, 5, 5, 5));
         this.getChildren().add(mainPane);
 
-    }
-
-    public void addNewDayHBox(String date, ObservableList<Task> tasks) {
-        DayHBox newDHB = new DayHBox();
-        newDHB.setDate(date);
-        newDHB.setOBS(tasks);
     }
 
     public void getDayHBox(HBox dayHBox) {
@@ -138,20 +133,42 @@ public class MainView extends StackPane implements ModelListener {
         activitiesObs.clear();
         //ask for a sorted list from the model
         activitiesObs.addAll(model.sortTaskList(sortC.getSelectionModel().getSelectedIndex()));
-
         this.activitiesList.setItems(activitiesObs);
-        System.out.println(sortC.getSelectionModel().getSelectedIndex() + sortC.getSelectionModel().getSelectedItem());
+
     }
     public void setModel(MainModel model) {
         this.model = model;
+        model.addSubscriber(SDV);
+        SDV.setModel(this.model);
+
+
     }
 
 
     @Override
     public void associateHandler(Controller controller) {
+        this.controller = controller;
         this.newActivityB.setOnAction(((MainController) controller)::handleNewActivityB);
         this.scheduleB.setOnAction(((MainController) controller)::handleScheduleB);
         this.categoriesB.setOnAction(((MainController) controller)::handleCategoriesB);
         this.sortC.setOnAction(((MainController) controller)::handleSort);
+    }
+
+    public static String getMonth(int i) {
+        return switch (i) {
+            case 1 -> "January";
+            case 2 -> "February";
+            case 3 -> "March";
+            case 4 -> "April";
+            case 5 -> "May";
+            case 6 -> "June";
+            case 7 -> "July";
+            case 8 -> "August";
+            case 9 -> "September";
+            case 10 -> "October";
+            case 11 -> "November";
+            case 12 -> "December";
+            default -> null;
+        };
     }
 }
