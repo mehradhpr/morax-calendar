@@ -2,6 +2,7 @@ package app.morax.View;
 
 import app.morax.Controller.Controller;
 import app.morax.Interface.ModelListener;
+import app.morax.Model.Base.HourModel;
 import app.morax.Model.Base.MainModel;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -42,10 +43,11 @@ public class MenuView extends StackPane implements ModelListener {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String currentTime = dtf.format(now);
+        HourModel HM = new HourModel(now.format(DateTimeFormatter.ofPattern("HH")), null);
         Label date = new Label(MainUI.getMonth(Integer.parseInt(currentTime.substring(5, 7))).substring(0, 3) +
                 " "  + currentTime.substring(8, 10) + ", " +
-                currentTime.substring(0, 4) + "  " +
-                currentTime.substring(11, 16));
+                HM.getHour12() +
+                currentTime.substring(13, 16) + " " + HM.getAMPM());
 
         // anchoring the right side
         AnchorPane.setTopAnchor(rightMenu, 2.0);
