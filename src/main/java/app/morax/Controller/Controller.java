@@ -1,60 +1,36 @@
 package app.morax.Controller;
 
-import app.morax.Interface.Controller;
-import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
 import app.morax.View.CategoriesView;
 import app.morax.View.NewActivityView;
-import app.morax.View.ScheduleView;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainController implements Controller {
+public class Controller {
     private MainModel model;
     public void setModel(MainModel model) {
         this.model = model;
     }
 
-    @Override
-    public void setView(ModelListener view) {
-
-    }
-
-    public void handleScheduleB(ActionEvent e) {
-        ScheduleView thisView = new ScheduleView();
-        ScheduleController thisController = new ScheduleController();
-        thisView.associateHandler(thisController);
-        thisController.setView(thisView);
-
-        Stage scheduleStage = new Stage();
-        scheduleStage.setScene(new Scene(thisView, 200, 110));
-        scheduleStage.getScene().getStylesheets().add("secondarySkin.css");
-        scheduleStage.show();
-    }
-
     public void handleNewActivityB(ActionEvent e) {
-        NewActivityView thisView = new NewActivityView();
-        thisView.setModel(model);
-        NewActivityViewController thisController = new NewActivityViewController();
-
-        //linking components
-        thisView.associateHandler(thisController);
-        thisController.setView(thisView);
-        thisView.update();
+        // creating the components
+        NewActivityView newActivityView = new NewActivityView();
+        NewActivityController newActivityController = new NewActivityController();
 
 
-        thisController.setModel(model);
-        thisView.setModel(model);
+        // linking components
+        newActivityView.setModel(model);
+        newActivityView.associateHandler(newActivityController);
+        newActivityController.setView(newActivityView);
+        newActivityController.setModel(model);
+        model.addSubscriber(newActivityView);
 
-        model.addSubscriber(thisView);
-
-        //new window
+        // Starting new window
         Stage newActivityStage = new Stage();
-        newActivityStage.setScene(new Scene(thisView, 250, 270));
+        newActivityStage.setScene(new Scene(newActivityView, 250, 270));
         newActivityStage.getScene().getStylesheets().add("secondarySkin.css");
         newActivityStage.show();
-
     }
 
     public void handleCategoriesB(ActionEvent e) {
@@ -83,5 +59,8 @@ public class MainController implements Controller {
         if (model.getTasks().size() != 0) {
             model.updateSubscribers();
         }
+    }
+
+    public void handleSettingB(ActionEvent actionEvent) {
     }
 }

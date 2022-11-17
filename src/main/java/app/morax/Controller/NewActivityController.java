@@ -1,15 +1,15 @@
 package app.morax.Controller;
 
-import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import app.morax.View.NewActivityView;
+import app.morax.View.NewCategoryView;
 import javafx.event.ActionEvent;
 
 import java.time.LocalDateTime;
 
-public class NewActivityViewController implements Controller {
+public class NewActivityController {
 
     private MainModel model;
 
@@ -19,11 +19,9 @@ public class NewActivityViewController implements Controller {
         this.model = model;
     }
 
-    @Override
-    public void setView(ModelListener view) {
-        this.view = (NewActivityView) view;
+    public void setView(NewActivityView view) {
+        this.view = view;
     }
-
     public void handleTitleText(ActionEvent e) {
     }
 

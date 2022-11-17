@@ -1,7 +1,6 @@
 package app.morax.View;
 
 import app.morax.Controller.NewCategoryController;
-import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
 import javafx.geometry.Pos;
@@ -13,7 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-public class AddCategoryView extends StackPane implements ModelListener {
+public class NewCategoryView extends StackPane implements ModelListener {
 
 
     TextField nameText;
@@ -22,7 +21,7 @@ public class AddCategoryView extends StackPane implements ModelListener {
     Button addB;
 
 
-    public AddCategoryView() {
+    public NewCategoryView() {
         Label label1 = new Label("Add a new category");
 
         Label label2 = new Label("Category Name: ");
@@ -64,9 +63,8 @@ public class AddCategoryView extends StackPane implements ModelListener {
 
     }
 
-    @Override
-    public void associateHandler(Controller controller) {
-        addB.setOnAction(((NewCategoryController) controller)::handleAddCategory);
+    public void associateHandler(NewCategoryController controller) {
+        addB.setOnAction(controller::handleAddCategory);
     }
 
     public String getTitle(){

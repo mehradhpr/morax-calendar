@@ -1,7 +1,7 @@
 package app.morax.View;
 
-import app.morax.Controller.NewActivityViewController;
-import app.morax.Interface.Controller;
+import app.morax.Controller.Controller;
+import app.morax.Controller.NewActivityController;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.Category;
 import app.morax.Model.Base.HourModel;
@@ -129,15 +129,12 @@ public class NewActivityView extends StackPane implements ModelListener {
     @Override
     public void setModel(MainModel model) {
         this.model = model;
-        categoryC.setValue(model.getCategories().get(0));
-
     }
 
-    @Override
-    public void associateHandler(Controller controller) {
-        titleText.setOnAction(((NewActivityViewController) controller)::handleTitleText);
-        button.setOnAction(((NewActivityViewController) controller)::handleAddButton);
-        setTimeCk.setOnAction(((NewActivityViewController) controller)::handleSetTimeCheckBox);
+    public void associateHandler(NewActivityController controller) {
+        titleText.setOnAction(controller::handleTitleText);
+        button.setOnAction(((NewActivityController) controller)::handleAddButton);
+        setTimeCk.setOnAction(((NewActivityController) controller)::handleSetTimeCheckBox);
     }
 
     // hour in the format of "HH"

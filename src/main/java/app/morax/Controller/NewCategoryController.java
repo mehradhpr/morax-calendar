@@ -1,25 +1,22 @@
 package app.morax.Controller;
 
-import app.morax.Interface.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
-import app.morax.View.AddCategoryView;
+import app.morax.View.NewCategoryView;
 import javafx.event.ActionEvent;
 
-public class NewCategoryController implements Controller {
+public class NewCategoryController {
 
     private MainModel model;
-    private AddCategoryView view;
+    private NewCategoryView view;
 
-    @Override
     public void setModel(MainModel model) {
         this.model = model;
     }
 
-    @Override
-    public void setView(ModelListener view) {
-        this.view = (AddCategoryView) view;
+    public void setView(NewCategoryView view) {
+        this.view = view;
     }
 
     //add a new Category

@@ -1,5 +1,6 @@
 package app.morax;
 
+import app.morax.View.MainUI;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
