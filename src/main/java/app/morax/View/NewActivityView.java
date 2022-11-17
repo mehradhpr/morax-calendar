@@ -65,6 +65,7 @@ public class NewActivityView extends StackPane implements ModelListener {
 
         Label locationTitle = new Label("Location: ");
         locationText = new TextField();
+        locationText.setText("Home");
         HBox locationHBox = new HBox(locationTitle, locationText);
 
         Label title4 = new Label("Set Time: ");

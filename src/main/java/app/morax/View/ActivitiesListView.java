@@ -17,21 +17,26 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
 public class ActivitiesListView extends StackPane implements ModelListener {
     ObservableList<String> sortOptions = FXCollections.observableArrayList("Name", "Location", "Date", "Priority");
-    private ObservableList<Task> activitiesListObs;
-    private ListView<Task> activitiesListView;
-    private ComboBox<String> sortC = new ComboBox<>();
+    private final ObservableList<HBox> activitiesListObs;
+    private final ListView<HBox> activitiesListView;
+    private final ComboBox<String> sortC = new ComboBox<>();
 
     private MainModel model;
 
     public ActivitiesListView() {
+        // initializing
         activitiesListView = new ListView<>();
         activitiesListObs = FXCollections.observableArrayList();
         activitiesListView.setPrefHeight(10000);
-        Label title2 = new Label("All Activities");
+        activitiesListView.setItems(activitiesListObs);
 
         // the HBox that has the title and sorting drop-down
+        Label title2 = new Label("All Activities");
         sortC.setItems(sortOptions);
         sortC.setValue("Name");
         HBox topH = new HBox(title2, sortC);
@@ -39,6 +44,9 @@ public class ActivitiesListView extends StackPane implements ModelListener {
         topH.setAlignment(Pos.CENTER_LEFT);
         topH.setSpacing(45);
         topH.setPadding(new Insets(2, 2, 0, 2));
+
+        // The List View
+
 
         // the main vbox
         VBox mainVBox = new VBox(topH, activitiesListView);
@@ -53,9 +61,18 @@ public class ActivitiesListView extends StackPane implements ModelListener {
     @Override
     public void update() {
         activitiesListObs.clear();
-        //ask for a sorted list from the model
-        activitiesListObs.addAll(model.sortTaskList(sortC.getSelectionModel().getSelectedIndex()));
-        this.activitiesListView.setItems(activitiesListObs);
+        // ask for a sorted list from the model
+        ArrayList<Task> sortedTasks = model.sortTaskList(sortC.getSelectionModel().getSelectedIndex());
+        for (Task t : sortedTasks) {
+            String month = MainUI.getMonth(Integer.parseInt(t.getDate().format(DateTimeFormatter.ofPattern("MM"))));
+            Label taskN = new Label(t.getName());
+            Label taskDT = new Label("    " + month.substring(0, 3) + t.getDate().format(DateTimeFormatter.ofPattern(" dd, HH:mm ")));
+            taskDT.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");
+            HBox taskHBox = new HBox(taskN, taskDT);
+            taskHBox.setAlignment(Pos.CENTER_LEFT);
+            activitiesListObs.add(taskHBox);
+        }
+
     }
 
     @Override
