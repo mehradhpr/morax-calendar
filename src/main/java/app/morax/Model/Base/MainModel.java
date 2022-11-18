@@ -377,13 +377,10 @@ public class MainModel implements Serializable {
      * @param t
      */
     public void taskComplete(Task t){
-        Category c;
-        while (t.getCategories().size() > 0){
-            c = t.getCategories().get(0);
+        Category c = t.getCategory();
 
-            c.removeTask(t);
-            t.removeCategory(c);
-        }
+        c.removeTask(t);
+        t.removeCategory(c);
 
         this.finishedTasks.addTask(t);
     }
