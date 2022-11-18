@@ -84,7 +84,8 @@ public class NewActivityView extends StackPane implements ModelListener {
         Label title5 = new Label("Category: ");
         categoryC = new ComboBox<>();
         categoryC.setItems(this.categoriesObs);
-        categoryC.setMaxWidth(150);
+        categoryC.setMinWidth(120);
+        categoryC.setValue(new Category("Work", 1, 1, 20));
         HBox categoryH = new HBox(title5, categoryC);
 
         Label title6 = new Label("Notes: ");

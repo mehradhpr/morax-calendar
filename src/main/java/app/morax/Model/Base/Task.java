@@ -16,7 +16,7 @@ public class Task {
 
     //measured in hours
     private int time;
-    private ArrayList<Category> categories;
+    private Category category;
 
     /**
      * Initialize a task
@@ -27,25 +27,21 @@ public class Task {
         this.name = taskName;
         this.location = null;
         this.date = null;
-        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, String taskLocation) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = null;
-        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = null;
         this.date = taskDate;
-        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, String taskLocation, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = taskDate;
-        this.categories = new ArrayList<Category>();
     }
     public Task(String taskName, int time){
         this.name = taskName;
@@ -91,7 +87,7 @@ public class Task {
         return ("\nTask: " + this.name +
                 "\nLocation: " + this.location +
                 "\nDate: " + this.date +
-                "\nCategory: " + this.categories + "\n");
+                "\nCategory: " + this.category + "\n");
     }
 
 
@@ -99,15 +95,19 @@ public class Task {
         return this.time;
     }
 
-    public void addCategory(Category cat){
-        this.categories.add(cat);
+    public void setCategory(Category cat){
+        this.category = cat;
     }
 
-    public ArrayList<Category> getCategories() {
-        return categories;
+    public Category getCategory() {
+        return category;
     }
 
     public void removeCategory(Category cat){
-        this.categories.remove(cat);
+        this.category = null;
+    }
+
+    public boolean hasCategory() {
+        return category != null;
     }
 }

@@ -13,7 +13,10 @@ import java.util.TreeMap;
 public class MainModel {
 
     /** the taskList */
-    private ArrayList<Category> taskList;
+    private ArrayList<Task> taskList;
+
+    // the categories list
+    private ArrayList<Category> categoryList;
 
     /** list of people */
     private TreeMap<String, Person> people;
@@ -26,13 +29,11 @@ public class MainModel {
      */
     public MainModel(){
         this.taskList = new ArrayList<>();
-        //this is the default category that tasks are put into
-        this.taskList.add(new Category("UnCategorized", 0, 0, 100));
+        this.categoryList = new ArrayList<>();
 
         this.people = new TreeMap<>();
         this.subscribers = new ArrayList<>();
         this.addCategory(new Category("Work", 1, 1, 20));
-
     }
 
     /**
@@ -41,16 +42,22 @@ public class MainModel {
      */
     public void addTask(Task t)
     {
-        this.taskList.get(0).addTask(t);
+        this.taskList.add(t);
         updateSubscribers();
+    }
+
+    public void addTaskToCategory(Task t, Category c) {
+        if (!this.categoryExists(c)) throw new IllegalArgumentException("Category: " + c.getName() + " does not exist");
+
     }
 
     public void addTask(Task t, Category c) throws IllegalArgumentException{
         if (!this.categoryExists(c)) throw new IllegalArgumentException("Category: " + c.getName() + " does not exist");
 
-        for (Category category : taskList){
+        for (Category category : categoryList){
             if (category.getName().equals(c.getName())) category.addTask(t);
         }
+        this.taskList.add(t);
 
         updateSubscribers();
     }
@@ -61,16 +68,14 @@ public class MainModel {
      * @return true if the category exists in ManagementSystem false otherwise
      */
     public boolean categoryExists(Category c){
-        return this.taskList.contains(c);
+        return this.categoryList.contains(c);
     }
     /**
      * Remove task from list
      */
     public void removeTask(Task t)
     {
-        for (Category c : taskList){
-            c.removeTask(t);
-        }
+        taskList.remove(t);
     }
 
     /**
@@ -137,11 +142,7 @@ public class MainModel {
      * @return a list of tasks
      */
     public ArrayList<Task> getTasks(){
-        ArrayList<Task> out = new ArrayList<>();
-        for (Category c : taskList){
-            out.addAll(c.getTasks());
-        }
-        return out;
+        return this.taskList;
     }
 
     /**
@@ -149,19 +150,14 @@ public class MainModel {
      * @return a list of categories
      */
     public ArrayList<Category> getCategories(){
-        ArrayList<Category> c = new ArrayList<>();
-        for (int i = 1; i < taskList.size(); i++){
-            c.add(this.taskList.get(i));
-        }
-
-        return c;
+        return this.categoryList;
     }
 
 
     public void addCategory(Category c){
         if (this.categoryExists(c)) throw new IllegalArgumentException("Category already exists");
 
-        this.taskList.add(c);
+        this.categoryList.add(c);
         updateSubscribers();
     }
 
@@ -171,18 +167,17 @@ public class MainModel {
      */
     public void removeCategory(Category c)
     {
-        removeCategory(c, true);
-        updateSubscribers();
+        if (!c.getName().equals("Work")) {
+            removeCategory(c, true);
+            updateSubscribers();
+        }
     }
 
     private void removeCategory(Category c, boolean safe)
     {
         if (safe){
-            for (Task t : c.getTasks()){
-                this.taskList.get(0).addTask(t);
-            }
+            this.categoryList.remove(c);
         }
-        this.taskList.remove(c);
     }
     /**
      * UI (as of now lol)
@@ -259,7 +254,7 @@ public class MainModel {
     }
 
     //Jordan's code that I uploaded
-    public ArrayList<Task> sortTaskList(int attNum){
+    public void sortTaskList(int attNum){
         ArrayList<Task> tasks = this.getTasks();
         int n = tasks.size();
         switch (attNum) {
@@ -345,6 +340,5 @@ public class MainModel {
                 System.out.println("Invalid Number Entered\n");
                 break;
         }
-        return tasks;
     }
 }

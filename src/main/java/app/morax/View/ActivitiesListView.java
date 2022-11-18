@@ -54,16 +54,23 @@ public class ActivitiesListView extends StackPane implements ModelListener {
         mainVBox.setSpacing(5);
         mainVBox.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
         mainVBox.setPadding(new Insets(2, 2, 2, 2));
-        mainVBox.setStyle("-fx-background-color: #ffbe47");
+        mainVBox.setStyle("-fx-background-color: rgba(236, 189, 119, 0.84)");
         this.getChildren().add(mainVBox);
     }
 
     @Override
     public void update() {
         activitiesListObs.clear();
-        // ask for a sorted list from the model
-        ArrayList<Task> sortedTasks = model.sortTaskList(sortC.getSelectionModel().getSelectedIndex());
-        for (Task t : sortedTasks) {
+
+        // sort the model's task list accordingly
+        switch (sortC.getSelectionModel().getSelectedIndex()) {
+            case 0 -> model.sortTaskList(0);
+            case 1 -> model.sortTaskList(1);
+            case 2 -> model.sortTaskList(2);
+            case 3 -> model.sortTaskList(3);
+        }
+
+        for (Task t : model.getTasks()) {
             String month = MainUI.getMonth(Integer.parseInt(t.getDate().format(DateTimeFormatter.ofPattern("MM"))));
             Label taskN = new Label(t.getName());
             Label taskDT = new Label("    " + month.substring(0, 3) + t.getDate().format(DateTimeFormatter.ofPattern(" dd, HH:mm ")));

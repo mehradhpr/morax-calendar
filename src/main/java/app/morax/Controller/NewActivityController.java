@@ -1,10 +1,8 @@
 package app.morax.Controller;
 
-import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import app.morax.View.NewActivityView;
-import app.morax.View.NewCategoryView;
 import javafx.event.ActionEvent;
 
 import java.time.LocalDateTime;
@@ -41,7 +39,7 @@ public class NewActivityController {
 
 
         Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText(), thisT);
-        newTask.addCategory(this.view.getCategoryC().getValue());
+        newTask.setCategory(this.view.getCategoryC().getValue());
         this.model.addTask(newTask);
     }
 
