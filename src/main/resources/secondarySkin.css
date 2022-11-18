@@ -1,5 +1,5 @@
 .root {
-    -fx-background-color: #ffbe47;
+    -fx-background-color: rgba(236, 189, 119, 0.84);
 }
 
 
@@ -16,34 +16,34 @@
 }
 
 .button {
-    -fx-background-color: #fffc00;
+    -fx-background-color: rgb(255, 242, 2);
 }
 
 .button .text {
     -fx-font-size: 9pt;
     -fx-font-family: "Arial Black";
-    -fx-text-fill: #7e5400;
+    -fx-text-fill: rgba(126, 84, 0, 0.87);
 }
 
 .label {
-    -fx-text-fill: #7e5400;
+    -fx-text-fill: rgba(126, 84, 0, 0.87);
 }
 
 .text-field {
-    -fx-background-color: #fffbbf;
+    -fx-background-color: #fffbd4;
 }
 
 .text-area {
-    -fx-border-color: #fffbbf;
+    -fx-border-color: #fffbd4;
 }
 
 .check-box .box {
-    -fx-background-color: #fffc00;
+    -fx-background-color: rgb(255, 242, 2);
 }
 
 
 .combo-box {
-    -fx-background-color: linear-gradient(#fffc00, #e5cd30);
+    -fx-background-color: linear-gradient(rgb(255, 242, 2), #e5cd30);
     -fx-highlight-text-fill: Black;
     -fx-prompt-text-fill: Black;
 }
@@ -62,5 +62,5 @@
 }
 
 .list-cell {
-    -fx-background-color: #fffbbf;
+    -fx-background-color: #fffbd4;
 }

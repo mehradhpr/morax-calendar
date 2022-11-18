@@ -26,23 +26,23 @@
     -fx-font-size: 12pt;
     -fx-font-family: "Arial Black";
     -fx-font-smoothing-type: always;
-    -fx-text-fill: #7e5400;
+    -fx-text-fill: rgba(126, 84, 0, 0.87);
 }
 
 .list-view {
-    -fx-background-color: #fffbbf;
+    -fx-background-color: #fffbd4;
     -fx-border-color: #0d2a0d;
 }
 
 .list-cell {
-    -fx-background-color: #fffbbf;
+    -fx-background-color: #fffbd4;
 }
 
 .button {
     -fx-font-size: 9pt;
     -fx-font-family: "Arial Black";
-    -fx-background-color: #fffc00;
-    -fx-text-fill: #7e5400;
+    -fx-background-color: rgb(255, 242, 2);
+    -fx-text-fill: rgba(126, 84, 0, 0.87);
 }
 
 

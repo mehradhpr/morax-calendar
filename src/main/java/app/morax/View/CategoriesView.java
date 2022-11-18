@@ -30,6 +30,8 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     private Button cancelB;
 
+    ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
+
     ListView<Category> categoriesL;
 
     public CategoriesView() {
@@ -60,12 +62,10 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     @Override
     public void update() {
-        ObservableList<Category> categories = FXCollections.observableArrayList();
-        for (Category c:model.getCategories()){
-            categories.add(c);
-        }
+        categoriesObs.clear();
+        categoriesObs.addAll(model.getCategories());
 
-        this.categoriesL.setItems(categories);
+        this.categoriesL.setItems(categoriesObs);
     }
 
     @Override

@@ -11,7 +11,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ScheduleDisplayView extends StackPane implements ModelListener {
@@ -49,7 +48,9 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
         ArrayList<DayView> days = new ArrayList<>();
         ArrayList<Task> dayTasks = new ArrayList<>();
 
-        ArrayList<Task> sortedTasks = model.sortTaskList(2);
+        model.sortTaskList(2);
+
+        ArrayList<Task> sortedTasks = model.getTasks();
 
         if (sortedTasks.size() == 0) return;
 

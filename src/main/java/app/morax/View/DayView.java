@@ -21,29 +21,22 @@ public class DayView extends VBox {
     ObservableList<Task> taskObservableList = FXCollections.observableArrayList();
 
     DayView(String date, String month, ArrayList<Task> tasks) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String currentTime = dtf.format(now);
         this.dateLabel = new Label(" " + month + " " + date + "                                                                        ");
         this.dateLabel.setPadding(new Insets(2, 2, 2, 2));
         this.getChildren().add(dateLabel);
-        dateLabel.setStyle("-fx-background-color: #eedd5f;" +
-                "-fx-text-fill: #bb6400");
-        String cat;
+        dateLabel.setStyle("-fx-background-color: rgba(255,183,0,0.38);" +
+                "-fx-text-fill: rgba(217,142,4,0.89)");
         for (Task t : tasks) {
-        //    if (t.getCategories().size() == 0 || t.getCategories() == null) {
-        //        cat = "No Categories";
-        //    }
-        //    else {
-        //        cat = t.getCategories().get(0).toString();
-        //    }
+            Label category;
             Label time;
             HourModel hm = new HourModel(String.valueOf(t.getDate().getHour()), null);
-            time = new Label("   • " + hm.getHour12()  + ":" + t.getDate().getMinute() + hm.getAMPM());
+            time = new Label("   • " + hm.getHour12()  + ":" + t.getDate().format(DateTimeFormatter.ofPattern("mm")) + " " +  hm.getAMPM());
+            category = new Label("                " + t.getCategory().getName());
+            category.setStyle("-fx-font-size: 15;" + "-fx-text-fill: #bb7a00;" + "-fx-font-family: Arial;");
             time.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");
             time.setAlignment(Pos.CENTER_LEFT);
             Label task = new Label(t.getName());
-            HBox taskHB = new HBox(time, task);
+            HBox taskHB = new HBox(time, task, category);
             taskHB.setSpacing(15);
             taskHB.setAlignment(Pos.CENTER_LEFT);
             this.getChildren().add(taskHB);

@@ -25,7 +25,7 @@ public class MenuView extends StackPane implements ModelListener {
 
         // the menu anchorPane
         AnchorPane menuBar = new AnchorPane();
-        menuBar.setStyle("-fx-background-color: #ff9100");
+        menuBar.setStyle("-fx-background-color: rgba(255,145,0,0.7)");
 
 
         // Left side of the menu
@@ -33,7 +33,7 @@ public class MenuView extends StackPane implements ModelListener {
         scheduleB = new Button("Schedule an Activity");
         newActivityB = new Button("New Activity");
         HBox leftMenu = new HBox(newActivityB, scheduleB, categoriesB);
-        leftMenu.setSpacing(2);
+        leftMenu.setSpacing(3);
 
         // Right side of the menu
         setting = new Button("Setting");
