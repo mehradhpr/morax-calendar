@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 public class MenuView extends StackPane implements ModelListener {
     MainModel model;
     Button newActivityB;
-    Button scheduleB;
+    Button meetB;
     Button categoriesB;
     Button setting;
     Controller controller;
@@ -30,9 +30,9 @@ public class MenuView extends StackPane implements ModelListener {
 
         // Left side of the menu
         categoriesB = new Button("Categories");
-        scheduleB = new Button("Schedule an Activity");
+        meetB = new Button("Meet");
         newActivityB = new Button("New Activity");
-        HBox leftMenu = new HBox(newActivityB, scheduleB, categoriesB);
+        HBox leftMenu = new HBox(newActivityB, categoriesB, meetB);
         leftMenu.setSpacing(3);
 
         // Right side of the menu
@@ -82,6 +82,7 @@ public class MenuView extends StackPane implements ModelListener {
     public void associateHandler(Controller controller) {
         this.newActivityB.setOnAction(controller::handleNewActivityB);
         this.categoriesB.setOnAction(controller::handleCategoriesB);
+        this.meetB.setOnAction(controller::handleMeetB);
         this.setting.setOnAction(controller::handleSettingB);
     }
 }

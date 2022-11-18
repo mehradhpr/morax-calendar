@@ -72,4 +72,7 @@ public class Controller {
 
     public void handleSettingB(ActionEvent actionEvent) {
     }
+
+    public void handleMeetB(ActionEvent actionEvent) {
+    }
 }
