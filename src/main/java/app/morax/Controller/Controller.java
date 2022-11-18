@@ -2,6 +2,7 @@ package app.morax.Controller;
 
 import app.morax.Model.Base.MainModel;
 import app.morax.View.CategoriesView;
+import app.morax.View.MainUI;
 import app.morax.View.NewActivityView;
 import javafx.application.Platform;
 import javafx.beans.Observable;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 
 public class Controller {
     private MainModel model;
+    private MainUI view;
     public void setModel(MainModel model) {
         this.model = model;
     }
@@ -62,6 +64,10 @@ public class Controller {
         if (model.getTasks().size() != 0) {
             model.updateSubscribers();
         }
+    }
+
+    public void handleSwitchView(ActionEvent ignored){
+        view.switchView();
     }
 
     public void handleSettingB(ActionEvent actionEvent) {

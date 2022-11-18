@@ -82,4 +82,8 @@ public class MainUI extends StackPane implements ModelListener {
             default -> null;
         };
     }
+
+    public void switchView() {
+
+    }
 }
