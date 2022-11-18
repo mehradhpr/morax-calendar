@@ -42,34 +42,37 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
     }
 
     private void updateScheduleObs() {
-        scheduleObs.clear();
+        if (model.getTasks().size() != 0) {
+            scheduleObs.clear();
 
-        ArrayList<DayView> days = new ArrayList<>();
-        ArrayList<Task> dayTasks = new ArrayList<>();
+            ArrayList<DayView> days = new ArrayList<>();
+            ArrayList<Task> dayTasks = new ArrayList<>();
 
-        // sort the task list in model
-        model.sortTaskList(2);
+            // sort the task list in model
+            model.sortTaskList(2);
 
-        int day = model.getTasks().get(0).getDate().getDayOfMonth();
-        int month = model.getTasks().get(0).getDate().getMonth().getValue();
-        for (Task t : model.getTasks()) {
-            if (t.getDate().getDayOfMonth() == day && t.getDate().getMonth().getValue() == month) {
-                dayTasks.add(t);
+            int day = model.getTasks().get(0).getDate().getDayOfMonth();
+            int month = model.getTasks().get(0).getDate().getMonth().getValue();
+            for (Task t : model.getTasks()) {
+                if (t.getDate().getDayOfMonth() == day && t.getDate().getMonth().getValue() == month) {
+                    dayTasks.add(t);
+                }
+                else {
+                    DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
+                    days.add(dayView);
+                    dayTasks.clear();
+                    dayTasks.add(t);
+                    day = t.getDate().getDayOfMonth();
+                    month = t.getDate().getMonth().getValue();
+                }
+                if (model.getTasks().indexOf(t) + 1 == model.getTasks().size()) {
+                    DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
+                    days.add(dayView);
+                    dayTasks.clear();
+                }
             }
-            else {
-                DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
-                days.add(dayView);
-                dayTasks.clear();
-                dayTasks.add(t);
-                day = t.getDate().getDayOfMonth();
-                month = t.getDate().getMonth().getValue();
-            }
-            if (model.getTasks().indexOf(t) + 1 == model.getTasks().size()) {
-                DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
-                days.add(dayView);
-                dayTasks.clear();
-            }
+            this.scheduleObs.addAll(days);
         }
-        this.scheduleObs.addAll(days);
+
     }
 }

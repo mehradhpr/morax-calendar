@@ -2,6 +2,7 @@ package app.morax.View;
 
 import app.morax.Controller.Controller;
 import app.morax.Interface.ModelListener;
+import app.morax.Model.Base.HourModel;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import javafx.collections.FXCollections;
@@ -72,8 +73,10 @@ public class ActivitiesListView extends StackPane implements ModelListener {
 
         for (Task t : model.getTasks()) {
             String month = MainUI.getMonth(Integer.parseInt(t.getDate().format(DateTimeFormatter.ofPattern("MM"))));
+            HourModel HM = new HourModel(t.getDate().format(DateTimeFormatter.ofPattern("HH")), null);
             Label taskN = new Label(t.getName());
-            Label taskDT = new Label("    " + month.substring(0, 3) + t.getDate().format(DateTimeFormatter.ofPattern(" dd, HH:mm ")));
+            Label taskDT = new Label("    " + month.substring(0, 3) + t.getDate().format(DateTimeFormatter.ofPattern(" dd, "))
+                    + HM.getHour12() + ":" + t.getDate().format(DateTimeFormatter.ofPattern("mm")) + " " + HM.getAMPM());
             taskDT.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");
             HBox taskHBox = new HBox(taskN, taskDT);
             taskHBox.setAlignment(Pos.CENTER_LEFT);

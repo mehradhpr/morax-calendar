@@ -31,10 +31,12 @@ public class DayView extends VBox {
             Label time;
             HourModel hm = new HourModel(String.valueOf(t.getDate().getHour()), null);
             time = new Label("   • " + hm.getHour12()  + ":" + t.getDate().format(DateTimeFormatter.ofPattern("mm")) + " " +  hm.getAMPM());
+            category = new Label("                " + t.getCategory().getName());
+            category.setStyle("-fx-font-size: 15;" + "-fx-text-fill: #bb7a00;" + "-fx-font-family: Arial;");
             time.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");
             time.setAlignment(Pos.CENTER_LEFT);
             Label task = new Label(t.getName());
-            HBox taskHB = new HBox(time, task);
+            HBox taskHB = new HBox(time, task, category);
             taskHB.setSpacing(15);
             taskHB.setAlignment(Pos.CENTER_LEFT);
             this.getChildren().add(taskHB);

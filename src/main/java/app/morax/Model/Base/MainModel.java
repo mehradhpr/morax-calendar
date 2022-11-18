@@ -48,6 +48,7 @@ public class MainModel {
 
     public void addTaskToCategory(Task t, Category c) {
         if (!this.categoryExists(c)) throw new IllegalArgumentException("Category: " + c.getName() + " does not exist");
+        updateSubscribers();
 
     }
 
@@ -76,6 +77,7 @@ public class MainModel {
     public void removeTask(Task t)
     {
         taskList.remove(t);
+        updateSubscribers();
     }
 
     /**
@@ -178,6 +180,7 @@ public class MainModel {
         if (safe){
             this.categoryList.remove(c);
         }
+        updateSubscribers();
     }
     /**
      * UI (as of now lol)

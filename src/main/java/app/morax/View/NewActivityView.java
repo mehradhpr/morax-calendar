@@ -125,12 +125,17 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     @Override
     public void update() {
-        categoriesObs.setAll(this.model.getCategories());
+        categoriesObs.clear();
+        categoriesObs.addAll(this.model.getCategories());
+        categoryC.setItems(categoriesObs);
+
     }
 
     @Override
     public void setModel(MainModel model) {
         this.model = model;
+        categoriesObs.setAll(model.getCategories());
+
     }
 
     public void associateHandler(NewActivityController controller) {
