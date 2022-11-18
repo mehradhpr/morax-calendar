@@ -3,6 +3,9 @@ package app.morax.Controller;
 import app.morax.Model.Base.MainModel;
 import app.morax.View.CategoriesView;
 import app.morax.View.NewActivityView;
+import javafx.application.Platform;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,7 +16,7 @@ public class Controller {
         this.model = model;
     }
 
-    public void handleNewActivityB(ActionEvent e) {
+    public void handleNewActivityB(ActionEvent ignored) {
         // creating the components
         NewActivityView newActivityView = new NewActivityView();
         NewActivityController newActivityController = new NewActivityController();
@@ -33,7 +36,7 @@ public class Controller {
         newActivityStage.show();
     }
 
-    public void handleCategoriesB(ActionEvent e) {
+    public void handleCategoriesB(ActionEvent ignored) {
         CategoriesView thisView = new CategoriesView();
         CategoryController thisController = new CategoryController();
 
@@ -55,7 +58,7 @@ public class Controller {
     }
 
     //Handles the sort parameters changing for the activities view
-    public void handleSort(ActionEvent e){
+    public void handleSort(ActionEvent ignored){
         if (model.getTasks().size() != 0) {
             model.updateSubscribers();
         }

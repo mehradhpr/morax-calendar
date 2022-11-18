@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ScheduleDisplayView extends StackPane implements ModelListener {
@@ -35,6 +36,7 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
     @Override
     public void setModel(MainModel model) {
         this.model = model;
+        this.update();
     }
 
     public void associateHandler(Controller controller) {
@@ -47,9 +49,13 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
         ArrayList<DayView> days = new ArrayList<>();
         ArrayList<Task> dayTasks = new ArrayList<>();
 
-        int day = model.sortTaskList(2).get(0).getDate().getDayOfMonth();
-        int month = model.sortTaskList(2).get(0).getDate().getMonth().getValue();
-        for (Task t : model.sortTaskList(2)) {
+        ArrayList<Task> sortedTasks = model.sortTaskList(2);
+
+        if (sortedTasks.size() == 0) return;
+
+        int day = sortedTasks.get(0).getDate().getDayOfMonth();
+        int month = sortedTasks.get(0).getDate().getMonth().getValue();
+        for (Task t : sortedTasks) {
             if (t.getDate().getDayOfMonth() == day && t.getDate().getMonth().getValue() == month) {
                 dayTasks.add(t);
             }
@@ -61,7 +67,7 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
                 day = t.getDate().getDayOfMonth();
                 month = t.getDate().getMonth().getValue();
             }
-            if (model.sortTaskList(2).indexOf(t) + 1 == model.sortTaskList(2).size()) {
+            if (sortedTasks.indexOf(t) + 1 == sortedTasks.size()) {
                 DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
                 days.add(dayView);
                 dayTasks.clear();

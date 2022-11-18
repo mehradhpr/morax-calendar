@@ -130,6 +130,7 @@ public class NewActivityView extends StackPane implements ModelListener {
     @Override
     public void setModel(MainModel model) {
         this.model = model;
+        this.update();
     }
 
     public void associateHandler(NewActivityController controller) {

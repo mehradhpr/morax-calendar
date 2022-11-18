@@ -1,9 +1,10 @@
 package app.morax.Model.Base;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Category {
+public class Category implements Serializable {
 
     private String name;
     private int priority;
@@ -30,7 +31,7 @@ public class Category {
      * @param t a task object
      */
     public void addTask(Task t){
-        if (!(this.timeLeft() >= t.getTime())) throw new IllegalArgumentException("Cannot allocate enough time to task");
+        if (!(this.timeLeft() >= t.getTime()) && this.timeAlloc > 0) throw new IllegalArgumentException("Cannot allocate enough time to task");
         this.timeUsed = this.timeUsed + t.getTime();
         this.taskList.add(t);
     }
@@ -244,5 +245,9 @@ public class Category {
                 System.out.println("Invalid Number Entered\n");
                 break;
         }
+    }
+
+    public Category loadFromString(String path){
+        return null;
     }
 }

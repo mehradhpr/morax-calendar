@@ -1,6 +1,5 @@
 package app.morax.Controller;
 
-import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
 import app.morax.View.NewCategoryView;

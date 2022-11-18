@@ -3,6 +3,7 @@ package app.morax.Model.Base;
 
 import app.morax.Interface.ModelListener;
 
+import java.io.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TreeMap;
@@ -10,16 +11,20 @@ import java.util.TreeMap;
 /**
  * The system to access taskList through
  */
-public class MainModel {
+public class MainModel implements Serializable {
 
     /** the taskList */
     private ArrayList<Category> taskList;
 
+    // a list of finished tasks
+    private Category finishedTasks;
+
     /** list of people */
     private TreeMap<String, Person> people;
 
+    //is transient because we do NOT want to save it
     /** list of subscribers to notify when the model has changed **/
-    private ArrayList<ModelListener> subscribers;
+    private transient ArrayList<ModelListener> subscribers;
 
     /**
      * Initialize an instance of ManagementSystem
@@ -33,6 +38,7 @@ public class MainModel {
         this.subscribers = new ArrayList<>();
         this.addCategory(new Category("Work", 1, 1, 20));
 
+        this.finishedTasks = new Category("Finished", 0, 0, -1);
     }
 
     /**
@@ -198,7 +204,7 @@ public class MainModel {
         //test case 2
         Category c1 = new Category("Blue", 1, 2, 3);
         model.addCategory(c1);
-        if (!model.taskList.get(1).equals(c1)){
+        if (!model.taskList.get(2).equals(c1)){
             System.out.println("Error in test case 2");
             errors ++;
         }
@@ -253,7 +259,28 @@ public class MainModel {
             model.addCategory(c1);
             errors++;
             System.out.println("Error in test case 11");
-        }catch (IllegalArgumentException e){}
+        }catch (IllegalArgumentException ignored){}
+
+        //Test saving to and loading from a file
+        model.saveToFile("testSave");
+        model = MainModel.loadFromFile("testSave");
+
+        //test case 12
+        if (model.taskList.size() != 3){
+            System.out.println("Error in test case 12");
+            errors ++;
+        }
+        //test case 13
+        if (model.taskList.get(2).getTasks().size() != 1){
+            System.out.println("Error in test case 13");
+            errors ++;
+        }
+
+        //test case 14
+        if (model.getTasks().size() != 2){
+            System.out.println("Error in test case 14");
+            errors ++;
+        }
 
         System.out.println(errors + " test cases failed\nTesting Complete.");
     }
@@ -347,4 +374,67 @@ public class MainModel {
         }
         return tasks;
     }
+
+    /**
+     * Called to move a task move the active tasks list to the finished tasks list
+     * @param t
+     */
+    public void taskComplete(Task t){
+        Category c;
+        while (t.getCategories().size() > 0){
+            c = t.getCategories().get(0);
+
+            c.removeTask(t);
+            t.removeCategory(c);
+        }
+
+        this.finishedTasks.addTask(t);
+    }
+
+    /**
+     * reads data from a file to create a new MainModel object
+     * @param path the files path
+     * @return a mainModel object
+     */
+    public static MainModel loadFromFile(String path){
+        MainModel fromDisk = null;
+
+        try {
+            FileInputStream file = new FileInputStream(path);
+            ObjectInputStream objectIn = new ObjectInputStream(file);
+            fromDisk = (MainModel) objectIn.readObject();
+            file.close();
+            objectIn.close();
+
+            //we do not save the subscribers list, so we need to initialize it
+            fromDisk.subscribers = new ArrayList<>();
+
+            System.out.println("The Object has successfully been read");
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        }
+
+        return fromDisk;
+    }
+
+    /**
+     * Saves this object to a file
+     * @param path the files path
+     */
+    public void saveToFile(String path){
+
+        try {
+            FileOutputStream file = new FileOutputStream(path, false);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+            out.writeObject(this);
+            out.close();
+            file.close();
+            System.out.println("The Object  was successfully written");
+        }
+        catch (Exception e){
+            System.out.println(e.toString());
+        };
+    }
+
 }

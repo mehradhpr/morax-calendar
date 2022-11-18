@@ -66,6 +66,7 @@ public class MenuView extends StackPane implements ModelListener {
         menuBar.setPadding(new Insets(2, 2, 2, 2));
         menuBar.getChildren().addAll(leftMenu, date, rightMenu);
         this.getChildren().add(menuBar);
+        this.update();
     }
 
     @Override

@@ -54,6 +54,7 @@ public class CategoriesView extends StackPane implements ModelListener {
         mainVBox.setSpacing(5);
         mainVBox.setAlignment(Pos.CENTER);
         this.getChildren().add(mainVBox);
+        this.update();
     }
 
 

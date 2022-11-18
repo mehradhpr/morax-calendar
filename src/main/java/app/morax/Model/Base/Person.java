@@ -2,10 +2,11 @@
 package app.morax.Model.Base;
 
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Person {
+public class Person implements Serializable {
 
     /** Person's name */
     private String name;

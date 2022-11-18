@@ -1,13 +1,14 @@
 
 package app.morax.Model.Base;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
  * Model for a generic task within the system
  */
-public class Task {
+public class Task implements Serializable {
 
     /** Task Name */
     private String name;

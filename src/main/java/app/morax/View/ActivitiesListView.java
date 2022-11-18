@@ -78,6 +78,7 @@ public class ActivitiesListView extends StackPane implements ModelListener {
     @Override
     public void setModel(MainModel model) {
         this.model = model;
+        this.update();
     }
 
     public void associateHandler(Controller controller) {

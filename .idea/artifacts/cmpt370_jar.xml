@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cmpt370:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/cmpt370_jar</output-path>
+    <root id="archive" name="cmpt370.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-base:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:19-ea+7" />
+        <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:19-ea+7" />
+      </element>
+      <element id="module-output" name="cmpt370" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19-ea+7/javafx-graphics-19-ea+7-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19-ea+7/javafx-controls-19-ea+7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19-ea+7/javafx-base-19-ea+7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19-ea+7/javafx-fxml-19-ea+7.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19-ea+7/javafx-controls-19-ea+7-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19-ea+7/javafx-base-19-ea+7-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19-ea+7/javafx-fxml-19-ea+7-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19-ea+7/javafx-graphics-19-ea+7.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

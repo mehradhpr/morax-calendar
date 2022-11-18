@@ -3,25 +3,22 @@ package app.morax.View;
 import app.morax.Controller.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
-import app.morax.View.ActivitiesListView;
-import app.morax.View.MenuView;
-import app.morax.View.ScheduleDisplayView;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 public class MainUI extends StackPane implements ModelListener {
     ScheduleDisplayView scheduleDisplayView;
     MenuView menuBarView;
     ActivitiesListView activitiesListView;
     MainModel mainModel;
-    public MainUI() {
+    public MainUI(MainModel model) {
 
         // creating the MVC objects
         Controller controller = new Controller();
-        MainModel model = new MainModel();
         scheduleDisplayView = new ScheduleDisplayView();
         activitiesListView = new ActivitiesListView();
         menuBarView = new MenuView();
@@ -32,10 +29,12 @@ public class MainUI extends StackPane implements ModelListener {
         activitiesListView.setModel(model);
         menuBarView.setModel(model);
         this.setModel(model);
+
         scheduleDisplayView.associateHandler(controller);
         activitiesListView.associateHandler(controller);
         menuBarView.associateHandler(controller);
         this.associateHandler(controller);
+
         model.addSubscriber(scheduleDisplayView);
         model.addSubscriber(activitiesListView);
         model.addSubscriber(menuBarView);
