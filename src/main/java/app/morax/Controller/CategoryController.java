@@ -27,6 +27,7 @@ public class CategoryController {
 
     //bring up the add Category page to enter information about the category
     public void handleAddCategory(ActionEvent e) {
+        view.getErrorL().setVisible(false);
         NewCategoryView thisView = new NewCategoryView();
         NewCategoryController thisController = new NewCategoryController();
 
@@ -47,7 +48,13 @@ public class CategoryController {
 
     //Remove the selected category
     public void handleRemoveCategory(ActionEvent e){
-        model.removeCategory(view.getSelection());
+        if (view.getSelection() == null) {
+            view.getErrorL().setVisible(true);
+        }
+        else {
+            view.getErrorL().setVisible(false);
+            model.removeCategory(view.getSelection());
+        }
     }
 
     public void handleCancel(ActionEvent e){

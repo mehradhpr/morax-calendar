@@ -21,6 +21,7 @@ public class MeetController {
 
     //bring up the add Category page to enter information about the category
     public void handleAddPerson(ActionEvent e) {
+        this.view.getErrorL().setVisible(false);
         NewPersonView newPersonView = new NewPersonView();
         NewPersonController newPersonController = new NewPersonController();
 
@@ -42,7 +43,13 @@ public class MeetController {
 
     //Remove the selected category
     public void handleRemovePerson(ActionEvent e){
-        model.removePerson(view.getSelection());
+        if (view.getSelection() == null) {
+            view.getErrorL().setVisible(true);
+        }
+        else {
+            view.getErrorL().setVisible(false);
+            model.removePerson(view.getSelection());
+        }
     }
 
 
@@ -57,24 +64,31 @@ public class MeetController {
     }
 
     public void handleMeetB(ActionEvent actionEvent) {
-        MeetingDateView meetingDateView = new MeetingDateView(this.view.getSelection().getName());
-        MeetingDateController meetingDateController = new MeetingDateController();
+        if (view.getSelection() == null) {
+            view.getErrorL().setVisible(true);
+        }
+        else {
+            view.getErrorL().setVisible(false);
+            MeetingDateView meetingDateView = new MeetingDateView(this.view.getSelection().getName());
+            MeetingDateController meetingDateController = new MeetingDateController();
 
-        //link the new view and its controller
-        meetingDateView.associateHandler(meetingDateController);
-        meetingDateController.setView(meetingDateView);
+            //link the new view and its controller
+            meetingDateView.associateHandler(meetingDateController);
+            meetingDateController.setView(meetingDateView);
 
-        //link the model and controller
-        meetingDateView.setModel(model);
-        meetingDateController.setModel(model);
-        model.addSubscriber(meetingDateView);
+            //link the model and controller
+            meetingDateView.setModel(model);
+            meetingDateController.setModel(model);
+            model.addSubscriber(meetingDateView);
 
-        //open a new window
-        Stage meetingStage = new Stage();
-        meetingStage.setScene(new Scene(meetingDateView, 220, 150));
-        meetingStage.getScene().getStylesheets().add("secondarySkin.css");
-        meetingDateController.setStage(meetingStage);
-        meetingStage.show();
+            //open a new window
+            Stage meetingStage = new Stage();
+            meetingStage.setScene(new Scene(meetingDateView, 220, 150));
+            meetingStage.getScene().getStylesheets().add("secondarySkin.css");
+            meetingDateController.setStage(meetingStage);
+            meetingStage.show();
+        }
+
     }
 }
 

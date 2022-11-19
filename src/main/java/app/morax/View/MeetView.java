@@ -37,6 +37,8 @@ public class MeetView extends StackPane implements ModelListener {
 
     ListView<Person> personsList;
 
+    private Label errorL = new Label("Please select an item");
+
 
     public MeetView() {
 
@@ -57,7 +59,9 @@ public class MeetView extends StackPane implements ModelListener {
         addPersonB = new Button("Add Person");
         removePersonB = new Button("Remove Person");
         cancelB = new Button("Cancel");
-        VBox rightVBox = new VBox(meetB, addPersonB, removePersonB, cancelB);
+        errorL.setVisible(false);
+        errorL.setStyle("-fx-text-fill: Red;" + "-fx-font-size: 12;" + "-fx-font-family: Arial");
+        VBox rightVBox = new VBox(meetB, addPersonB, removePersonB, cancelB, errorL);
         rightVBox.setSpacing(10);
         rightVBox.setAlignment(Pos.TOP_LEFT);
 
@@ -102,4 +106,7 @@ public class MeetView extends StackPane implements ModelListener {
         cancelB.setOnAction(controller::handleCancelB);
     }
 
+    public Label getErrorL() {
+        return errorL;
+    }
 }

@@ -26,6 +26,8 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     private Button cancelB;
 
+    private Label errorL;
+
     ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
 
     ListView<Category> categoriesL;
@@ -45,7 +47,10 @@ public class CategoriesView extends StackPane implements ModelListener {
         addCategoryB = new Button("Add Category");
         removeCategoryB = new Button("Remove Category");
         cancelB = new Button("Cancel");
-        VBox rightVBox = new VBox(addCategoryB, removeCategoryB, cancelB);
+        errorL = new Label("Please Select an item");
+        errorL.setStyle("-fx-text-fill: Red;" + "-fx-font-size: 12;" + "-fx-font-family: Arial");
+        errorL.setVisible(false);
+        VBox rightVBox = new VBox(addCategoryB, removeCategoryB, cancelB, errorL);
         rightVBox.setSpacing(10);
         rightVBox.setAlignment(Pos.TOP_LEFT);
 
@@ -90,4 +95,10 @@ public class CategoriesView extends StackPane implements ModelListener {
     public Category getSelection(){
         return this.categoriesL.getSelectionModel().getSelectedItem();
     }
+
+    public Label getErrorL() {
+        return errorL;
+    }
 }
+
+
