@@ -15,6 +15,8 @@ public class NewCategoryController {
     private MainModel model;
     private NewCategoryView view;
 
+    private Stage stage;
+
     public void setModel(MainModel model) {
         this.model = model;
     }
@@ -31,9 +33,18 @@ public class NewCategoryController {
             return;
         }
         model.addCategory(c);
+        this.stage.close();
     }
 
     private void categoryWithNameExistsError(String name){
         ErrorMessage error = new ErrorMessage("Category with name: " + name + " already exists");
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void handleCancelB(ActionEvent actionEvent) {
+        this.stage.close();
     }
 }

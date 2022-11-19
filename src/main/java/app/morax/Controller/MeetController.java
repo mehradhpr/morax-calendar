@@ -33,10 +33,11 @@ public class MeetController {
         model.addSubscriber(newPersonView);
 
         //open a new window
-        Stage addCategoriesStage = new Stage();
-        addCategoriesStage.setScene(new Scene(newPersonView, 270, 85));
-        addCategoriesStage.getScene().getStylesheets().add("secondarySkin.css");
-        addCategoriesStage.show();
+        Stage addPersonStage = new Stage();
+        addPersonStage.setScene(new Scene(newPersonView, 270, 85));
+        addPersonStage.getScene().getStylesheets().add("secondarySkin.css");
+        newPersonController.setStage(addPersonStage);
+        addPersonStage.show();
     }
 
     //Remove the selected category
@@ -72,6 +73,7 @@ public class MeetController {
         Stage meetingStage = new Stage();
         meetingStage.setScene(new Scene(meetingDateView, 220, 150));
         meetingStage.getScene().getStylesheets().add("secondarySkin.css");
+        meetingDateController.setStage(meetingStage);
         meetingStage.show();
     }
 }

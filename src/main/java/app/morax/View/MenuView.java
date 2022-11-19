@@ -21,7 +21,8 @@ public class MenuView extends StackPane implements ModelListener {
     Button chartViewB;
     Button categoriesB;
     Button setting;
-    Controller controller;
+
+    String currentTime;
 
     public MenuView() {
 
@@ -46,7 +47,7 @@ public class MenuView extends StackPane implements ModelListener {
         // Current date display in the menu
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String currentTime = dtf.format(now);
+        currentTime = dtf.format(now);
         HourModel HM = new HourModel(now.format(DateTimeFormatter.ofPattern("HH")), null);
         Label date = new Label(MainUI.getMonth(Integer.parseInt(currentTime.substring(5, 7))).substring(0, 3) +
                 " "  + currentTime.substring(8, 10) + ", " +
@@ -74,7 +75,8 @@ public class MenuView extends StackPane implements ModelListener {
     }
 
     @Override
-    public void update() {}
+    public void update() {
+    }
 
     @Override
     public void setModel(MainModel model) {

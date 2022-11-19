@@ -20,6 +20,8 @@ public class NewCategoryView extends StackPane implements ModelListener {
     TextArea descriptionText;
     Button addB;
 
+    Button cancelB = new Button("Cancel");
+
 
     public NewCategoryView() {
         Label label1 = new Label("Add a new category");
@@ -47,8 +49,12 @@ public class NewCategoryView extends StackPane implements ModelListener {
         notesH.setAlignment(Pos.TOP_LEFT);
 
         addB = new Button("Add");
+        // Buttons
+        HBox buttonsHBox = new HBox(addB, cancelB);
+        buttonsHBox.setAlignment(Pos.TOP_CENTER);
+        buttonsHBox.setSpacing(10);
 
-        VBox mainVBox = new VBox(label1, HBox1, HBox2, notesH, addB);
+        VBox mainVBox = new VBox(label1, HBox1, HBox2, notesH, buttonsHBox);
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
         this.getChildren().add(mainVBox);
@@ -65,6 +71,7 @@ public class NewCategoryView extends StackPane implements ModelListener {
 
     public void associateHandler(NewCategoryController controller) {
         addB.setOnAction(controller::handleAddCategory);
+        cancelB.setOnAction(controller::handleCancelB);
     }
 
     public String getTitle(){

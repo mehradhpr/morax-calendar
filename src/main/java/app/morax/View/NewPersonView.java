@@ -20,6 +20,8 @@ public class NewPersonView extends StackPane implements ModelListener {
     TextArea descriptionText;
     Button addB;
 
+    Button cancelB = new Button("Cancel");
+
 
     public NewPersonView() {
         Label label1 = new Label("Add a new Person");
@@ -30,8 +32,12 @@ public class NewPersonView extends StackPane implements ModelListener {
         HBox1.setAlignment(Pos.TOP_LEFT);
 
         addB = new Button("Add");
+        // Buttons
+        HBox buttonsHBox = new HBox(addB, cancelB);
+        buttonsHBox.setAlignment(Pos.TOP_CENTER);
+        buttonsHBox.setSpacing(10);
 
-        VBox mainVBox = new VBox(label1, HBox1, addB);
+        VBox mainVBox = new VBox(label1, HBox1, buttonsHBox);
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
         mainVBox.setPadding(new Insets(5, 5, 5, 5));
@@ -49,6 +55,7 @@ public class NewPersonView extends StackPane implements ModelListener {
 
     public void associateHandler(NewPersonController controller) {
         addB.setOnAction(controller::handleAddPerson);
+        cancelB.setOnAction(controller::handleCancelB);
     }
 
     public String getTitle(){

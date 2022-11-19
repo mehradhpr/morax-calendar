@@ -4,6 +4,7 @@ import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import app.morax.View.MeetingDateView;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,8 @@ public class MeetingDateController {
     private MeetingDateView view;
 
     private MainModel model;
+
+    private Stage stage;
 
 
     public void setView(MeetingDateView meetingDateView) {
@@ -35,8 +38,14 @@ public class MeetingDateController {
 
         Task meeting = new Task(thisT, model.getPeople().get(view.getPersonName()));
         model.addTask(meeting);
+        this.stage.close();
     }
 
     public void handleCancelB(ActionEvent actionEvent) {
+        this.stage.close();
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

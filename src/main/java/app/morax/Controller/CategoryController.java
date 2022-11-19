@@ -41,6 +41,7 @@ public class CategoryController {
         Stage addCategoriesStage = new Stage();
         addCategoriesStage.setScene(new Scene(thisView, 270, 170));
         addCategoriesStage.getScene().getStylesheets().add("secondarySkin.css");
+        thisController.setStage(addCategoriesStage);
         addCategoriesStage.show();
     }
 

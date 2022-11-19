@@ -43,6 +43,8 @@ public class NewActivityController {
         Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText(), thisT);
         newTask.setCategory(this.view.getCategoryC().getValue());
         this.model.addTask(newTask);
+        this.stage.close();
+
     }
 
     public void handleSetTimeCheckBox(ActionEvent actionEvent) {
