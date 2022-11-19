@@ -52,12 +52,6 @@ public class MainModel implements Serializable {
         updateSubscribers();
     }
 
-    public void addTaskToCategory(Task t, Category c) {
-        if (!this.categoryExists(c)) throw new IllegalArgumentException("Category: " + c.getName() + " does not exist");
-        updateSubscribers();
-
-    }
-
     public void addTask(Task t, Category c) throws IllegalArgumentException{
         if (!this.categoryExists(c)) throw new IllegalArgumentException("Category: " + c.getName() + " does not exist");
 
@@ -396,6 +390,8 @@ public class MainModel implements Serializable {
         c.removeTask(t);
 
         this.finishedTasks.add(t);
+        System.out.println(finishedTasks.size());
+        this.updateSubscribers();
     }
 
     /**

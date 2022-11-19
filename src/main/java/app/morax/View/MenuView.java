@@ -83,7 +83,7 @@ public class MenuView extends StackPane implements ModelListener {
     public void associateHandler(Controller controller) {
         this.newActivityB.setOnAction(controller::handleNewActivityB);
         this.categoriesB.setOnAction(controller::handleCategoriesB);
-        this.chartViewB.setOnAction(controller::handleChartViewB);
+        this.chartViewB.setOnAction(controller::handleSwitchView);
         this.meetB.setOnAction(controller::handleMeetB);
         this.setting.setOnAction(controller::handleSettingB);
     }

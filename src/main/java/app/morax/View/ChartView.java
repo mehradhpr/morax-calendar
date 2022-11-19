@@ -41,8 +41,6 @@ public class ChartView  extends StackPane implements ModelListener {
         //setup yAxis of the chart
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Number of Tasks");
-        yAxis.setTickUnit(1.0);
-        yAxis.setMinorTickCount(0);
 
         //setup chart
         chart = new BarChart<>(xAxis, yAxis);
@@ -73,9 +71,10 @@ public class ChartView  extends StackPane implements ModelListener {
 
                 for (Task t:model.getFinishedTasks()){
                     String taskDate = t.getDate().getMonth() + " " + t.getDate().getDayOfMonth();
-                    if (t.getCategory().equals(c) && taskDate.equals(date)) tasksComplete ++;
+                    if (t.getCategory().getName().equals(c.getName()) && taskDate.equals(date)) tasksComplete ++;
                 }
 
+                System.out.println(c.getName() + " " + tasksComplete);
                 data.getData().add(new XYChart.Data<>(date, tasksComplete));
             }
 
@@ -87,5 +86,6 @@ public class ChartView  extends StackPane implements ModelListener {
     @Override
     public void setModel(MainModel model) {
         this.model = model;
+        this.update();
     }
 }

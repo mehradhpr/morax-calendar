@@ -17,20 +17,31 @@ public class MainUI extends StackPane implements ModelListener {
     MainModel mainModel;
 
     BorderPane mainPane;
-    ChartView chart;
+    ChartView chartView;
 
     public MainUI(MainModel model) {
 
         // creating the MVC objects
         Controller controller = new Controller();
-        scheduleDisplayView = new ScheduleDisplayView();
         activitiesListView = new ActivitiesListView();
+        scheduleDisplayView = new ScheduleDisplayView();
+
+        //create a stackPane, so we can stack the views and switch between them
+        StackPane switchViews = new StackPane();
+
+        scheduleDisplayView = new ScheduleDisplayView();
+        chartView = new ChartView();
+        chartView.setVisible(false);
+
+        switchViews.getChildren().addAll(chartView, scheduleDisplayView);
+
         menuBarView = new MenuView();
 
         // linking the MVC objects
         controller.setModel(model);
         controller.setView(this);
         scheduleDisplayView.setModel(model);
+        chartView.setModel(model);
         activitiesListView.setModel(model);
         menuBarView.setModel(model);
         this.setModel(model);
@@ -43,21 +54,17 @@ public class MainUI extends StackPane implements ModelListener {
         model.addSubscriber(scheduleDisplayView);
         model.addSubscriber(activitiesListView);
         model.addSubscriber(menuBarView);
+        model.addSubscriber(chartView);
         model.addSubscriber(this);
 
         // setting up the borderPane
         mainPane = new BorderPane();
-        mainPane.setCenter(scheduleDisplayView);
+        mainPane.setCenter(switchViews);
         mainPane.setRight(activitiesListView);
         mainPane.setTop(menuBarView);
         mainPane.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
 
-        // setting up the chartView
-        chart = new ChartView();
-        chart.setVisible(false);
-        chart.setModel(model);
-
-        this.getChildren().addAll(mainPane, chart);
+        this.getChildren().add(mainPane);
         this.setAlignment(Pos.CENTER);
     }
 
@@ -95,8 +102,7 @@ public class MainUI extends StackPane implements ModelListener {
     }
 
     public void switchView() {
-        chart.setVisible(true);
-        mainPane.setVisible(false);
-        chart.update();
+        chartView.setVisible(!chartView.isVisible());
+        scheduleDisplayView.setVisible(!chartView.isVisible());
     }
 }
