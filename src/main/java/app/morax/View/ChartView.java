@@ -70,7 +70,7 @@ public class ChartView  extends StackPane implements ModelListener {
 
                 for (Task t:model.getFinishedTasks()){
                     String taskDate = t.getDate().getMonth() + " " + t.getDate().getDayOfMonth();
-                    if (t.getCategory().getName().equals(c.getName()) && taskDate.equals(date)) tasksComplete ++;
+                    if (!t.isMeeting() && t.getCategory().getName().equals(c.getName()) && taskDate.equals(date)) tasksComplete ++;
                 }
 
                 data.getData().add(new XYChart.Data<>(date, tasksComplete));

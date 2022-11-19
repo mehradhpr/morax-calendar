@@ -386,10 +386,12 @@ public class MainModel implements Serializable {
      * @param t
      */
     public void taskComplete(Task t){
-        Category c = t.getCategory();
+        if (!t.isMeeting()) {
+            Category c = t.getCategory();
+            c.removeTask(t);
+        }
 
         this.removeTask(t);
-        c.removeTask(t);
 
         this.finishedTasks.add(t);
         this.updateSubscribers();

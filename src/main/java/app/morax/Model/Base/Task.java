@@ -22,6 +22,8 @@ public class Task implements Serializable {
 
     private final int timeToComplete;
 
+    private boolean isMeeting = false;
+
     /**
      * Initialize a task
      *
@@ -33,6 +35,15 @@ public class Task implements Serializable {
         this.date = null;
         this.priority = 0;
         this.timeToComplete = 0;
+    }
+
+    public Task(LocalDateTime meetingDate, Person p) {
+        this.name = "Meeting with " + p.getName();
+        this.location = null;
+        this.date = meetingDate;
+        this.priority = 0;
+        this.timeToComplete = 0;
+        this.isMeeting = true;
     }
     public Task(String taskName, String taskLocation) {
         this.name = taskName;
@@ -139,5 +150,9 @@ public class Task implements Serializable {
 
     public boolean hasCategory() {
         return category != null;
+    }
+
+    public boolean isMeeting() {
+        return isMeeting;
     }
 }

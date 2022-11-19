@@ -25,6 +25,7 @@ public class MainUI extends StackPane implements ModelListener {
         // creating the MVC objects
         Controller controller = new Controller();
         activitiesListView = new ActivitiesListView();
+        activitiesListView.setPrefWidth(270);
         scheduleDisplayView = new ScheduleDisplayView();
 
         //create a stackPane, so we can stack the views and switch between them

@@ -22,7 +22,7 @@ public class App extends Application {
         stage = primaryStage;
 
         MainUI mainUI = new MainUI(model);
-        Scene mainScene = new Scene(mainUI, 800, 450);
+        Scene mainScene = new Scene(mainUI, 850, 450);
         mainScene.getStylesheets().add("primarySkin.css");
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Calendar");

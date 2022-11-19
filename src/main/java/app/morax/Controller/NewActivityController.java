@@ -4,6 +4,7 @@ import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import app.morax.View.NewActivityView;
 import javafx.event.ActionEvent;
+import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +13,7 @@ public class NewActivityController {
     private MainModel model;
 
     private NewActivityView view;
+    private Stage stage;
 
     public void setModel(MainModel model) {
         this.model = model;
@@ -52,5 +54,13 @@ public class NewActivityController {
             view.timeText.setDisable(true);
             view.PmAmC.setDisable(true);
         }
+    }
+
+    public void handleCancelB(ActionEvent actionEvent) {
+        this.stage.close();
+    }
+
+    public void setStage(Stage newActivityStage) {
+        this.stage = newActivityStage;
     }
 }

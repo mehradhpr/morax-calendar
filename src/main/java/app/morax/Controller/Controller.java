@@ -47,8 +47,9 @@ public class Controller {
 
         // Starting new window
         Stage newActivityStage = new Stage();
-        newActivityStage.setScene(new Scene(newActivityView, 250, 270));
+        newActivityStage.setScene(new Scene(newActivityView, 240, 270));
         newActivityStage.getScene().getStylesheets().add("secondarySkin.css");
+        newActivityController.setStage(newActivityStage);
         newActivityStage.show();
     }
 

@@ -45,6 +45,21 @@
 }
 
 
+.list-cell {
+    -fx-background-color: #fffbd4;
+    -fx-text-fill: rgba(143, 79, 7, 0.95);
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#d59744, rgba(255, 213, 0, 0.35));
+    -fx-text-fill: Black;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #fae2a7;
+    -fx-text-fill: rgba(143, 79, 7, 0.95);
+}
+
 .combo-box {
     -fx-background-color: linear-gradient(rgb(255, 242, 2), #e5cd30);
     -fx-highlight-text-fill: Black;
@@ -64,17 +79,17 @@
     -fx-text-fill: Black;
 }
 
-.list-cell {
+.combo-box .list-cell
+{
     -fx-background-color: #fffbd4;
     -fx-text-fill: rgba(143, 79, 7, 0.95);
 }
 
-.list-cell:filled:selected:focused, .list-cell:filled:selected {
-    -fx-background-color: linear-gradient(#d59744, rgba(255, 213, 0, 0.35));
-    -fx-text-fill: Black;
+.button:hover {
+    -fx-background-color: rgb(236, 223, 0);
 }
 
-.list-cell:filled:hover {
-    -fx-background-color: #fae2a7;
-    -fx-text-fill: rgba(143, 79, 7, 0.95);
+.text-input:focused {
+    -fx-highlight-fill: rgba(166, 89, 0, 0.25);
+    -fx-highlight-text-fill: Black;
 }

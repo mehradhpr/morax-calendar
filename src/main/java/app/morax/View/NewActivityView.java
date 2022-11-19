@@ -34,7 +34,9 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     public TextField timeText = new TextField();
 
-    private Button button;
+    private Button addB;
+
+    private Button cancelB;
     public DatePicker DT = new DatePicker();
 
     public CheckBox setTimeCk = new CheckBox();
@@ -56,16 +58,20 @@ public class NewActivityView extends StackPane implements ModelListener {
         Label title2 = new Label("Title: ");
         titleText = new TextField("Activity");
         HBox titleHBox = new HBox(title2, titleText);
+        titleHBox.setAlignment(Pos.CENTER_LEFT);
 
         Label title3 = new Label("Date: ");
         DT.setMaxWidth(120);
         DT.getEditor().setText(currentTime.substring(0, 4) + "-" + currentTime.substring(5, 7) + "-" + currentTime.substring(8, 10));
         HBox dateHBox = new HBox(title3, DT);
+        dateHBox.setAlignment(Pos.CENTER_LEFT);
 
         Label locationTitle = new Label("Location: ");
         locationText = new TextField();
         locationText.setText("Home");
+        locationText.setMaxWidth(100);
         HBox locationHBox = new HBox(locationTitle, locationText);
+        locationHBox.setAlignment(Pos.CENTER_LEFT);
 
         Label title4 = new Label("Set Time: ");
 
@@ -79,6 +85,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         PmAmC.setDisable(true);
         HBox setTimeH = new HBox(title4, setTimeCk, timeText, PmAmC);
         setTimeH.setSpacing(5);
+        setTimeH.setAlignment(Pos.CENTER_LEFT);
 
         Label title5 = new Label("Category: ");
         categoryC = new ComboBox<>();
@@ -86,15 +93,20 @@ public class NewActivityView extends StackPane implements ModelListener {
         categoryC.setMinWidth(120);
         categoryC.setValue(new Category("Work", 1, 1, 20));
         HBox categoryH = new HBox(title5, categoryC);
+        categoryH.setAlignment(Pos.CENTER_LEFT);
 
         Label title6 = new Label("Notes: ");
         TextArea t = new TextArea();
         t.setMaxWidth(150);
         HBox notesH = new HBox(title6, t);
 
-        button = new Button("Add");
+        addB = new Button("Add");
+        cancelB = new Button("Cancel");
+        HBox buttonHBox = new HBox(addB, cancelB);
+        buttonHBox.setSpacing(10);
+        buttonHBox.setAlignment(Pos.TOP_CENTER);
 
-        VBox mainVBox = new VBox(title1, titleHBox, dateHBox, locationHBox, setTimeH, categoryH, notesH, button);
+        VBox mainVBox = new VBox(title1, titleHBox, dateHBox, locationHBox, setTimeH, categoryH, notesH, buttonHBox);
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
         mainVBox.setPadding(new Insets(10, 10, 10, 10));
@@ -140,35 +152,9 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     public void associateHandler(NewActivityController controller) {
         titleText.setOnAction(controller::handleTitleText);
-        button.setOnAction(((NewActivityController) controller)::handleAddButton);
+        addB.setOnAction(((NewActivityController) controller)::handleAddButton);
+        cancelB.setOnAction(controller::handleCancelB);
         setTimeCk.setOnAction(((NewActivityController) controller)::handleSetTimeCheckBox);
     }
-
-    // hour in the format of "HH"
-    // returns in the format of HH[PM/AM]
-    public static String convert24To12(String hour) {
-        String result1;
-        String result2;
-        if (Integer.parseInt(hour) > 12) {
-            if ((Integer.parseInt(hour) - 12) < 10) {
-                result1 = ("0" + (Integer.parseInt(hour) - 12));
-            }
-            else {
-                result1 = (Integer.parseInt(hour.substring(11, 13)) - 12 + ":" + hour.substring(14, 16));
-            }
-            result2 = "PM";
-        }
-        else {
-            if ((Integer.parseInt(hour.substring(11, 13)) < 10)) {
-                result1 = "0" + hour;
-            }
-            else {
-                result1 = hour;
-            }
-            result2 = "AM";
-        }
-        return result1 + result2;
-    }
-
 
 }

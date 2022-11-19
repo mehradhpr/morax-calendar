@@ -74,6 +74,7 @@ public class ActivitiesListView extends StackPane implements ModelListener {
             String month = MainUI.getMonth(Integer.parseInt(t.getDate().format(DateTimeFormatter.ofPattern("MM"))));
             HourModel HM = new HourModel(t.getDate().format(DateTimeFormatter.ofPattern("HH")), null);
             Label taskN = new Label(t.getName());
+            taskN.setStyle("-fx-font-size: 12;" + "-fx-text-fill: rgba(126, 84, 0, 0.87);" + "-fx-font-family: 'Arial Black';");
             Label taskDT = new Label("    " + month.substring(0, 3) + t.getDate().format(DateTimeFormatter.ofPattern(" dd, "))
                     + HM.getHour12() + ":" + t.getDate().format(DateTimeFormatter.ofPattern("mm")) + " " + HM.getAMPM());
             taskDT.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");

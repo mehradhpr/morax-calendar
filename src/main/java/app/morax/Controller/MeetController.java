@@ -1,10 +1,7 @@
 package app.morax.Controller;
 
 import app.morax.Model.Base.MainModel;
-import app.morax.View.CategoriesView;
-import app.morax.View.MeetView;
-import app.morax.View.NewCategoryView;
-import app.morax.View.NewPersonView;
+import app.morax.View.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -47,10 +44,36 @@ public class MeetController {
         model.removePerson(view.getSelection());
     }
 
+
+
+
     public void setStage(Stage s) {
         this.stage = s;
     }
 
+    public void handleCancelB(ActionEvent actionEvent) {
+        this.stage.close();
+    }
+
+    public void handleMeetB(ActionEvent actionEvent) {
+        MeetingDateView meetingDateView = new MeetingDateView(this.view.getSelection().getName());
+        MeetingDateController meetingDateController = new MeetingDateController();
+
+        //link the new view and its controller
+        meetingDateView.associateHandler(meetingDateController);
+        meetingDateController.setView(meetingDateView);
+
+        //link the model and controller
+        meetingDateView.setModel(model);
+        meetingDateController.setModel(model);
+        model.addSubscriber(meetingDateView);
+
+        //open a new window
+        Stage meetingStage = new Stage();
+        meetingStage.setScene(new Scene(meetingDateView, 220, 150));
+        meetingStage.getScene().getStylesheets().add("secondarySkin.css");
+        meetingStage.show();
+    }
 }
 
 
