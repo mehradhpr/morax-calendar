@@ -392,7 +392,6 @@ public class MainModel implements Serializable {
         c.removeTask(t);
 
         this.finishedTasks.add(t);
-        System.out.println(finishedTasks.size());
         this.updateSubscribers();
     }
 
@@ -413,8 +412,6 @@ public class MainModel implements Serializable {
 
             //we do not save the subscribers list, so we need to initialize it
             fromDisk.subscribers = new ArrayList<>();
-
-            System.out.println("The Object has successfully been read");
         }
         catch (Exception e){
             System.out.println(e.toString());
@@ -435,7 +432,6 @@ public class MainModel implements Serializable {
             out.writeObject(this);
             out.close();
             file.close();
-            System.out.println("The Object  was successfully written");
         }
         catch (Exception e){
             System.out.println(e.toString());

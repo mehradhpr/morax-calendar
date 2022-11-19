@@ -8,9 +8,16 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class ErrorMessage {
+
+    /**
+     * Creates the error message window
+     * @param message the error message
+     */
     public ErrorMessage(String message){
-        //the error message
+
         BorderPane errorMessage = new BorderPane();
+
+        //the error message
         Label text = new Label("ERROR\n" + message);
         text.setFont(new Font(10));
         text.setTextAlignment(TextAlignment.CENTER);
