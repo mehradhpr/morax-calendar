@@ -20,7 +20,7 @@ public class MainModel implements Serializable {
     private ArrayList<Category> categoryList;
 
     // a list of finished tasks
-    private Category finishedTasks;
+    private ArrayList<Task> finishedTasks;
 
     /** list of people */
     private TreeMap<String, Person> people;
@@ -39,7 +39,7 @@ public class MainModel implements Serializable {
         this.subscribers = new ArrayList<>();
         this.addCategory(new Category("Work", 1, 1, 20));
 
-        this.finishedTasks = new Category("Finished", 0, 0, -1);
+        this.finishedTasks = new ArrayList<>();
     }
 
     /**
@@ -71,12 +71,25 @@ public class MainModel implements Serializable {
 
     /**
      * Checks if a category exists
+     * @param name the name of the category
+     * @return true if the category exists in ManagementSystem false otherwise
+     */
+    public boolean categoryExists(String name){
+        for (Category c:this.categoryList){
+            if (c.getName().equals(name)) return true;
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if the given category object is contained in MainModel
      * @param c a category object
      * @return true if the category exists in ManagementSystem false otherwise
      */
     public boolean categoryExists(Category c){
         return this.categoryList.contains(c);
     }
+
     /**
      * Remove task from list
      */
@@ -163,7 +176,7 @@ public class MainModel implements Serializable {
 
 
     public void addCategory(Category c){
-        if (this.categoryExists(c)) throw new IllegalArgumentException("Category already exists");
+        if (this.categoryExists(c.getName())) throw new IllegalArgumentException("Categories cannot share a name");
 
         this.categoryList.add(c);
         updateSubscribers();
@@ -379,10 +392,10 @@ public class MainModel implements Serializable {
     public void taskComplete(Task t){
         Category c = t.getCategory();
 
+        this.removeTask(t);
         c.removeTask(t);
-        t.removeCategory(c);
 
-        this.finishedTasks.addTask(t);
+        this.finishedTasks.add(t);
     }
 
     /**
@@ -431,4 +444,7 @@ public class MainModel implements Serializable {
         };
     }
 
+    public ArrayList<Task> getFinishedTasks() {
+        return finishedTasks;
+    }
 }

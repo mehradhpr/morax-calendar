@@ -8,13 +8,17 @@ import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
-import javafx.stage.Stage;
 
 public class MainUI extends StackPane implements ModelListener {
+
     ScheduleDisplayView scheduleDisplayView;
     MenuView menuBarView;
     ActivitiesListView activitiesListView;
     MainModel mainModel;
+
+    BorderPane mainPane;
+    ChartView chart;
+
     public MainUI(MainModel model) {
 
         // creating the MVC objects
@@ -25,6 +29,7 @@ public class MainUI extends StackPane implements ModelListener {
 
         // linking the MVC objects
         controller.setModel(model);
+        controller.setView(this);
         scheduleDisplayView.setModel(model);
         activitiesListView.setModel(model);
         menuBarView.setModel(model);
@@ -41,12 +46,18 @@ public class MainUI extends StackPane implements ModelListener {
         model.addSubscriber(this);
 
         // setting up the borderPane
-        BorderPane mainPane = new BorderPane();
+        mainPane = new BorderPane();
         mainPane.setCenter(scheduleDisplayView);
         mainPane.setRight(activitiesListView);
         mainPane.setTop(menuBarView);
         mainPane.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
-        this.getChildren().add(mainPane);
+
+        // setting up the chartView
+        chart = new ChartView();
+        chart.setVisible(false);
+        chart.setModel(model);
+
+        this.getChildren().addAll(mainPane, chart);
         this.setAlignment(Pos.CENTER);
     }
 
@@ -84,6 +95,8 @@ public class MainUI extends StackPane implements ModelListener {
     }
 
     public void switchView() {
-
+        chart.setVisible(true);
+        mainPane.setVisible(false);
+        chart.update();
     }
 }

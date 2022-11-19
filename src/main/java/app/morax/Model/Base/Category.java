@@ -31,8 +31,8 @@ public class Category implements Serializable {
      * @param t a task object
      */
     public void addTask(Task t){
-        if (!(this.timeLeft() >= t.getTime()) && this.timeAlloc > 0) throw new IllegalArgumentException("Cannot allocate enough time to task");
-        this.timeUsed = this.timeUsed + t.getTime();
+        if (!(this.timeLeft() >= t.getTimeToComplete()) && this.timeAlloc > 0) throw new IllegalArgumentException("Cannot allocate enough time to task");
+        this.timeUsed = this.timeUsed + t.getTimeToComplete();
         this.taskList.add(t);
     }
 
@@ -42,7 +42,7 @@ public class Category implements Serializable {
      */
     public void removeTask(Task t){
         if (!this.hasTask(t)) return;
-        this.timeUsed = this.timeUsed - t.getTime();
+        this.timeUsed = this.timeUsed - t.getTimeToComplete();
         this.taskList.remove(t);
     }
 
@@ -245,9 +245,5 @@ public class Category implements Serializable {
                 System.out.println("Invalid Number Entered\n");
                 break;
         }
-    }
-
-    public Category loadFromString(String path){
-        return null;
     }
 }

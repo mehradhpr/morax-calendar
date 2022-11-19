@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        model = MainModel.loadFromFile("saved");
+        model = MainModel.loadFromFile("saved.o");
         if (model == null) model = new MainModel();
 
         stage = primaryStage;
@@ -35,6 +35,6 @@ public class App extends Application {
 
     @Override
     public void stop(){
-        model.saveToFile("saved");
+        model.saveToFile("saved.o");
     }
 }

@@ -76,6 +76,7 @@ public class CategoriesView extends StackPane implements ModelListener {
     public void associateHandler(CategoryController controller) {
         addCategoryB.setOnAction(controller::handleAddCategory);
         removeCategoryB.setOnAction(controller::handleRemoveCategory);
+        cancelB.setOnAction(controller::handleCancel);
     }
 
     public Category getSelection(){

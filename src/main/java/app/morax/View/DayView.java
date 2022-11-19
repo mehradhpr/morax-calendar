@@ -1,16 +1,19 @@
 package app.morax.View;
 
+import app.morax.Controller.TaskController;
 import app.morax.Model.Base.HourModel;
+import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.time.LocalDateTime;
+
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -20,7 +23,7 @@ public class DayView extends VBox {
 
     ObservableList<Task> taskObservableList = FXCollections.observableArrayList();
 
-    DayView(String date, String month, ArrayList<Task> tasks) {
+    DayView(String date, String month, ArrayList<Task> tasks, MainModel model) {
         this.dateLabel = new Label(" " + month + " " + date + "                                                                        ");
         this.dateLabel.setPadding(new Insets(2, 2, 2, 2));
         this.getChildren().add(dateLabel);
@@ -36,7 +39,15 @@ public class DayView extends VBox {
             time.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");
             time.setAlignment(Pos.CENTER_LEFT);
             Label task = new Label(t.getName());
-            HBox taskHB = new HBox(time, task, category);
+
+            Button finishB = new Button("Finish");
+            TaskController buttonControl = new TaskController();
+            buttonControl.setTask(t);
+            buttonControl.setModel(model);
+
+            finishB.setOnAction(buttonControl::handleFinish);
+
+            HBox taskHB = new HBox(time, task, category, finishB);
             taskHB.setSpacing(15);
             taskHB.setAlignment(Pos.CENTER_LEFT);
             this.getChildren().add(taskHB);

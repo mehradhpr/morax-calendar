@@ -61,7 +61,7 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
                 dayTasks.add(t);
             }
             else {
-                DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
+                DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks, this.model);
                 days.add(dayView);
                 dayTasks.clear();
                 dayTasks.add(t);
@@ -69,7 +69,7 @@ public class ScheduleDisplayView extends StackPane implements ModelListener {
                 month = t.getDate().getMonth().getValue();
             }
             if (sortedTasks.indexOf(t) + 1 == sortedTasks.size()) {
-                DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks);
+                DayView dayView = new DayView(String.valueOf(day), MainUI.getMonth(month), dayTasks, this.model);
                 days.add(dayView);
                 dayTasks.clear();
             }

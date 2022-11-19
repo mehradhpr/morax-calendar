@@ -10,16 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 public class MenuView extends StackPane implements ModelListener {
+
     MainModel model;
     Button newActivityB;
-    Button scheduleB;
+    Button chartViewB;
     Button categoriesB;
     Button setting;
-    Controller controller;
 
     public MenuView() {
 
@@ -30,9 +30,9 @@ public class MenuView extends StackPane implements ModelListener {
 
         // Left side of the menu
         categoriesB = new Button("Categories");
-        scheduleB = new Button("Schedule an Activity");
+        chartViewB = new Button("View Progress Chart");
         newActivityB = new Button("New Activity");
-        HBox leftMenu = new HBox(newActivityB, scheduleB, categoriesB);
+        HBox leftMenu = new HBox(newActivityB, chartViewB, categoriesB);
         leftMenu.setSpacing(3);
 
         // Right side of the menu
@@ -70,9 +70,7 @@ public class MenuView extends StackPane implements ModelListener {
     }
 
     @Override
-    public void update() {
-
-    }
+    public void update() {}
 
     @Override
     public void setModel(MainModel model) {
@@ -82,6 +80,7 @@ public class MenuView extends StackPane implements ModelListener {
     public void associateHandler(Controller controller) {
         this.newActivityB.setOnAction(controller::handleNewActivityB);
         this.categoriesB.setOnAction(controller::handleCategoriesB);
+        this.chartViewB.setOnAction(controller::handleChartViewB);
         this.setting.setOnAction(controller::handleSettingB);
     }
 }

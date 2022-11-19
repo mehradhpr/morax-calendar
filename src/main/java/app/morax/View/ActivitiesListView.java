@@ -19,7 +19,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 public class ActivitiesListView extends StackPane implements ModelListener {
     ObservableList<String> sortOptions = FXCollections.observableArrayList("Name", "Location", "Date", "Priority");

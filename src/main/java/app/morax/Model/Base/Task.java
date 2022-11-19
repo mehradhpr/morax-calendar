@@ -3,7 +3,6 @@ package app.morax.Model.Base;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 /**
  * Model for a generic task within the system
@@ -19,6 +18,10 @@ public class Task implements Serializable {
     private int time;
     private Category category;
 
+    private final int priority;
+
+    private final int timeToComplete;
+
     /**
      * Initialize a task
      *
@@ -28,27 +31,45 @@ public class Task implements Serializable {
         this.name = taskName;
         this.location = null;
         this.date = null;
+        this.priority = 0;
+        this.timeToComplete = 0;
     }
     public Task(String taskName, String taskLocation) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = null;
+        this.priority = 0;
+        this.timeToComplete = 0;
     }
     public Task(String taskName, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = null;
         this.date = taskDate;
+        this.priority = 0;
+        this.timeToComplete = 0;
     }
     public Task(String taskName, String taskLocation, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = taskLocation;
         this.date = taskDate;
+        this.priority = 0;
+        this.timeToComplete = 0;
     }
     public Task(String taskName, int time){
         this.name = taskName;
-        this.time = time;
+        this.location = null;
+        this.date = null;
+        this.priority = 0;
+        this.timeToComplete = 0;
     }
 
+    public Task(String taskName, String taskLocation, LocalDateTime taskDate, int priority, int timeToComplete) {
+        this.name = taskName;
+        this.location = taskLocation;
+        this.date = taskDate;
+        this.priority = priority;
+        this.timeToComplete = timeToComplete;
+    }
     /**
      * Return task's name variable
      *
@@ -62,6 +83,14 @@ public class Task implements Serializable {
     }
     public LocalDateTime getDate() {
         return this.date;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public int getTimeToComplete() {
+        return timeToComplete;
     }
 
     /**

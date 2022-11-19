@@ -14,8 +14,13 @@ import javafx.stage.Stage;
 public class Controller {
     private MainModel model;
     private MainUI view;
+
     public void setModel(MainModel model) {
         this.model = model;
+    }
+
+    public void setView(MainUI view) {
+        this.view = view;
     }
 
     public void handleNewActivityB(ActionEvent ignored) {
@@ -54,6 +59,9 @@ public class Controller {
 
         //opening the new window
         Stage categoriesStage = new Stage();
+        //make it so the controller has controller over the stage
+        thisController.setStage(categoriesStage);
+
         categoriesStage.setScene(new Scene(thisView, 350, 300));
         categoriesStage.getScene().getStylesheets().add("secondarySkin.css");
         categoriesStage.show();
@@ -71,5 +79,9 @@ public class Controller {
     }
 
     public void handleSettingB(ActionEvent actionEvent) {
+    }
+
+    public void handleChartViewB(ActionEvent actionEvent) {
+        view.switchView();
     }
 }
