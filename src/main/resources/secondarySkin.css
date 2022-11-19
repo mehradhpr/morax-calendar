@@ -16,7 +16,10 @@
 }
 
 .button {
+    -fx-font-size: 9pt;
+    -fx-font-family: "Arial Black";
     -fx-background-color: rgb(255, 242, 2);
+    -fx-text-fill: rgba(126, 84, 0, 0.87);
 }
 
 .button .text {

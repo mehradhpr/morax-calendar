@@ -81,6 +81,9 @@ public class Controller {
     public void handleSettingB(ActionEvent actionEvent) {
     }
 
+    public void handleMeetB(ActionEvent actionEvent) {
+    }
+
     public void handleChartViewB(ActionEvent actionEvent) {
         view.switchView();
     }

@@ -17,9 +17,11 @@ public class MenuView extends StackPane implements ModelListener {
 
     MainModel model;
     Button newActivityB;
+    Button meetB;
     Button chartViewB;
     Button categoriesB;
     Button setting;
+    Controller controller;
 
     public MenuView() {
 
@@ -30,9 +32,10 @@ public class MenuView extends StackPane implements ModelListener {
 
         // Left side of the menu
         categoriesB = new Button("Categories");
+        meetB = new Button("Meet");
         chartViewB = new Button("View Progress Chart");
         newActivityB = new Button("New Activity");
-        HBox leftMenu = new HBox(newActivityB, chartViewB, categoriesB);
+        HBox leftMenu = new HBox(newActivityB, categoriesB, meetB, chartViewB);
         leftMenu.setSpacing(3);
 
         // Right side of the menu
@@ -81,6 +84,7 @@ public class MenuView extends StackPane implements ModelListener {
         this.newActivityB.setOnAction(controller::handleNewActivityB);
         this.categoriesB.setOnAction(controller::handleCategoriesB);
         this.chartViewB.setOnAction(controller::handleChartViewB);
+        this.meetB.setOnAction(controller::handleMeetB);
         this.setting.setOnAction(controller::handleSettingB);
     }
 }
