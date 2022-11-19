@@ -17,12 +17,12 @@ public class ChartView  extends StackPane implements ModelListener {
 
     private MainModel model;
     private final BarChart<String, Number> chart;
-    private ObservableList<String> dates;
+    private final ObservableList<String> dates;
 
     public ChartView(){
         //creating a chart
 
-        //categories that the chart has
+        //dates that the chart has
         dates = FXCollections.observableArrayList();
 
         //populate the list with the last fourteen days
@@ -31,7 +31,6 @@ public class ChartView  extends StackPane implements ModelListener {
             LocalDateTime day = now.minusDays(d);
             dates.add(day.getMonth().toString() + " " + day.getDayOfMonth());
         }
-
 
         //setup xAxis
         CategoryAxis xAxis = new CategoryAxis();
@@ -64,9 +63,9 @@ public class ChartView  extends StackPane implements ModelListener {
             data = new XYChart.Series<>();
             data.setName(c.getName());
 
+            //check how many tasks were completed each day for this category
             for (String date: dates){
 
-                //reset tasks counter
                 tasksComplete = 0;
 
                 for (Task t:model.getFinishedTasks()){
@@ -74,14 +73,12 @@ public class ChartView  extends StackPane implements ModelListener {
                     if (t.getCategory().getName().equals(c.getName()) && taskDate.equals(date)) tasksComplete ++;
                 }
 
-                System.out.println(c.getName() + " " + tasksComplete);
                 data.getData().add(new XYChart.Data<>(date, tasksComplete));
             }
 
             chart.getData().add(data);
         }
     }
-
 
     @Override
     public void setModel(MainModel model) {

@@ -1,19 +1,19 @@
 package app.morax.Controller;
 
 import app.morax.Model.Base.MainModel;
-import app.morax.View.CategoriesView;
-import app.morax.View.MainUI;
-import app.morax.View.NewActivityView;
-import javafx.application.Platform;
-import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
+import app.morax.View.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 
 public class Controller {
     private MainModel model;
     private MainUI view;
+    private CompareView compareView;
 
     public void setModel(MainModel model) {
         this.model = model;
@@ -21,6 +21,10 @@ public class Controller {
 
     public void setView(MainUI view) {
         this.view = view;
+    }
+
+    public void setCompareView(CompareView compareView) {
+        this.compareView = compareView;
     }
 
     public void handleNewActivityB(ActionEvent ignored) {
@@ -84,4 +88,26 @@ public class Controller {
     public void handleMeetB(ActionEvent actionEvent) {
     }
 
+    public void handleCompare(DragEvent dragEvent) {
+        Dragboard dragboard = dragEvent.getDragboard();
+        if (dragboard.hasFiles()){
+            dragEvent.acceptTransferModes(TransferMode.ANY);
+        }
+        else{
+            dragEvent.consume();
+        }
+
+    }
+
+    public void handleDragDropped(DragEvent dragEvent) {
+        Dragboard dragboard = dragEvent.getDragboard();
+
+        if (!dragboard.hasFiles()) return;
+
+        String path = dragboard.getFiles().get(0).getAbsolutePath();
+        MainModel comparisonModel = MainModel.loadFromFile(path);
+
+        if (comparisonModel == null) new ErrorMessage("File is not a valid type");
+        compareView.setComparisonModel(comparisonModel);
+    }
 }

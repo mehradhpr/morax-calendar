@@ -40,6 +40,7 @@ public class DayView extends VBox {
             time.setAlignment(Pos.CENTER_LEFT);
             Label task = new Label(t.getName());
 
+            //the button to complete a task and take it off the list
             Button finishB = new Button("Finish");
             TaskController buttonControl = new TaskController();
             buttonControl.setTask(t);

@@ -18,6 +18,7 @@ public class MainUI extends StackPane implements ModelListener {
 
     BorderPane mainPane;
     ChartView chartView;
+    CompareView compareView;
 
     public MainUI(MainModel model) {
 
@@ -35,11 +36,12 @@ public class MainUI extends StackPane implements ModelListener {
 
         switchViews.getChildren().addAll(chartView, scheduleDisplayView);
 
+        compareView = new CompareView();
         menuBarView = new MenuView();
 
         // linking the MVC objects
         controller.setModel(model);
-        controller.setView(this);
+        compareView.setModel(model);
         scheduleDisplayView.setModel(model);
         chartView.setModel(model);
         activitiesListView.setModel(model);
@@ -55,7 +57,10 @@ public class MainUI extends StackPane implements ModelListener {
         model.addSubscriber(activitiesListView);
         model.addSubscriber(menuBarView);
         model.addSubscriber(chartView);
+        model.addSubscriber(compareView);
         model.addSubscriber(this);
+
+        controller.setView(this);
 
         // setting up the borderPane
         mainPane = new BorderPane();
