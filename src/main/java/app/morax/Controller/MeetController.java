@@ -33,6 +33,7 @@ public class MeetController {
 
         //link the model and controller
         newPersonController.setModel(model);
+        model.addSubscriber(newPersonView);
 
         //open a new window
         Stage addCategoriesStage = new Stage();

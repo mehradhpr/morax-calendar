@@ -20,10 +20,6 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     private MainModel model;
 
-    private TextField titleText;
-
-    private TextField dateText;
-
     private Button addCategoryB;
 
     private Button removeCategoryB;
@@ -35,26 +31,38 @@ public class CategoriesView extends StackPane implements ModelListener {
     ListView<Category> categoriesL;
 
     public CategoriesView() {
-        Label title1 = new Label("All Categories");
-
+        // The Left VBox
         categoriesL = new ListView<>();
-
-        VBox leftVBox = new VBox(title1, categoriesL);
+        VBox leftVBox = new VBox(categoriesL);
         leftVBox.setAlignment(Pos.CENTER);
         leftVBox.setSpacing(5);
+        leftVBox.setPrefWidth(200);
+        leftVBox.setPrefHeight(300);
 
 
+
+        // The Right VBox
         addCategoryB = new Button("Add Category");
-        removeCategoryB = new Button("Remove category");
+        removeCategoryB = new Button("Remove Category");
         cancelB = new Button("Cancel");
-        HBox buttonsHBox = new HBox(addCategoryB, removeCategoryB, cancelB);
-        buttonsHBox.setSpacing(5);
-        buttonsHBox.setAlignment(Pos.CENTER);
+        VBox rightVBox = new VBox(addCategoryB, removeCategoryB, cancelB);
+        rightVBox.setSpacing(10);
+        rightVBox.setAlignment(Pos.TOP_LEFT);
 
-        VBox mainVBox = new VBox(leftVBox, buttonsHBox);
-        mainVBox.setPadding(new Insets(10, 10, 10, 10));
+        // The content HBox
+        HBox contentHBox = new HBox(leftVBox, rightVBox);
+        contentHBox.setSpacing(5);
+
+        // The main VBox
+        Label title1 = new Label("All Categories");
+        leftVBox.setAlignment(Pos.CENTER);
+        leftVBox.setSpacing(5);
+        VBox mainVBox = new VBox(title1, contentHBox);
+        mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
-        mainVBox.setAlignment(Pos.CENTER);
+        mainVBox.setPadding(new Insets(5, 5, 5, 5));
+
+
         this.getChildren().add(mainVBox);
     }
 

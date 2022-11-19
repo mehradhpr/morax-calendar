@@ -100,6 +100,7 @@ public class MainModel implements Serializable {
     public void addPerson(Person p)
     {
         this.people.put(p.getName(), p);
+        updateSubscribers();
     }
 
     /**
@@ -109,6 +110,7 @@ public class MainModel implements Serializable {
     public void removePerson(Person p)
     {
         this.people.remove(p.getName());
+        updateSubscribers();
     }
 
     /**
@@ -438,6 +440,10 @@ public class MainModel implements Serializable {
         catch (Exception e){
             System.out.println(e.toString());
         };
+    }
+
+    public TreeMap<String, Person> getPeople() {
+        return people;
     }
 
     public ArrayList<Task> getFinishedTasks() {

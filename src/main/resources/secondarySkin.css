@@ -11,7 +11,7 @@
 }
 
 .list-view {
-    -fx-background-color: #fffbbf;
+    -fx-background-color: #fffbd4;
     -fx-border-color: #0d2a0d;
 }
 
@@ -66,4 +66,15 @@
 
 .list-cell {
     -fx-background-color: #fffbd4;
+    -fx-text-fill: rgba(143, 79, 7, 0.95);
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: linear-gradient(#d59744, rgba(255, 213, 0, 0.35));
+    -fx-text-fill: Black;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #fae2a7;
+    -fx-text-fill: rgba(143, 79, 7, 0.95);
 }

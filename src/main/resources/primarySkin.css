@@ -36,6 +36,7 @@
 
 .list-cell {
     -fx-background-color: #fffbd4;
+    -fx-text-fill: rgba(143, 79, 7, 0.95);
 }
 
 .button {

@@ -63,7 +63,7 @@ public class Controller {
         //make it so the controller has controller over the stage
         thisController.setStage(categoriesStage);
 
-        categoriesStage.setScene(new Scene(thisView, 350, 300));
+        categoriesStage.setScene(new Scene(thisView, 350, 240));
         categoriesStage.getScene().getStylesheets().add("secondarySkin.css");
         categoriesStage.show();
     }
@@ -101,7 +101,7 @@ public class Controller {
         // make it so the controller has controller over the stage
         meetController.setStage(meetStage);
 
-        meetStage.setScene(new Scene(meetView, 350, 300));
+        meetStage.setScene(new Scene(meetView, 335, 250));
         meetStage.getScene().getStylesheets().add("secondarySkin.css");
         meetStage.show();
     }

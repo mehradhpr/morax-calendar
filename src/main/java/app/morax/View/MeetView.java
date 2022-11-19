@@ -29,39 +29,60 @@ public class MeetView extends StackPane implements ModelListener {
 
     private Button removePersonB;
 
+    private Button meetB;
+
     private Button cancelB;
 
-    ObservableList<Person> PersonsObs = FXCollections.observableArrayList();
+    ObservableList<Person> personsObs = FXCollections.observableArrayList();
 
     ListView<Person> personsList;
 
 
     public MeetView() {
-        Label title1 = new Label("All people to meet");
 
+
+        // The Left VBox
         personsList = new ListView<>();
-
-        VBox leftVBox = new VBox(title1, personsList);
+        VBox leftVBox = new VBox(personsList);
         leftVBox.setAlignment(Pos.CENTER);
         leftVBox.setSpacing(5);
+        leftVBox.setPrefWidth(200);
+        leftVBox.setPrefHeight(300);
 
 
+
+        // The Right VBox
+        meetB = new Button("Meet");
+        meetB.setStyle("-fx-background-color: linear-gradient(#d38836, Yellow)");
         addPersonB = new Button("Add Person");
         removePersonB = new Button("Remove Person");
         cancelB = new Button("Cancel");
-        HBox buttonsHBox = new HBox(addPersonB, removePersonB, cancelB);
-        buttonsHBox.setSpacing(5);
-        buttonsHBox.setAlignment(Pos.CENTER);
+        VBox rightVBox = new VBox(meetB, addPersonB, removePersonB, cancelB);
+        rightVBox.setSpacing(10);
+        rightVBox.setAlignment(Pos.TOP_LEFT);
 
-        VBox mainVBox = new VBox(leftVBox, buttonsHBox);
-        mainVBox.setPadding(new Insets(10, 10, 10, 10));
+        // The content HBox
+        HBox contentHBox = new HBox(leftVBox, rightVBox);
+        contentHBox.setSpacing(5);
+
+        // The main VBox
+        Label title1 = new Label("All people to meet");
+        leftVBox.setAlignment(Pos.CENTER);
+        leftVBox.setSpacing(5);
+        VBox mainVBox = new VBox(title1, contentHBox);
+        mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
-        mainVBox.setAlignment(Pos.CENTER);
+        mainVBox.setPadding(new Insets(5, 5, 5, 5));
+
+
         this.getChildren().add(mainVBox);
     }
 
     @Override
     public void update() {
+        personsObs.clear();;
+        personsObs.addAll(model.getPeople().values());
+        personsList.setItems(personsObs);
 
     }
 
@@ -76,6 +97,7 @@ public class MeetView extends StackPane implements ModelListener {
 
     public void associateHandler(MeetController controller) {
         addPersonB.setOnAction(controller::handleAddPerson);
+        removePersonB.setOnAction(controller::handleRemovePerson);
 
     }
 

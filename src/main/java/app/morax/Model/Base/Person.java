@@ -73,6 +73,6 @@ public class Person implements Serializable {
      * @return string - person info
      */
     public String toString() {
-        return ("\nPerson: " + this.name + "\n");
+        return (this.name);
     }
 }
