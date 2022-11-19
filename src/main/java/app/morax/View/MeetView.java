@@ -75,6 +75,7 @@ public class MeetView extends StackPane implements ModelListener {
     }
 
     public void associateHandler(MeetController controller) {
+        addPersonB.setOnAction(controller::handleAddPerson);
 
     }
 
