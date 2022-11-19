@@ -33,7 +33,8 @@ public class MenuView extends StackPane implements ModelListener {
         // Left side of the menu
         categoriesB = new Button("Categories");
         meetB = new Button("Meet");
-        chartViewB = new Button("View Progress Chart");
+        chartViewB = new Button("View Progress");
+        chartViewB.setStyle("-fx-background-color: linear-gradient(#d38836, Yellow)");
         newActivityB = new Button("New Activity");
         HBox leftMenu = new HBox(newActivityB, categoriesB, meetB, chartViewB);
         leftMenu.setSpacing(3);

@@ -2,6 +2,11 @@ package app.morax.Controller;
 
 import app.morax.Model.Base.MainModel;
 import app.morax.View.*;
+import app.morax.View.MeetView;
+import app.morax.View.NewActivityView;
+import javafx.application.Platform;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.input.DragEvent;
@@ -86,6 +91,27 @@ public class Controller {
     }
 
     public void handleMeetB(ActionEvent actionEvent) {
+        MeetView meetView = new MeetView();
+        MeetController meetController = new MeetController();
+
+        // linking everything together
+        meetController.setModel(model);
+        meetController.setView(meetView);
+
+        meetView.setModel(model);
+        meetView.associateHandler(meetController);
+
+        model.addSubscriber(meetView);
+        meetView.update();
+
+        // opening the new window
+        Stage meetStage = new Stage();
+        // make it so the controller has controller over the stage
+        meetController.setStage(meetStage);
+
+        meetStage.setScene(new Scene(meetView, 350, 300));
+        meetStage.getScene().getStylesheets().add("secondarySkin.css");
+        meetStage.show();
     }
 
     public void handleCompare(DragEvent dragEvent) {

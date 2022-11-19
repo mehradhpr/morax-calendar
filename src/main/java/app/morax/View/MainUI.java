@@ -109,5 +109,7 @@ public class MainUI extends StackPane implements ModelListener {
     public void switchView() {
         chartView.setVisible(!chartView.isVisible());
         scheduleDisplayView.setVisible(!chartView.isVisible());
+        if (chartView.isVisible()) this.menuBarView.chartViewB.setText("View Calendar");
+        else this.menuBarView.chartViewB.setText("View Progress");
     }
 }
