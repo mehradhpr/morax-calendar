@@ -21,4 +21,8 @@ public class TaskController extends Controller{
     public void handleFinish(ActionEvent ignored){
         model.taskComplete(task);
     }
+
+    public void handleDelete(ActionEvent actionEvent) {
+        model.removeTask(task);
+    }
 }

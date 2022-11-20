@@ -44,16 +44,21 @@ public class DayView extends VBox {
 
             //the button to complete a task and take it off the list
             Button finishB = new Button("Finish");
+
+            //Button to delete a task
+            Button delete = new Button("Delete");
+
             TaskController buttonControl = new TaskController();
             buttonControl.setTask(t);
             buttonControl.setModel(model);
 
             finishB.setOnAction(buttonControl::handleFinish);
+            delete.setOnAction(buttonControl::handleDelete);
 
             HBox leftHBox = new HBox(time, task);
             leftHBox.setAlignment(Pos.CENTER_LEFT);
             leftHBox.setSpacing(5);
-            HBox rightHBox = new HBox(category, finishB);
+            HBox rightHBox = new HBox(category, finishB, delete);
             rightHBox.setAlignment(Pos.CENTER_RIGHT);
             rightHBox.setSpacing(10);
 

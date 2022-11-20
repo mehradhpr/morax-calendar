@@ -1,9 +1,7 @@
 package app.morax.Controller;
 
-import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Person;
-import app.morax.View.NewCategoryView;
 import app.morax.View.NewPersonView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;

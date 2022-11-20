@@ -392,8 +392,9 @@ public class MainModel implements Serializable {
         }
 
         this.removeTask(t);
-
         this.finishedTasks.add(t);
+        t.setDate(LocalDateTime.now());
+
         this.updateSubscribers();
     }
 

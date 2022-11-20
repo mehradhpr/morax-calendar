@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class NewActivityController {
 
@@ -35,11 +36,20 @@ public class NewActivityController {
             PMAdditional += 12;
         }
 
-        LocalDateTime thisT = LocalDateTime.of(Integer.parseInt(this.view.DT.getEditor().getText(0, 4)), Integer.parseInt(this.view.DT.getEditor().getText(5, 7)) ,
-                Integer.parseInt(this.view.DT.getEditor().getText(8, 10)),
-                Integer.parseInt(this.view.getTimeText().getText(0, 2)) + PMAdditional, Integer.parseInt(this.view.getTimeText().getText(3, 5)));
+        //dd/MM/YYYY HH:mm:ss
+        int year = Integer.parseInt(this.view.DT.getEditor().getText(6, 10));
+        int month = Integer.parseInt(this.view.DT.getEditor().getText(3, 5));
+        int day = Integer.parseInt(this.view.DT.getEditor().getText(0, 2));
+        int hour = Integer.parseInt(this.view.getTimeText().getText(0, 2)) + PMAdditional;
+        int min = Integer.parseInt(this.view.getTimeText().getText(3, 5));
+
+        hour = hour > 23 ? 0 : hour;
+
+        LocalDateTime thisT = LocalDateTime.of(year, month, day, hour, min);
 
 
+
+        //"yyyy/MM/dd HH:mm:ss"
         Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText(), thisT);
         newTask.setCategory(this.view.getCategoryC().getValue());
         this.model.addTask(newTask);

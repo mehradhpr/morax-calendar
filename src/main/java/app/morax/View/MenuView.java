@@ -18,9 +18,11 @@ public class MenuView extends StackPane implements ModelListener {
     MainModel model;
     Button newActivityB;
     Button meetB;
-    Button chartViewB;
+    Button scheduleB;
     Button categoriesB;
     Button setting;
+    Button chartViewB;
+    Button compareViewB;
 
     String currentTime;
 
@@ -34,10 +36,13 @@ public class MenuView extends StackPane implements ModelListener {
         // Left side of the menu
         categoriesB = new Button("Categories");
         meetB = new Button("Meet");
-        chartViewB = new Button("View Progress");
-        chartViewB.setStyle("-fx-background-color: linear-gradient(#d38836, Yellow)");
+        scheduleB = new Button("View Schedule");
+        scheduleB.setStyle("-fx-background-color: linear-gradient(#d38836, Yellow)");
         newActivityB = new Button("New Activity");
-        HBox leftMenu = new HBox(newActivityB, categoriesB, meetB, chartViewB);
+        //buttons for changing view
+        chartViewB = new Button("Progress Chart");
+        compareViewB = new Button("Compare Schedule");
+        HBox leftMenu = new HBox(newActivityB, categoriesB, meetB, scheduleB, chartViewB, compareViewB);
         leftMenu.setSpacing(3);
 
         // Right side of the menu
@@ -64,7 +69,7 @@ public class MenuView extends StackPane implements ModelListener {
 
         // anchoring date
         AnchorPane.setTopAnchor(date, 2.0);
-        AnchorPane.setLeftAnchor(date, 400.0);
+        AnchorPane.setLeftAnchor(date, 700.0);
 
         // setting up anchorPane
         menuBar.setMinHeight(33);
@@ -86,8 +91,10 @@ public class MenuView extends StackPane implements ModelListener {
     public void associateHandler(Controller controller) {
         this.newActivityB.setOnAction(controller::handleNewActivityB);
         this.categoriesB.setOnAction(controller::handleCategoriesB);
-        this.chartViewB.setOnAction(controller::handleSwitchView);
+        this.scheduleB.setOnAction(controller::handleSwitchViewSchedule);
         this.meetB.setOnAction(controller::handleMeetB);
         this.setting.setOnAction(controller::handleSettingB);
+        this.chartViewB.setOnAction(controller::handleSwitchViewChart);
+        this.compareViewB.setOnAction(controller::handleSwitchViewCompare);
     }
 }

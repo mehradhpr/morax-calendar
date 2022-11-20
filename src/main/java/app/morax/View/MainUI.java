@@ -11,6 +11,9 @@ import javafx.scene.paint.Paint;
 
 public class MainUI extends StackPane implements ModelListener {
 
+    public enum View {COMPARE, ACTIVITIES, CHART}
+    private View currentMainView;
+
     ScheduleDisplayView scheduleDisplayView;
     MenuView menuBarView;
     ActivitiesListView activitiesListView;
@@ -31,13 +34,19 @@ public class MainUI extends StackPane implements ModelListener {
         //create a stackPane, so we can stack the views and switch between them
         StackPane switchViews = new StackPane();
 
+        //keep track of which of these we are viewing
+        currentMainView = View.ACTIVITIES;
+
         scheduleDisplayView = new ScheduleDisplayView();
         chartView = new ChartView();
-        chartView.setVisible(false);
-
-        switchViews.getChildren().addAll(chartView, scheduleDisplayView);
-
         compareView = new CompareView();
+
+        this.switchView();
+
+        switchViews.getChildren().addAll(compareView, chartView, scheduleDisplayView);
+        switchViews.setOnDragOver(controller::handleCompare);
+        switchViews.setOnDragDropped(controller::handleDragDropped);
+
         menuBarView = new MenuView();
 
         // linking the MVC objects
@@ -62,13 +71,14 @@ public class MainUI extends StackPane implements ModelListener {
         model.addSubscriber(this);
 
         controller.setView(this);
+        controller.setCompareView(compareView);
 
         // setting up the borderPane
         mainPane = new BorderPane();
         mainPane.setCenter(switchViews);
         mainPane.setRight(activitiesListView);
         mainPane.setTop(menuBarView);
-        mainPane.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
+        //mainPane.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
 
         this.getChildren().add(mainPane);
         this.setAlignment(Pos.CENTER);
@@ -90,27 +100,72 @@ public class MainUI extends StackPane implements ModelListener {
     }
 
     public static String getMonth(int i) {
-        return switch (i) {
-            case 1 -> "January";
-            case 2 -> "February";
-            case 3 -> "March";
-            case 4 -> "April";
-            case 5 -> "May";
-            case 6 -> "June";
-            case 7 -> "July";
-            case 8 -> "August";
-            case 9 -> "September";
-            case 10 -> "October";
-            case 11 -> "November";
-            case 12 -> "December";
-            default -> null;
-        };
+        String out;
+        switch (i) {
+            case 1:
+                out = "January";
+                break;
+            case 2:
+                out = "February";
+                break;
+            case 3:
+                out ="March";
+                break;
+            case 4:
+                out = "April";
+                break;
+            case 5:
+                out = "May";
+                break;
+            case 6:
+                out = "June";
+                break;
+            case 7:
+                out = "July";
+                break;
+            case 8:
+                out = "August";
+                break;
+            case 9:
+                out = "September";
+                break;
+            case 10:
+                out = "October";
+                break;
+            case 11:
+                out = "November";
+                break;
+            case 12:
+                out = "December";
+                break;
+            default:
+                out = null;
+        }
+        return out;
     }
 
     public void switchView() {
-        chartView.setVisible(!chartView.isVisible());
-        scheduleDisplayView.setVisible(!chartView.isVisible());
-        if (chartView.isVisible()) this.menuBarView.chartViewB.setText("View Calendar");
-        else this.menuBarView.chartViewB.setText("View Progress");
+        switch (currentMainView){
+            case ACTIVITIES:
+                this.chartView.setVisible(false);
+                this.scheduleDisplayView.setVisible(true);
+                this.compareView.setVisible(false);
+                break;
+            case CHART:
+                this.chartView.setVisible(true);
+                this.scheduleDisplayView.setVisible(false);
+                this.compareView.setVisible(false);
+                break;
+            case COMPARE:
+                this.chartView.setVisible(false);
+                this.scheduleDisplayView.setVisible(false);
+                this.compareView.setVisible(true);
+
+        }
+    }
+
+    public void setCurrentMainView(View view){
+        this.currentMainView = view;
+        switchView();
     }
 }

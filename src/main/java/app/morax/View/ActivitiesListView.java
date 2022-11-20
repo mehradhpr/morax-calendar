@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -52,7 +53,7 @@ public class ActivitiesListView extends StackPane implements ModelListener {
         VBox mainVBox = new VBox(topH, activitiesListView);
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
-        mainVBox.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
+        //mainVBox.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
         mainVBox.setPadding(new Insets(2, 2, 2, 2));
         mainVBox.setStyle("-fx-background-color: rgba(236, 189, 119, 0.84)");
         this.getChildren().add(mainVBox);
@@ -64,10 +65,17 @@ public class ActivitiesListView extends StackPane implements ModelListener {
 
         // sort the model's task list accordingly
         switch (sortC.getSelectionModel().getSelectedIndex()) {
-            case 0 -> model.sortTaskList(0);
-            case 1 -> model.sortTaskList(1);
-            case 2 -> model.sortTaskList(2);
-            case 3 -> model.sortTaskList(3);
+            case 0:
+                model.sortTaskList(0);
+                break;
+            case 1:
+                model.sortTaskList(1);
+                break;
+            case 2:
+                model.sortTaskList(2);
+                break;
+            case 3:
+                model.sortTaskList(3);
         }
 
         for (Task t : model.getTasks()) {
@@ -79,7 +87,7 @@ public class ActivitiesListView extends StackPane implements ModelListener {
                     + HM.getHour12() + ":" + t.getDate().format(DateTimeFormatter.ofPattern("mm")) + " " + HM.getAMPM());
             taskDT.setStyle("-fx-font-size: 12;" + "-fx-text-fill: Black;" + "-fx-font-family: Arial;");
             HBox taskHBox = new HBox(taskN, taskDT);
-            taskHBox.setAlignment(Pos.CENTER_LEFT);
+            taskHBox.setAlignment(Pos.CENTER_RIGHT);
             activitiesListObs.add(taskHBox);
         }
 

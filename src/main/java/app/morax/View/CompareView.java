@@ -7,13 +7,13 @@ import app.morax.Model.Base.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,18 +27,19 @@ public class CompareView extends StackPane implements ModelListener {
     private final ObservableList<DayComparison> days;
 
     public CompareView(){
-        HBox root = new HBox(0);
-
         Controller controller = new Controller();
         controller.setCompareView(this);
-        days = FXCollections.observableArrayList();
+        days = FXCollections.observableArrayList(new DayComparison("Drag a file to compare schedules", new ArrayList<>(), new ArrayList<>()));
 
         ListView<DayComparison> compareView = new ListView<>();
         compareView.setItems(days);
-        compareView.setMinWidth(400);
+        compareView.setMinWidth(500);
+        compareView.setPrefHeight(10000);
 
-        root.getChildren().addAll(compareView);
-        this.getChildren().add(root);
+        this.getChildren().add(compareView);
+
+        this.setAlignment(Pos.TOP_CENTER);
+        this.setPadding(new Insets(2, 2, 2, 2));
 
         this.setOnDragOver(controller::handleCompare);
         this.setOnDragDropped(controller::handleDragDropped);
@@ -110,6 +111,9 @@ public class CompareView extends StackPane implements ModelListener {
 
         Map<String, ArrayList<Task>> myTasksByDay = new HashMap<>();
         Map<String, ArrayList<Task>> comparisonTasksByDay = new HashMap<>();
+
+        model.sortTaskList(2);
+        comparisonModel.sortTaskList(2);
 
         //generate the keys
         for (String key:generateKeys(model)){

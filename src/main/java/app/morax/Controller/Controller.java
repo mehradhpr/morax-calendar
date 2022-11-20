@@ -4,14 +4,10 @@ import app.morax.Model.Base.MainModel;
 import app.morax.View.*;
 import app.morax.View.MeetView;
 import app.morax.View.NewActivityView;
-import javafx.application.Platform;
-import javafx.beans.Observable;
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 
@@ -123,7 +119,6 @@ public class Controller {
         else{
             dragEvent.consume();
         }
-
     }
 
     public void handleDragDropped(DragEvent dragEvent) {
@@ -136,5 +131,17 @@ public class Controller {
 
         if (comparisonModel == null) new ErrorMessage("File is not a valid type");
         compareView.setComparisonModel(comparisonModel);
+    }
+
+    public void handleSwitchViewSchedule(ActionEvent actionEvent) {
+        this.view.setCurrentMainView(MainUI.View.ACTIVITIES);
+    }
+
+    public void handleSwitchViewChart(ActionEvent actionEvent) {
+        this.view.setCurrentMainView(MainUI.View.CHART);
+    }
+
+    public void handleSwitchViewCompare(ActionEvent actionEvent) {
+        this.view.setCurrentMainView(MainUI.View.COMPARE);
     }
 }
