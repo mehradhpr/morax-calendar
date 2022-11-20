@@ -94,7 +94,6 @@ public class MainModel implements Serializable {
     }
 
     /**
-     * TODO
      * add person to system
      */
     public void addPerson(Person p)
@@ -104,7 +103,6 @@ public class MainModel implements Serializable {
     }
 
     /**
-     * TODO
      * Remove person from system
      */
     public void removePerson(Person p)
@@ -129,14 +127,6 @@ public class MainModel implements Serializable {
     public void removeTaskPerson(Person p, Task t)
     {
         p.removeTask(t.getName());
-    }
-
-    /**
-     * TODO
-     * Print the current state of the system
-     */
-    public void systemState()
-    {
     }
 
     /**
@@ -204,14 +194,14 @@ public class MainModel implements Serializable {
         MainModel model = new MainModel();
         int errors = 0;
         //test case 1
-        if (model.taskList.get(0) == null){
+        if (model.taskList.size() != 0){
             System.out.println("Error in test case 1");
             errors ++;
         }
         //test case 2
         Category c1 = new Category("Blue", 1, 2, 3);
         model.addCategory(c1);
-        if (!model.taskList.get(1).equals(c1)){
+        if (!model.categoryList.get(1).equals(c1)){
             System.out.println("Error in test case 2");
             errors ++;
         }
@@ -273,12 +263,12 @@ public class MainModel implements Serializable {
         model = MainModel.loadFromFile("testSave");
 
         //test case 12
-        if (model.taskList.size() != 3){
+        if (model.categoryList.size() != 2){
             System.out.println("Error in test case 12");
             errors ++;
         }
         //test case 13
-        if (model.categoryList.get(2).getTasks().size() != 1){
+        if (model.categoryList.get(1).getTasks().size() != 1){
             System.out.println("Error in test case 13");
             errors ++;
         }
@@ -383,7 +373,7 @@ public class MainModel implements Serializable {
 
     /**
      * Called to move a task move the active tasks list to the finished tasks list
-     * @param t
+     * @param t a task object
      */
     public void taskComplete(Task t){
         if (!t.isMeeting()) {
@@ -417,7 +407,7 @@ public class MainModel implements Serializable {
             fromDisk.subscribers = new ArrayList<>();
         }
         catch (Exception e){
-            System.out.println(e.toString());
+            System.out.println(e);
         }
 
         return fromDisk;
@@ -436,9 +426,7 @@ public class MainModel implements Serializable {
             out.close();
             file.close();
         }
-        catch (Exception e){
-            System.out.println(e.toString());
-        };
+        catch (Exception ignored){}
     }
 
     public TreeMap<String, Person> getPeople() {

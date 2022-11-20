@@ -41,7 +41,7 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     public CheckBox setTimeCk = new CheckBox();
 
-
+    private TextField duration;
 
     private MainModel model;
 
@@ -62,7 +62,7 @@ public class NewActivityView extends StackPane implements ModelListener {
 
         Label title3 = new Label("Date: ");
         DT.setMaxWidth(120);
-        DT.getEditor().setText(currentTime.substring(8, 10) + "/" + currentTime.substring(5, 7) + "/" + currentTime.substring(0, 4));
+        DT.getEditor().setText(currentTime.substring(0, 4) + "-" + currentTime.substring(5, 7) + "-" + currentTime.substring(8, 10));
         HBox dateHBox = new HBox(title3, DT);
         dateHBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -95,6 +95,11 @@ public class NewActivityView extends StackPane implements ModelListener {
         HBox categoryH = new HBox(title5, categoryC);
         categoryH.setAlignment(Pos.CENTER_LEFT);
 
+        Label durationLabel = new Label("Duration: ");
+        duration = new TextField();
+        duration.setTooltip(new Tooltip("The estimated time it will take to complete this task, in hours"));
+        HBox durationContainer = new HBox(durationLabel, duration);
+
         Label title6 = new Label("Notes: ");
         TextArea t = new TextArea();
         t.setMaxWidth(150);
@@ -106,7 +111,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         buttonHBox.setSpacing(10);
         buttonHBox.setAlignment(Pos.TOP_CENTER);
 
-        VBox mainVBox = new VBox(title1, titleHBox, dateHBox, locationHBox, setTimeH, categoryH, notesH, buttonHBox);
+        VBox mainVBox = new VBox(title1, titleHBox, dateHBox, locationHBox, setTimeH, categoryH, durationContainer, notesH, buttonHBox);
         mainVBox.setAlignment(Pos.TOP_CENTER);
         mainVBox.setSpacing(5);
         mainVBox.setPadding(new Insets(10, 10, 10, 10));
@@ -157,4 +162,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         setTimeCk.setOnAction(((NewActivityController) controller)::handleSetTimeCheckBox);
     }
 
+    public String getDuration() {
+        return duration.getText();
+    }
 }

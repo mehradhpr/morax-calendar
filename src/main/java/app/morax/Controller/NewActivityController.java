@@ -1,7 +1,9 @@
 package app.morax.Controller;
 
+import app.morax.Model.Base.Category;
 import app.morax.Model.Base.MainModel;
 import app.morax.Model.Base.Task;
+import app.morax.View.ErrorMessage;
 import app.morax.View.NewActivityView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
@@ -36,10 +38,10 @@ public class NewActivityController {
             PMAdditional += 12;
         }
 
-        //dd/MM/YYYY HH:mm:ss
-        int year = Integer.parseInt(this.view.DT.getEditor().getText(6, 10));
-        int month = Integer.parseInt(this.view.DT.getEditor().getText(3, 5));
-        int day = Integer.parseInt(this.view.DT.getEditor().getText(0, 2));
+        //YYYY/MM/DD HH:mm:ss
+        int year = Integer.parseInt(this.view.DT.getEditor().getText(0, 4));
+        int month = Integer.parseInt(this.view.DT.getEditor().getText(5, 7));
+        int day = Integer.parseInt(this.view.DT.getEditor().getText(8, 10));
         int hour = Integer.parseInt(this.view.getTimeText().getText(0, 2)) + PMAdditional;
         int min = Integer.parseInt(this.view.getTimeText().getText(3, 5));
 
@@ -47,11 +49,24 @@ public class NewActivityController {
 
         LocalDateTime thisT = LocalDateTime.of(year, month, day, hour, min);
 
+        Category category = this.view.getCategoryC().getValue();
 
+        int duration = 0;
+        try{
+            String input = this.view.getDuration();
+            if (!input.equals("")) duration = Integer.parseInt(input);
+        }catch (Exception ignored) {
+            new ErrorMessage("Duration must only include numbers");
+        }
+
+        if (duration > category.timeLeft()) new ErrorMessage("By adding this task to the category " + category.getName() +
+                " would put it over the time limit");
 
         //"yyyy/MM/dd HH:mm:ss"
-        Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText(), thisT);
-        newTask.setCategory(this.view.getCategoryC().getValue());
+        Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText());
+        newTask.setDate(thisT);
+        newTask.setTimeToComplete(duration);
+        newTask.setCategory(category);
         this.model.addTask(newTask);
         this.stage.close();
 

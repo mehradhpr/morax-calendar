@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
  */
 public class Task implements Serializable {
 
-    /** Task Name */
+    /**
+     * Task Name
+     */
     private String name;
     private String location;
     private LocalDateTime date;
@@ -20,7 +22,7 @@ public class Task implements Serializable {
 
     private final int priority;
 
-    private final int timeToComplete;
+    private int timeToComplete;
 
     private boolean isMeeting = false;
 
@@ -45,6 +47,7 @@ public class Task implements Serializable {
         this.timeToComplete = 0;
         this.isMeeting = true;
     }
+
     public Task(String taskName, String taskLocation) {
         this.name = taskName;
         this.location = taskLocation;
@@ -52,6 +55,7 @@ public class Task implements Serializable {
         this.priority = 0;
         this.timeToComplete = 0;
     }
+
     public Task(String taskName, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = null;
@@ -59,6 +63,7 @@ public class Task implements Serializable {
         this.priority = 0;
         this.timeToComplete = 0;
     }
+
     public Task(String taskName, String taskLocation, LocalDateTime taskDate) {
         this.name = taskName;
         this.location = taskLocation;
@@ -66,7 +71,8 @@ public class Task implements Serializable {
         this.priority = 0;
         this.timeToComplete = 0;
     }
-    public Task(String taskName, int time){
+
+    public Task(String taskName, int time) {
         this.name = taskName;
         this.location = null;
         this.date = null;
@@ -81,6 +87,7 @@ public class Task implements Serializable {
         this.priority = priority;
         this.timeToComplete = timeToComplete;
     }
+
     /**
      * Return task's name variable
      *
@@ -89,9 +96,11 @@ public class Task implements Serializable {
     public String getName() {
         return this.name;
     }
+
     public String getLocation() {
         return this.location;
     }
+
     public LocalDateTime getDate() {
         return this.date;
     }
@@ -112,9 +121,11 @@ public class Task implements Serializable {
     public void setName(String newName) {
         this.name = newName;
     }
+
     public void setDate(LocalDateTime newDate) {
         this.date = newDate;
     }
+
     public void setLocation(String newLocation) {
         this.location = newLocation;
     }
@@ -132,11 +143,11 @@ public class Task implements Serializable {
     }
 
 
-    public int getTime(){
+    public int getTime() {
         return this.time;
     }
 
-    public void setCategory(Category cat){
+    public void setCategory(Category cat) {
         this.category = cat;
     }
 
@@ -144,7 +155,7 @@ public class Task implements Serializable {
         return category;
     }
 
-    public void removeCategory(Category cat){
+    public void removeCategory(Category cat) {
         this.category = null;
     }
 
@@ -155,4 +166,6 @@ public class Task implements Serializable {
     public boolean isMeeting() {
         return isMeeting;
     }
+
+    public void setTimeToComplete(int t) {this.timeToComplete = t;}
 }

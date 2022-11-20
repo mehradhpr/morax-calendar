@@ -92,7 +92,7 @@ public class Category implements Serializable {
     public void setColor(double c){ this.color = c; }
 
     public String toString(){
-        return this.name + ", " + this.timeAlloc + " hours";
+        return this.name + ", Time Spent: " + this.getTimeUsed() + " hours";
     }
 
     //test cases
