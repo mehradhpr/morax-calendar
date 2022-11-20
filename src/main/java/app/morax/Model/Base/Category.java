@@ -31,7 +31,6 @@ public class Category implements Serializable {
      * @param t a task object
      */
     public void addTask(Task t){
-        if (!(this.timeLeft() >= t.getTimeToComplete()) && this.timeAlloc > 0) throw new IllegalArgumentException("Cannot allocate enough time to task");
         this.timeUsed = this.timeUsed + t.getTimeToComplete();
         this.taskList.add(t);
     }

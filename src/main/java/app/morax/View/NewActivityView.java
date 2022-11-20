@@ -91,7 +91,6 @@ public class NewActivityView extends StackPane implements ModelListener {
         categoryC = new ComboBox<>();
         categoryC.setItems(this.categoriesObs);
         categoryC.setMinWidth(120);
-        categoryC.setValue(new Category("Work", 1, 1, 20));
         HBox categoryH = new HBox(title5, categoryC);
         categoryH.setAlignment(Pos.CENTER_LEFT);
 
@@ -144,7 +143,7 @@ public class NewActivityView extends StackPane implements ModelListener {
         categoriesObs.clear();
         categoriesObs.addAll(this.model.getCategories());
         categoryC.setItems(categoriesObs);
-
+        if (categoriesObs.size() != 0) categoryC.setValue(categoriesObs.get(0));
     }
 
     @Override

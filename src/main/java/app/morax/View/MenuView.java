@@ -37,7 +37,7 @@ public class MenuView extends StackPane implements ModelListener {
         categoriesB = new Button("Categories");
         meetB = new Button("Meet");
         scheduleB = new Button("View Schedule");
-        scheduleB.setStyle("-fx-background-color: linear-gradient(#d38836, Yellow)");
+        //scheduleB.setStyle("-fx-background-color: linear-gradient(#d38836, Yellow)");
         newActivityB = new Button("New Activity");
         //buttons for changing view
         chartViewB = new Button("Progress Chart");

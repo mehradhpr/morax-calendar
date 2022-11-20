@@ -59,9 +59,6 @@ public class NewActivityController {
             new ErrorMessage("Duration must only include numbers");
         }
 
-        if (duration > category.timeLeft()) new ErrorMessage("By adding this task to the category " + category.getName() +
-                " would put it over the time limit");
-
         //"yyyy/MM/dd HH:mm:ss"
         Task newTask = new Task(this.view.getTitleText().getText(), this.view.getLocationText().getText());
         newTask.setDate(thisT);

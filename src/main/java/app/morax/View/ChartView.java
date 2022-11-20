@@ -35,15 +35,15 @@ public class ChartView  extends StackPane implements ModelListener {
         //setup xAxis
         CategoryAxis xAxis = new CategoryAxis();
         xAxis.setCategories(dates);
-        xAxis.setLabel("Date");
+        xAxis.setLabel("Category");
 
         //setup yAxis of the chart
         NumberAxis yAxis = new NumberAxis();
-        yAxis.setLabel("Number of Tasks");
+        yAxis.setLabel("Tasks Complete");
 
         //setup chart
         chart = new BarChart<>(xAxis, yAxis);
-        chart.setTitle("Tasks Complete");
+        chart.setTitle("Number of Tasks Completed");
 
         this.getChildren().add(chart);
     }
