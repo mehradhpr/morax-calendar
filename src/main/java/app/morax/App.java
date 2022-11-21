@@ -24,7 +24,6 @@ public class App extends Application {
         mainScene.getStylesheets().add("primarySkin.css");
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Calendar");
-        primaryStage.show();
     }
 
     public static void main(String[] args) {

@@ -20,13 +20,16 @@ public class LoginControls {
     }
 
     public void handleLogin(ActionEvent e) {
+        JDBC verify = new JDBC();
         String username = this.loginView.getUsername();
         String password = this.loginView.getPassword();
 
-        Login.initialize(username, password);
+        if (verify.login(username, password)) {
+            Login.initialize(username, password);
+            stage.close();
 
-        stage.close();
-        alternateStage.show();
+            alternateStage.show();
+        }
     }
 
     public void setAlternateStage(Stage stage) {
