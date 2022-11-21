@@ -1,5 +1,6 @@
 package app.morax.Controller;
 
+import app.morax.App;
 import app.morax.Model.Base.Login;
 import app.morax.View.LoginView;
 import javafx.event.ActionEvent;
@@ -28,8 +29,7 @@ public class LoginControls {
             Login.initialize(username, password);
             stage.close();
 
-            App ourApp = new App();
-            ourApp.start(new Stage());
+            alternateStage.show();
         }
     }
 
