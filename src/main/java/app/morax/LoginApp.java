@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class LoginApp extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage){
         LoginView root = new LoginView(stage);
 
         Scene mainScene = new Scene(root, 1000, 450);
@@ -20,9 +20,5 @@ public class LoginApp extends Application {
 
     public static void main(String[] args) {
         launch();
-    }
-
-    @Override
-    public void stop() throws Exception {
     }
 }

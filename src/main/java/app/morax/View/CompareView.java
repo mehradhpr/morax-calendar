@@ -54,10 +54,19 @@ public class CompareView extends StackPane implements ModelListener {
             title.setStyle("-fx-background-color: rgba(255,183,0,0.38);" +
                     "-fx-text-fill: rgba(217,142,4,0.89)");
 
-            VBox containerOne = new VBox();
+            //there is nothing to compare
+            if (tasks.size() == 0 && comparisonTasks.size() == 0){
+                root.getChildren().addAll(title);
+                this.getChildren().add(root);
+                return;
+            }
+
+            Label yours = new Label("Your Schedule");
+            VBox containerOne = new VBox(yours);
             createComparison(tasks, containerOne);
 
-            VBox containerTwo = new VBox();
+            Label theirs = new Label("Their Schedule");
+            VBox containerTwo = new VBox(theirs);
             createComparison(comparisonTasks, containerTwo);
 
             HBox comparison = new HBox();
@@ -107,7 +116,10 @@ public class CompareView extends StackPane implements ModelListener {
 
         days.clear();
 
-        if (comparisonModel == null) return;
+        if (comparisonModel == null){
+            days.add(new DayComparison("Drag a file to compare schedules", new ArrayList<>(), new ArrayList<>()));
+            return;
+        }
 
         Map<String, ArrayList<Task>> myTasksByDay = new HashMap<>();
         Map<String, ArrayList<Task>> comparisonTasksByDay = new HashMap<>();
