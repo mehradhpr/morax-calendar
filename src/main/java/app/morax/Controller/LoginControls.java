@@ -1,6 +1,5 @@
 package app.morax.Controller;
 
-import app.morax.App;
 import app.morax.Model.Base.Login;
 import app.morax.View.LoginView;
 import javafx.event.ActionEvent;
