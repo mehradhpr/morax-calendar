@@ -11,7 +11,6 @@ public class NewCategoryController {
 
     private MainModel model;
     private NewCategoryView view;
-
     private Stage stage;
 
     public void setModel(MainModel model) {

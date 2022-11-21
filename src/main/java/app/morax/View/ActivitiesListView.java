@@ -18,8 +18,10 @@ import javafx.scene.layout.VBox;
 import java.time.format.DateTimeFormatter;
 
 public class ActivitiesListView extends StackPane implements ModelListener {
+
     private ObservableList<String> sortOptions = FXCollections.observableArrayList("Name", "Location", "Date", "Priority");
     private final ObservableList<HBox> activitiesListObs;
+
     private final ListView<HBox> activitiesListView;
     private final ComboBox<String> sortC = new ComboBox<>();
 

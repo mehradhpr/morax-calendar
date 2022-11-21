@@ -24,6 +24,7 @@ public class CompareView extends StackPane implements ModelListener {
 
     private MainModel model;
     private MainModel comparisonModel;
+
     private final ObservableList<DayComparison> days;
 
     public CompareView(){

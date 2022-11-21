@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class ChartView  extends StackPane implements ModelListener {
 
     private MainModel model;
+
     private final BarChart<String, Number> chart;
     private final ObservableList<String> dates;
 

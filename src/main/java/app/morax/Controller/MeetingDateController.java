@@ -10,9 +10,7 @@ import java.time.LocalDateTime;
 public class MeetingDateController {
 
     private MeetingDateView view;
-
     private MainModel model;
-
     private Stage stage;
 
 
@@ -30,10 +28,10 @@ public class MeetingDateController {
             PMAdditional += 12;
         }
 
-        //DD/MM/YYYY HH:mm:ss
-        int year = Integer.parseInt(this.view.DT.getEditor().getText(7,10));
-        int month = Integer.parseInt(this.view.DT.getEditor().getText(3, 5));
-        int day = Integer.parseInt(this.view.DT.getEditor().getText(0, 2));
+        //YYYY/MM/DD HH:mm:ss
+        int year = Integer.parseInt(this.view.DT.getEditor().getText(0,4));
+        int month = Integer.parseInt(this.view.DT.getEditor().getText(5, 7));
+        int day = Integer.parseInt(this.view.DT.getEditor().getText(8, 10));
         int hour = Integer.parseInt(this.view.getTimeText().getText(0, 2)) + PMAdditional;
         int min = Integer.parseInt(this.view.getTimeText().getText(3, 5));
 

@@ -11,7 +11,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -20,20 +19,12 @@ public class MeetView extends StackPane implements ModelListener {
 
     private MainModel model;
 
-    private TextField titleText;
-
-    private TextField dateText;
-
     private Button addPersonB;
-
     private Button removePersonB;
-
     private Button meetB;
-
     private Button cancelB;
 
     private ObservableList<Person> personsObs = FXCollections.observableArrayList();
-
     private ListView<Person> personsList;
 
     private Label errorL = new Label("Please select an item");

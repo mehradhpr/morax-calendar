@@ -10,7 +10,6 @@ public class Person implements Serializable {
 
     /** Person's name */
     private String name;
-
     /** list of tasks person is involved with */
     private LinkedList<Task> taskList ;
 

@@ -15,16 +15,12 @@ public class MainModel implements Serializable {
 
     /** the taskList */
     private ArrayList<Task> taskList;
-
     // the categories list
     private ArrayList<Category> categoryList;
-
     // a list of finished tasks
     private ArrayList<Task> finishedTasks;
-
     /** list of people */
     private TreeMap<String, Person> people;
-
     /** list of subscribers to notify when the model has changed **/
     private transient ArrayList<ModelListener> subscribers;
 
@@ -410,6 +406,8 @@ public class MainModel implements Serializable {
             System.out.println(e);
         }
 
+        System.out.println();
+
         return fromDisk;
     }
 
@@ -424,6 +422,7 @@ public class MainModel implements Serializable {
             ObjectOutputStream out = new ObjectOutputStream(file);
             out.writeObject(this);
             out.close();
+            System.out.println(path);
             file.close();
         }
         catch (Exception ignored){}

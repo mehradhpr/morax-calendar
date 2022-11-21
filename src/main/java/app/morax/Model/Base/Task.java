@@ -18,11 +18,8 @@ public class Task implements Serializable {
 
     //measured in hours
     private Category category;
-
     private final int priority;
-
     private int timeToComplete;
-
     private boolean isMeeting = false;
 
     /**

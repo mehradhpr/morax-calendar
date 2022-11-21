@@ -10,7 +10,6 @@ public class NewPersonController {
 
     private MainModel model;
     private NewPersonView view;
-
     private Stage stage;
 
     public void setModel(MainModel model) {
