@@ -10,6 +10,7 @@ public class LoginControls {
 
     private LoginView loginView;
     private Stage stage;
+    private Stage alternateStage;
 
     public void setLoginView(LoginView loginView) {
         this.loginView = loginView;
@@ -24,9 +25,12 @@ public class LoginControls {
         String password = this.loginView.getPassword();
 
         Login.initialize(username, password);
-        stage.close();
 
-        App ourApp = new App();
-        ourApp.start(new Stage());
+        stage.close();
+        alternateStage.show();
+    }
+
+    public void setAlternateStage(Stage stage) {
+        this.alternateStage = stage;
     }
 }

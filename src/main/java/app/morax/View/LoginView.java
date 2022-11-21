@@ -1,5 +1,6 @@
 package app.morax.View;
 
+import app.morax.App;
 import app.morax.Controller.LoginControls;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,8 +16,9 @@ public class LoginView extends StackPane {
 
     private TextField username;
     private PasswordField password;
+    Button loginButton;
 
-    public LoginView(Stage stage){
+    public LoginView(){
         BorderPane root = new BorderPane();
 
         VBox infoContainer = new VBox();
@@ -29,14 +31,7 @@ public class LoginView extends StackPane {
         password = new PasswordField();
         HBox passwordContainer = new HBox(passwordLabel, password);
 
-        Button loginButton = new Button("Login");
-
-        LoginControls controller = new LoginControls();
-
-        //link everything together
-        controller.setLoginView(this);
-        controller.setStage(stage);
-        loginButton.setOnAction(controller::handleLogin);
+        loginButton = new Button("Login");
 
         infoContainer.getChildren().addAll(userContainer, passwordContainer, loginButton);
 
@@ -50,5 +45,9 @@ public class LoginView extends StackPane {
 
     public String getPassword() {
         return password.getText();
+    }
+
+    public void setController(LoginControls control){
+        this.loginButton.setOnAction(control::handleLogin);
     }
 }
