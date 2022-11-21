@@ -28,8 +28,12 @@ public class ChartView  extends StackPane implements ModelListener {
 
         //populate the list with the last fourteen days
         LocalDateTime now = LocalDateTime.now();
-        for (int d = 13; d >= 0; d--){
+        for (int d = 7; d >= 0; d--){
             LocalDateTime day = now.minusDays(d);
+            dates.add(day.getMonth().toString() + " " + day.getDayOfMonth());
+        }
+        for (int d = 1; d <= 6; d++){
+            LocalDateTime day = now.plusDays(d);
             dates.add(day.getMonth().toString() + " " + day.getDayOfMonth());
         }
 
