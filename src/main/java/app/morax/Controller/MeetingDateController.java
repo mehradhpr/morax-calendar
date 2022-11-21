@@ -5,7 +5,6 @@ import app.morax.Model.Base.Task;
 import app.morax.View.MeetingDateView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
-
 import java.time.LocalDateTime;
 
 public class MeetingDateController {
@@ -31,10 +30,10 @@ public class MeetingDateController {
             PMAdditional += 12;
         }
 
-        //YYYY/MM/DD HH:mm:ss
-        int year = Integer.parseInt(this.view.DT.getEditor().getText(0, 4));
-        int month = Integer.parseInt(this.view.DT.getEditor().getText(5, 7));
-        int day = Integer.parseInt(this.view.DT.getEditor().getText(8, 10));
+        //DD/MM/YYYY HH:mm:ss
+        int year = Integer.parseInt(this.view.DT.getEditor().getText(7,10));
+        int month = Integer.parseInt(this.view.DT.getEditor().getText(3, 5));
+        int day = Integer.parseInt(this.view.DT.getEditor().getText(0, 2));
         int hour = Integer.parseInt(this.view.getTimeText().getText(0, 2)) + PMAdditional;
         int min = Integer.parseInt(this.view.getTimeText().getText(3, 5));
 

@@ -114,7 +114,6 @@ public class MainModel implements Serializable {
     }
 
     /**
-     * TODO
      * add a person to a task
      */
     public void addTaskPerson(Person p, Task t)
@@ -123,7 +122,6 @@ public class MainModel implements Serializable {
     }
 
     /**
-     * TODO
      * Remove person from task
      */
     public void removeTaskPerson(Person p, Task t)

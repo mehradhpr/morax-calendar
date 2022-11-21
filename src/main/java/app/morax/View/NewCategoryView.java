@@ -15,12 +15,12 @@ import javafx.scene.layout.VBox;
 public class NewCategoryView extends StackPane implements ModelListener {
 
 
-    TextField nameText;
-    TextField timeText;
-    TextArea descriptionText;
-    Button addB;
+    private TextField nameText;
+    private TextField timeText;
+    private TextArea descriptionText;
+    private Button addB;
 
-    Button cancelB = new Button("Cancel");
+    private Button cancelB = new Button("Cancel");
 
 
     public NewCategoryView() {

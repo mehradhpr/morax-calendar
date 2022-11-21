@@ -1,6 +1,5 @@
 package app.morax.View;
 
-import app.morax.Controller.NewCategoryController;
 import app.morax.Controller.NewPersonController;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
@@ -16,11 +15,11 @@ import javafx.scene.layout.VBox;
 
 public class NewPersonView extends StackPane implements ModelListener {
 
-    TextField nameText;
-    TextArea descriptionText;
-    Button addB;
+    private TextField nameText;
+    private TextArea descriptionText;
+    private Button addB;
 
-    Button cancelB = new Button("Cancel");
+    private Button cancelB = new Button("Cancel");
 
 
     public NewPersonView() {

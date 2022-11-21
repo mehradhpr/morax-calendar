@@ -11,7 +11,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -28,9 +27,9 @@ public class CategoriesView extends StackPane implements ModelListener {
 
     private Label errorL;
 
-    ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
+    private ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
 
-    ListView<Category> categoriesL;
+    private ListView<Category> categoriesL;
 
     public CategoriesView() {
         // The Left VBox

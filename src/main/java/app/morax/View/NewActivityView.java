@@ -21,13 +21,11 @@ public class NewActivityView extends StackPane implements ModelListener {
 
     private TextField titleText;
 
-    private TextField dateText;
-
     private TextField locationText;
 
-    ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
+    private ObservableList<Category> categoriesObs = FXCollections.observableArrayList();
 
-    ObservableList<String> AMPMCombo = FXCollections.observableArrayList("AM", "PM");
+    private ObservableList<String> AMPMCombo = FXCollections.observableArrayList("AM", "PM");
 
     public ComboBox<String> PmAmC = new ComboBox<>(AMPMCombo);
 
@@ -37,9 +35,8 @@ public class NewActivityView extends StackPane implements ModelListener {
     private Button addB;
 
     private Button cancelB;
-    public DatePicker DT = new DatePicker();
 
-    public CheckBox setTimeCk = new CheckBox();
+    public DatePicker DT = new DatePicker();
 
     private TextField duration;
 
@@ -62,7 +59,7 @@ public class NewActivityView extends StackPane implements ModelListener {
 
         Label title3 = new Label("Date: ");
         DT.setMaxWidth(120);
-        DT.getEditor().setText(currentTime.substring(0, 4) + "-" + currentTime.substring(5, 7) + "-" + currentTime.substring(8, 10));
+        DT.getEditor().setText(currentTime.substring(8, 10) + "/" + currentTime.substring(5, 7) + "/" + currentTime.substring(0, 4));
         HBox dateHBox = new HBox(title3, DT);
         dateHBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -79,11 +76,9 @@ public class NewActivityView extends StackPane implements ModelListener {
 
         timeText.setText(HM.getHour12() + ":" + currentTime.substring(14, 16));
         timeText.setMaxWidth(50);
-        timeText.setDisable(true);
         PmAmC.setValue(HM.getAMPM());
         PmAmC.setMinWidth(10);
-        PmAmC.setDisable(true);
-        HBox setTimeH = new HBox(title4, setTimeCk, timeText, PmAmC);
+        HBox setTimeH = new HBox(title4, timeText, PmAmC);
         setTimeH.setSpacing(5);
         setTimeH.setAlignment(Pos.CENTER_LEFT);
 
@@ -122,10 +117,6 @@ public class NewActivityView extends StackPane implements ModelListener {
         return titleText;
     }
 
-    public TextField getDateText() {
-        return dateText;
-    }
-
     public ComboBox<Category> getCategoryC() {
         return categoryC;
     }
@@ -158,7 +149,6 @@ public class NewActivityView extends StackPane implements ModelListener {
         titleText.setOnAction(controller::handleTitleText);
         addB.setOnAction(((NewActivityController) controller)::handleAddButton);
         cancelB.setOnAction(controller::handleCancelB);
-        setTimeCk.setOnAction(((NewActivityController) controller)::handleSetTimeCheckBox);
     }
 
     public String getDuration() {

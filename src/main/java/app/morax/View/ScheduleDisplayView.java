@@ -10,7 +10,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.StackPane;
-
 import java.util.ArrayList;
 
 public class ScheduleDisplayView extends StackPane implements ModelListener {

@@ -17,7 +17,6 @@ public class Task implements Serializable {
     private LocalDateTime date;
 
     //measured in hours
-    private int time;
     private Category category;
 
     private final int priority;
@@ -140,11 +139,6 @@ public class Task implements Serializable {
                 "\nLocation: " + this.location +
                 "\nDate: " + this.date +
                 "\nCategory: " + this.category + "\n");
-    }
-
-
-    public int getTime() {
-        return this.time;
     }
 
     public void setCategory(Category cat) {

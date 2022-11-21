@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MeetController {
+
     private MainModel model;
     private MeetView view;
     private Stage stage;

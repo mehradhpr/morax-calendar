@@ -12,6 +12,7 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.Stage;
 
 public class Controller {
+
     private MainModel model;
     private MainUI view;
     private CompareView compareView;
@@ -43,7 +44,7 @@ public class Controller {
 
         // Starting new window
         Stage newActivityStage = new Stage();
-        newActivityStage.setScene(new Scene(newActivityView, 240, 270));
+        newActivityStage.setScene(new Scene(newActivityView, 340, 290));
         newActivityStage.getScene().getStylesheets().add("secondarySkin.css");
         newActivityController.setStage(newActivityStage);
         newActivityStage.show();

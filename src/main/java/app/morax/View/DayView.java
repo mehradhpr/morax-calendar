@@ -13,16 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class DayView extends VBox {
 
-    Label dateLabel;
+    private Label dateLabel;
 
-    ObservableList<Task> taskObservableList = FXCollections.observableArrayList();
+    private ObservableList<Task> taskObservableList = FXCollections.observableArrayList();
 
     DayView(String date, String month, ArrayList<Task> tasks, MainModel model) {
         this.dateLabel = new Label(" " + month + " " + date + "                                                                               ");

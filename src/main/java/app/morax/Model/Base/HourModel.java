@@ -1,10 +1,10 @@
 package app.morax.Model.Base;
 
 public class HourModel {
-    int hour24;
 
-    int hour12;
-    String AMPM;
+    private int hour24;
+    private int hour12;
+    private String AMPM;
 
     public HourModel(String h, String ampm) {
         if (ampm == null) {

@@ -4,24 +4,22 @@ import app.morax.Controller.Controller;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Paint;
 
 public class MainUI extends StackPane implements ModelListener {
 
     public enum View {COMPARE, ACTIVITIES, CHART}
     private View currentMainView;
 
-    ScheduleDisplayView scheduleDisplayView;
-    MenuView menuBarView;
-    ActivitiesListView activitiesListView;
-    MainModel mainModel;
+    private ScheduleDisplayView scheduleDisplayView;
+    private MenuView menuBarView;
+    private ActivitiesListView activitiesListView;
+    private MainModel mainModel;
 
-    BorderPane mainPane;
-    ChartView chartView;
-    CompareView compareView;
+    private BorderPane mainPane;
+    private ChartView chartView;
+    private CompareView compareView;
 
     public MainUI(MainModel model) {
 
@@ -78,7 +76,6 @@ public class MainUI extends StackPane implements ModelListener {
         mainPane.setCenter(switchViews);
         mainPane.setRight(activitiesListView);
         mainPane.setTop(menuBarView);
-        //mainPane.setBorder(Border.stroke(Paint.valueOf("#0d2a0d")));
 
         this.getChildren().add(mainPane);
         this.setAlignment(Pos.CENTER);

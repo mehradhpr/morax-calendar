@@ -1,6 +1,5 @@
 package app.morax.View;
 
-import app.morax.Controller.Controller;
 import app.morax.Controller.MeetController;
 import app.morax.Interface.ModelListener;
 import app.morax.Model.Base.MainModel;
@@ -33,9 +32,9 @@ public class MeetView extends StackPane implements ModelListener {
 
     private Button cancelB;
 
-    ObservableList<Person> personsObs = FXCollections.observableArrayList();
+    private ObservableList<Person> personsObs = FXCollections.observableArrayList();
 
-    ListView<Person> personsList;
+    private ListView<Person> personsList;
 
     private Label errorL = new Label("Please select an item");
 

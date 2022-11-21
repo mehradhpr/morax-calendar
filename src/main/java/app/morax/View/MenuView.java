@@ -15,16 +15,15 @@ import java.time.format.DateTimeFormatter;
 
 public class MenuView extends StackPane implements ModelListener {
 
-    MainModel model;
-    Button newActivityB;
-    Button meetB;
-    Button scheduleB;
-    Button categoriesB;
-    Button setting;
-    Button chartViewB;
-    Button compareViewB;
-
-    String currentTime;
+    private MainModel model;
+    private Button newActivityB;
+    private Button meetB;
+    private Button scheduleB;
+    private Button categoriesB;
+    private Button setting;
+    private Button chartViewB;
+    private Button compareViewB;
+    private String currentTime;
 
     public MenuView() {
 

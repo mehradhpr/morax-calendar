@@ -52,7 +52,7 @@ public class Category implements Serializable {
     public void removeTask(int i){
         if (i > this.taskList.size()) throw new IllegalArgumentException("index out of range");
 
-        this.timeUsed = this.timeUsed - this.taskList.get(i).getTime();
+        this.timeUsed = this.timeUsed - this.taskList.get(i).getTimeToComplete();
         this.taskList.remove(i);
     }
 

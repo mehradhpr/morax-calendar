@@ -12,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -51,7 +50,7 @@ public class MeetingDateView extends StackPane implements ModelListener {
 
         Label title3 = new Label("Date: ");
         DT.setMaxWidth(120);
-        DT.getEditor().setText(currentTime.substring(0, 4) + "-" + currentTime.substring(5, 7) + "-" + currentTime.substring(8, 10));
+        DT.getEditor().setText(currentTime.substring(8, 10) + "/" + currentTime.substring(5, 7) + "/" + currentTime.substring(0, 4));
         HBox dateHBox = new HBox(title3, DT);
         dateHBox.setAlignment(Pos.CENTER_LEFT);
 

@@ -6,9 +6,8 @@ import app.morax.View.LoginView;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class LoginControls {
+
     private LoginView loginView;
     private Stage stage;
 
