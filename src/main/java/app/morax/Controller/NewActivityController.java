@@ -60,7 +60,7 @@ public class NewActivityController {
         newTask.setDate(thisT);
         newTask.setTimeToComplete(duration);
         newTask.setCategory(category);
-        this.model.addTask(newTask);
+        this.model.addTask(newTask, category);
         this.stage.close();
 
     }
