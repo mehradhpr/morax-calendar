@@ -1,92 +1,235 @@
-# CMPT370_Group12
+Morax September 19th 3:30 PM Meeting
+Attendance:
+Sashti
+Jordan
+Zachary
+Zoli
+
+Updates:-
+2 Epic and User stories should be done within wednesday before the in person meeting
+Jordan said he is working on the features
+Login page to be made as well for future updates
+Jordan - Creating a 'task' object with attributes corresponding to the task as well as a 'taskList' container to hold/sort all current tasks.
+Location services are not possible and it's difficult to implement.
+Sashti and Zoli - Creating a web page with sql database
+Zaccary - Helping with the UI once it's designed with Mehrad.
+Possibility of implementing this on a docker image.
+
+
+Persona 1: Carl Johnson
+Age: 27
+Job: A business manager, single, 2 cats
+Carl Johnson is a business manager for 2 different companies and he wants to keep everything in his business and life in check, so he pulled out his phone to try __ and see how to create a schedule. As a manager for many years, he has adept knowledge of the internet and how to interface with most common forms of technology. He has a lot of stuff to manage, regarding his work and life.
+Persona 2: Theodore Weaver
+
+Age: 40
+
+Job: Human Resources
+
+Theodore’s job is in human resources, and he is married with children. He has a very dynamic schedule with meetings in groups or with a single person popping up all the time. Fixed events are not uncommon for him though, for example picking up his kids from school and extracurricular activities are an everyday occurrence. His motivations are being able to keep track of incoming information from employers and co-workers, and giving everyone the attention they need. Frustrations include many sources having the same problem, and too many tasks on the go at once. Daily activities are hosting group meetings, individual meetings, receiving complaints, and taking care of his children. He is on his computer quite often and mainly uses his web browser for everything.
+
+Persona 3: Chris 
+Age: 32
+Job: Human Resource worker, married 
+Chris H.R. Rep II is a 32-year-old Human Resource worker. Married to 28-year-old barber John Isabarber, he and his husband live an average life with their Boston Terrier Chompers. Being a HR worker Chris meets with employees from all different positions within the company, helping with their problems while completing his own work as well. Chris wants Morax Management to keep him on track. Whether that be sorting his appointments, tracking his upcoming deadlines, or being able to view ahead of time what his next week will be filled with. Before Morax Management Chris would try to keep track of his schedule with sticky notes. This was never an effective option but that really came to light when he misplaced the note reminder for John’s birthday dinner reservation. After receiving a disappointed call from John when Chris didn’t show up, Chris decided to find a better method of management. Chris enjoys helping others (he volunteers at a food bank every other weekend) and watching movies with his partner. He doesn’t have the most technical prowess when it comes to computers but is well versed enough to use programs that are user friendly quite well.
+
+Persona 4: Patrick Pre-med
+
+Age: 22
+
+Job:University student, unmarried 
+
+Patrick Pre-med is 22 years old, full time student majoring in biomed, unmarried. His goals are to maintain a high average and to take the MCAT exam successfully, while expanding his network. He dreams of being a medical doctor. He is frustrated with a scattered studying schedule and the seemingly impossible workload, hard to keep track of when to meet people and who to meet. His activities are: study for 5 courses, going to classes and tutorials, and attending parties and meetings to further expand his connections. Very proficient in using technology.
+
+
+Persona 5: Felix Brown
+
+Age: 15
+
+Job: High school student
+
+Felix Brown is known for being very social and friendly with people from a very young age. Felix is also a sportsman. He regularly plays hockey for his school team. He wants to go out and enjoy his life with his friends and peers but he also feels like he is always busy and never free to do activities with others. Having so many friends and also taking so many classes, he is always worried about missing an assignment’s due date. Felix is looking for something that will help him maintain a higher average to achieve honor roll. Felix knows how to use a mobile phone but he is also inclined to learn something new if it is useful for him. 
+
+
+Persona 6: David Monk Johnson
+
+Age: 55
+
+Job: Train Engineer, divorced, 2 children (adults now)
+
+David Monk had a bad divorce with his ex-wife a few years back. Since then, he has felt that his life is falling apart. From spending a lot of time in therapy, with lawyers and in courts along with going to his job, he feels super stressed. Throughout the years, even though he has gotten better in his personal life, he feels he has to do and manage his time more efficiently. He wants to spend more time with his kids (who are now adults) but finds it difficult to make plans due to scheduling conflicts. He is inclined to have and maintain a healthy relationship with the remainder of his family. David does not have that much technical proficiency because he does not use much technology outside of his work. His son, Carl Johnson, recently started using __ app and recommends it to his dad.
+
+Persona 7: Steve Family guy
+
+Age: 34
+
+Job: Bank Associate
+married with two kids, middle class, needs to balance his work and life, being able to manage his busy work schedule while attending to his family and taking care of himself physically and mentally. Steve’s schedule is scattered and his busy life has left him stressed out everyday. Steve has tried to plan out his upcoming days by making notes but he needs a more structured and organized layout to manage his multi-dimensional life. It is hard for Steve to keep in mind all the upcoming events and he misses some of them from time to time. This has led him in an awkward position that balancing his life seems impossible to him. Steve goes to work from Monday to Friday and sometimes works overtime to get a promotion. He has many routines including morning Yoga and weight lifting after his work to unwind and take care of himself. In the evening, he spends time with his family and friends. His technical knowledge is reasonable.
 
 
 
-## Getting started
+Epic #1: I, Felix Brown, would like to be able to make plans for the day.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+User stories:
+→(Persona 5)(5 points) I, Felix Brown, want to be able to add things to my plan and have them sorted automatically by the due date, so that I can prioritize my activities.
+Acceptance Criteria:
+	Create new tasks
+	Assign tasks a priority
+	View tasks in order (ordered by due date)
+	
+→(Persona 5)(1 points) I, Felix Brown, want to search for when I have free time so that I can make plans with my friends and/or study plans.
+Acceptance Criteria:
+	Search for freetime
+	Search for tasks within a specific time frame
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+Epic #2: I, David Monk Johnson, would like to be able to share and compare multiple schedules so that I can make plans with my children.
+	→(Persona 6)(3 points) I, David Monk Johnson, need to be able to view and compare my childrens schedules with my own so that I can still maintain a  healthy relationship with them.
+		Acceptance Criteria:
+			Load multiple schedules
+			Compare schedules by free time
+			View multiple schedules at the same time
+			Clear indication of which schedule is which
 
-## Add your files
+	→(Persona 6)(1 points) I, David Monk Johnson, need to be able to receive my childrens schedules so that I can see when they are busy.
+		Acceptance Criteria:
+			Share schedules without navigating the file structure
+			Load multiple schedules
+			Save multiple schedules
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Epic #3: As Patrick Pre-med, I want to be able to track my productive work that I have done and compare it to my goal and other time periods, so that I am aware of my productivity and efficiency.
+User Story 1 (5 points): I wish to keep record of the time I spent studying everyday and the progress I made in those time windows.
+Acceptance criteria: An entry for each activity to set the actual time spent on it at the end of the day. 
+User Story 2 (7 points): I want to have a chart made from my studying records that shows everyday total time spent and sketch it throughout last week, last two weeks, last month, etc.
+Acceptance criteria: A progress chart has the option to change the time frame shown.
+User Story 3 (2 points): I want to have a progress meter that can set my own units and progress goals.
+Acceptance criteria: set a progress meter for each day and the ability to define the units and the maximum of the meter. Visualize the meter.
 
-```
-cd existing_repo
-git remote add origin https://git.cs.usask.ca/jmp753/cmpt370_group12.git
-git branch -M main
-git push -uf origin main
-```
+Epic #4: As Patrick Pre-med, I want to take notes of what people to meet and set regular meetings to maintain the connections.
+User Story 1 (4 points): I want to keep a record of people I need to meet and assign them priorities, so that I use my time efficiently.
+Acceptance criteria: Ability to input individuals as objects with attributes like priority. Visualize the list.
+User Story 2 (6 points): I wish to schedule meetings with the people in my list, with specified location, time and day.
+Acceptance criteria: create objects for meetings. Assign the meeting with the chosen person on the list. Having the option for the user to create meetings.
+User Story 3 (3 points): I want to be able to specify how often I should meet a particular person, and remind me in advance.
+Acceptance criteria: Assign each individual a time cycle. When the cycle ends, notify the user and reset the cycle
 
-## Integrate with your tools
+Epic #5: As Steve, I want to be able to schedule my time in advance and to balance the time I spend with my family and work.
+➔   User Story 1 (4 points): I want to schedule events for a week with specified times and locations.
+Acceptance Criteria: ability to set event objects for specific days and times, add attributes to each event such as location, time etc.
+➔   User Story 2 (3 points) : Categorize my events as family, work, fitness etc. I want to be able to define my own categories too.
+Acceptance Criteria: define different event objects with different attributes 
+➔   User Story 3 (7 points): I wish to split the time I am gonna spend in different event categories so that I can balance my time and split it reasonably.
+Acceptance criteria: ability to set a limit on how much each event category can take up time per week. 
+Epic #6: As Theodore Weaver I want to organize and control my workflow so that every employee and my family feels they have the resources and attention they need.
+User Story 1 (7 points): As a human resources employee, I want to be able to create an event for myself and the person I am meeting with so that my day runs smoothly and I am not tracking people down.
+Acceptance Criteria 1:
+‘add friend’ ability
+pending friend requests, accepting friend requests
+create items that are synced with a friend
 
-- [ ] [Set up project integrations](https://git.cs.usask.ca/jmp753/cmpt370_group12/-/settings/integrations)
+Independent → yes, ie. when an event is created we just add it to 2 users
+Negotiable → yes, it is not specified to be implemented a certain way
+Valuable → yes, adding smoothness to the work-flow
+Estimable → yes, inside ‘user’ class, have ‘friends’ attribute, can add events with friends
+Small → yes, assuming ‘event’ is created
+Testable → yes
 
-## Collaborate with your team
+User Story 2 (3 points): As a father, I want to be able to track my work-load and spread it out evenly across the week so that I don’t over-exert myself and have energy for my family.
+Acceptance Criteria 2:
+add difficulty points to a task
+set max difficulty wanted for a day (sum of all events)
+visualize difficulty of days with shading
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Independent → yes, just an estimation of the ‘exertion’ of a task
+Negotiable → yes
+Valuable → spreads work evenly over the whole week
+Estimable → yes, technically just an attribute
+Small → yes
+Testable → yes
 
-## Test and Deploy
+Epic #7: As Carl Johnson, I want to be able to have multiple accounts for different areas of work.
+7 points User Story #1: As a businessman with multiple aliases, I want to be able to have multiple personas to separate different parts of my work and personal life.
+2 points User Story #2: I want to be able to edit my alias and my personal details for my account
 
-Use the built-in continuous integration in GitLab.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
 
-***
 
-# Editing this README
+The picked User Stories/backlog:
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+#1 (5 points) I, Felix Brown, want to be able to add things to my plan and have them sorted automatically by the due date, so that I can prioritize my activities.
+Acceptance Criteria:
+Create new tasks
+Assign tasks a priority
+View tasks in order (ordered by due date)
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
-## Name
-Choose a self-explaining name for your project.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+	#2 (3 points) : I, Patrick pre-med, want to Categorize my events as family, work, fitness etc. I want to be able to define my own categories too.
+Acceptance Criteria: define different event objects with different attributes 
+ #3 (7 points): I, Steve Family Guy, wish to split the time I am gonna spend in different event categories so that I can balance my time and split it reasonably.
+Acceptance criteria: ability to set a limit on how much each event category can take up time per week.
+	#4 (1 points) I, Felix Brown, want to search for when I have free time so that I can make plans with my friends and/or study plans.
+Acceptance Criteria:
+Search for freetime
+Search for tasks within a specific time frame
+	#5 (5 points): I, Patrick Pre-med, wish to keep a record of the time I spent studying everyday and the progress I made in those time windows.
+Acceptance criteria: An entry for each activity to set the actual time spent on it at the end of the day. 
+#6 (7 points): I, Patrick Pre-med,  want to have a chart made from my studying records that shows everyday total time spent and sketch it throughout last week, last two weeks, last month, etc.
+	Acceptance Criteria:
+		View time spent on activities
+		Have time spent graphed
+		View graph over differing amounts of time
+		
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+#7 (4 points): I, Patrick Pre-med, want to keep a record of people I need to meet and
+assign them priorities, so that I use my time efficiently.
+Acceptance criteria: Ability to input individuals as objects with attributes like priority. Visualize the list.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+	 #8 (7 points): I, Carl Johnson, a businessman with multiple aliases, want to be able to have multiple personas to separate different parts of my work and personal life.
+		Acceptance Criteria:
+			Login page
+			
+#9 (2 points): I, Carl Johnson, want to be able to edit my alias and my personal details for my accounts.
+		Acceptance Criteria:
+			Account page to view account details
+			Edit account page
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+#10 (1 points) I, David Monk Johnson, need to be able to receive my childrens
+schedules so that I can see when they are busy.
+		Acceptance Criteria:
+			Share schedules without navigating the file structure
+			Load multiple schedules
+			Save multiple schedules
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Contributions: 
+	Mehrad Hassanpour: 20%
+	Sashti Prasad Narayanasami Natarajan: 20%
+	Zackary Mowbray: 20%
+Jordan Planchot: 20%
+	Zoli Digness: 20%
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Action Plan:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Sashti - A front page and a login page
+Mehrad - The view part of the MVC - UI
+Zackary - Create compact widgets for view
+Zoli - Database and setting up a development environment
+Jordan - Model and controller part of the MVC - backend
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+Prioritized Backlog:
 
-## License
-For open source projects, say how it is licensed.
+Schedule, sort, prioritize activities in the calendar
+Define new categories
+Categorize events 
+Set a time limit for different categories
+Search for free time
+Keep a record of time for the finished activities
+A progress chart based on the progress report
+Make a record of people to meet and assign priorities
+Register/Login page for accounts
+ Editing personal information 
+ Having different calendars within the same account
+ Ability to receive and view other peoples schedule and compare it to yours
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
